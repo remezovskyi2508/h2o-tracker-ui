@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const MonthStatsTable = () => {
-  return (
-    <div>MonthStatsTable</div>
-  )
-}
+  return <div>MonthStatsTable</div>;
+};
 
-export default MonthStatsTable
+export default MonthStatsTable;
