@@ -1,0 +1,8 @@
+.trigger {
+  width: 34px;
+}
+
+.tooltip {
+  transition: none;
+  opacity: 1 !important;
+}
