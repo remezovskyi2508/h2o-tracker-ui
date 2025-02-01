@@ -1,0 +1,122 @@
+.todayWaterListBox{
+    width: 264px;
+    height: 258px;
+    background-color: #ECF2FF;
+}
+
+.waterListToday{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 125%;
+    margin-bottom: 16px;
+}
+
+.waterListBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.waterElement{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-top: 12px;
+    border-bottom: #D7E3FF solid 1px;
+    height: 26px;
+}
+
+.SmallTextBox{
+    width: 128px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    margin-left: 12px;
+    margin-right: 38px;
+}
+
+.waterElementMl{
+    color: #407BFF;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;  
+    width: 60px;
+}
+
+.waterElementTime{
+    color: #2F2F2F;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 200%;
+    width: 56px;
+}
+
+.TwoBtnsToWater{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+}
+
+.glassSvg{
+    width: 26px;
+    height: 26px;
+}
+
+.redactOpenBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.deleteOpenBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.AddWaterModalBtn{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.AddWaterBtnText{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: #407BFF;
+}
+
+@media screen and (min-width: 768px) {
+    .todayWaterListBox{
+        width: 656px;
+        height: 260px;
+    }
+    .waterListToday{
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 123%;
+    }
+    .waterElement{
+        height: 36px;
+    }
+    .glassSvg{
+        width: 36px;
+        height: 36px;
+    }
+    .SmallTextBox{
+        width: 158px;
+        margin-right: 390px;
+        gap: 16px;
+    }
+    .waterElementTime{
+        width: 82px;
+    }
+}
