@@ -1,0 +1,22 @@
+.calendarHeader {
+  display: flex;
+}
+.title {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.23;
+}
+.headerItem {
+  display: flex;
+}
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &:last-of-type {
+    transform: scaleX(-1);
+  }
+}
+.icon {
+  fill: #407bff;
+}
