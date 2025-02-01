@@ -60,6 +60,8 @@
   height: 34px;
   border-radius: 50%;
   border: 1px solid #000;
+  background-color: #FFFFFF;
+  border-color: #FF9D43;
 }
 .waterAim {
   text-align: center;
