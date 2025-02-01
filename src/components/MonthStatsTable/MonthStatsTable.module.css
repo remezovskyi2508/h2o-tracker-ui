@@ -1,5 +1,11 @@
+.calendarWrapper {
+   margin: 0 auto;
+    width: 544px;
+    background-color: #ECF2FF;
+}
 .calendarHeader {
   display: flex;
+  justify-content: space-between;
 }
 .title {
   font-size: 26px;
@@ -8,11 +14,15 @@
 }
 .headerItem {
   display: flex;
+  align-items: center;
 }
 .button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  width: 14px;
+  height: 14px;
+  padding: 0;
   &:last-of-type {
     transform: scaleX(-1);
   }
@@ -20,6 +30,8 @@
 .dateTitle {
   display: flex;
   align-items: center;
+  color: #407bff;
+  padding: 0 12px;
 }
 .icon {
   fill: #407bff;

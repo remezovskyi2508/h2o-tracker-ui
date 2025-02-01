@@ -9,7 +9,7 @@ const MonthStatsTable = () => {
   const year = currentDate.getFullYear();
 
   return (
-    <div>
+    <div className={css.calendarWrapper}>
       <ul className={css.calendarHeader}>
         <li className={css.headerItem}>
           <h3 className={css.title}>Month</h3>
