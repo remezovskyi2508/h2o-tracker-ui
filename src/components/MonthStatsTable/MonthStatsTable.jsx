@@ -20,8 +20,8 @@ const MonthStatsTable = () => {
               <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
           </button>
-          <div>
-            {month}, {year},
+          <div className={css.dateTitle}>
+            {month}, {year}
           </div>
           <button className={css.button} type="button">
             <svg className={css.icon} width="20" height="20">

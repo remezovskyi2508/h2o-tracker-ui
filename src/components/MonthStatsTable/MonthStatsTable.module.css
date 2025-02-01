@@ -17,6 +17,12 @@
     transform: scaleX(-1);
   }
 }
+.dateTitle {
+  display: flex;
+  align-items: center;
+}
 .icon {
   fill: #407bff;
+  width: 14px;
+  height: 14px;
 }
