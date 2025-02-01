@@ -1,0 +1,113 @@
+li {
+  list-style-type: none;
+}
+
+/* .has_point {
+  background: url('./images/point.svg') no-repeat left;
+} */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 80px;
+  position: relative;
+}
+
+.icon_bottle {
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Щоб бути на фоні */
+  position: absolute;
+}
+
+.titel {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.subheading {
+  font-weight: 400;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+.titel_block_benefits {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.benefits_list {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.benefits_list_item {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+}
+
+.signup_btn_tracker {
+  border-radius: 10px;
+  padding: 10px 30px;
+  width: 384px;
+  height: 44px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: #407bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup_btn_tracker:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+}
+
+.signup_btn_tracker:active {
+  box-shadow: none;
+}
+
+.benefits_card {
+  border-radius: 10px;
+  padding: 32px 24px;
+  width: 494px;
+  height: 332px;
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  background: #d7e3ff;
+  margin-top: 34px;
+}
+
+.titel_benefits_card {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.benefits_card_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.benefits_card_item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

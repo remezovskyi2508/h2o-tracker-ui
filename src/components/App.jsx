@@ -39,22 +39,22 @@ function App() {
             {/* Обмежений доступ для неавторизованих користувачів */}
             <Route
               path="welcome"
-              element={<RestrictedRoute component={<WelcomePage/>} />}
+              element={<RestrictedRoute component={<WelcomePage />} />}
             />
             {/* Сторінка для авторизованих користувачів */}
             <Route
               path="home"
-              element={<PrivateRoute component={<HomePage/>} />}
+              element={<PrivateRoute component={<HomePage />} />}
             />
             {/* Сторінка для входу */}
             <Route
               path="signin"
-              element={<RestrictedRoute component={<SigninPage/>} />}
+              element={<RestrictedRoute component={<SigninPage />} />}
             />
             {/* Сторінка для реєстрації */}
             <Route
               path="signup"
-              element={<RestrictedRoute component={<SignupPage/>} />}
+              element={<RestrictedRoute component={<SignupPage />} />}
             />
           </Route>
         </Routes>
