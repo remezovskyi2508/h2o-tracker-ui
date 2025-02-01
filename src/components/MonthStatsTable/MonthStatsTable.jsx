@@ -7,6 +7,7 @@ const MonthStatsTable = () => {
     month: 'long',
   });
   const year = currentDate.getFullYear();
+  const percent = '60 %';
 
   return (
     <div className={css.calendarWrapper}>
@@ -28,6 +29,128 @@ const MonthStatsTable = () => {
               <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
           </button>
+        </li>
+      </ul>
+      <ul className={css.calendarDays}>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
+        </li>
+        <li className={css.calendarDay}>
+          <div className={css.calendarCircle}></div>
+          <div className={css.waterAim}>{percent}</div>
         </li>
       </ul>
     </div>

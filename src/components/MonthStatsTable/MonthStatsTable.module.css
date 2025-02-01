@@ -1,11 +1,12 @@
 .calendarWrapper {
-   margin: 0 auto;
-    width: 544px;
-    background-color: #ECF2FF;
+  margin: 0 auto;
+  width: 544px;
+  background-color: #ecf2ff;
 }
 .calendarHeader {
   display: flex;
   justify-content: space-between;
+  list-style-type: none;
 }
 .title {
   font-size: 26px;
@@ -37,4 +38,30 @@
   fill: #407bff;
   width: 14px;
   height: 14px;
+}
+.calendarDays {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 22px;
+  grid-row-gap: 20px;
+  width: fit-content;
+  list-style-type: none;
+}
+.calendarDay {
+  display: flex;
+  flex-direction: column;
+}
+.calendarCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+.waterAim{
+    text-align: center;
+    margin-top: 4px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #9ebbff
 }
