@@ -1,5 +1,5 @@
 .todayWaterListBox{
-    width: 264px;
+    max-width: 264px;
     height: 258px;
     background-color: #ECF2FF;
 }
@@ -14,16 +14,44 @@
 .waterListBox{
     display: flex;
     flex-direction: column;
+    height: 178px;
+    overflow: auto;
+}
+
+.waterListBox::-webkit-scrollbar {
+    width: 4px; 
+    border-radius: 8px; 
+}
+
+.waterListBox::-webkit-scrollbar-track {
+    background: #D7E3FF; 
+    border-radius: 8px;
+}
+
+.waterListBox::-webkit-scrollbar-thumb {
+    background: #407BFF; 
+    border-radius: 8px;
+}
+
+.waterListBox::-webkit-scrollbar-thumb:hover {
+    background: #D7E3FF;
 }
 
 .waterElement{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 12px;
     margin-top: 12px;
     border-bottom: #D7E3FF solid 1px;
-    height: 26px;
+    height: 38px;
+}
+
+.svgAndTextWaterElement{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
 }
 
 .SmallTextBox{
@@ -32,8 +60,6 @@
     align-items: center;
     flex-direction: row;
     gap: 12px;
-    margin-left: 12px;
-    margin-right: 38px;
 }
 
 .waterElementMl{
@@ -57,6 +83,7 @@
     flex-direction: row;
     align-items: center;
     gap: 18px;
+    margin-right: 10px;
 }
 
 .glassSvg{
@@ -85,6 +112,12 @@
     gap: 8px;
     cursor: pointer;
     margin-top: 12px;
+    padding: 0;
+}
+
+.plusSvg{
+    width: 16px;
+    height: 16px;
 }
 
 .AddWaterBtnText{
@@ -92,31 +125,53 @@
     font-size: 16px;
     line-height: 125%;
     color: #407BFF;
+    width: 73px;
 }
 
 @media screen and (min-width: 768px) {
     .todayWaterListBox{
-        width: 656px;
-        height: 260px;
+        max-width: 656px;
+        height: 260px;  
     }
     .waterListToday{
         font-weight: 500;
         font-size: 26px;
         line-height: 123%;
     }
+    .waterListBox{
+        display: flex;
+        flex-direction: column;
+        height: 176px;
+    }
     .waterElement{
-        height: 36px;
+        height: 48px;
+    }
+    .SmallTextBox{
+        gap: 16px;
+        width: 186px;
     }
     .glassSvg{
         width: 36px;
         height: 36px;
     }
-    .SmallTextBox{
-        width: 158px;
-        margin-right: 390px;
-        gap: 16px;
-    }
     .waterElementTime{
         width: 82px;
+    }
+    .plusSvg{
+        width: 24px;
+        height: 24px;
+    }
+    .AddWaterBtnText{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 133%;
+        width: 82px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .todayWaterListBox{
+        width: 544px;
+        height: 260px;
     }
 }
