@@ -1,0 +1,161 @@
+.wrapper {
+    border-radius: 30px;
+    background-color: #F5F5F5;
+    padding: 24px 16px;
+  }
+  
+  .formContainer {
+    padding: 126px 0 146px;
+  }
+  .title {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    color: #2f2f2f;
+    margin-bottom: 8px;
+  }
+  .input_field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 16px;
+  
+    position: relative;
+  }
+  .input {
+    padding: 16px;
+    border-radius: 15px;
+    border: 1px solid #2f2f2f33;
+    outline: none;
+    background-color: #f0eff4;
+  }
+  
+  .input:placeholder-shown {
+    font-size: 14px;
+    line-height: 129%;
+    color:#9EBBFF ;
+    letter-spacing: -0.01em;
+  }
+  .input:focus {
+    border: 1px solid #2f2f2f66;
+    color: inherit;
+  }
+  .button {
+    border-radius: 30px;
+    height: 50px;
+    background: #5082F2;
+    border: none;
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+  
+  }
+  
+  .button:hover,
+  .button:focus {
+    background: #5082F2;
+  }
+
+  
+  .link {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #2f2f2f;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .wrapper {
+      padding: 32px;
+    }
+    .formContainer {
+      padding: 171px 102px 195px;
+    }
+  
+    .title {
+      font-size: 36px;
+      line-height: 106%;
+    }
+    .label {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  
+    .input:placeholder-shown {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  
+    .button {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  
+    .button:hover,
+    .button:focus {
+      background: #5082F2;
+    }
+  
+    .description {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    .wrapper {
+      max-width: 608px;
+      width: 100%;
+    }
+    .formContainer {
+      padding: 72px 86px 66px;
+    }
+  }
+  .eyeIconOff,
+  .icon_eye {
+    fill: none;
+    stroke: #2f2f2f;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  
+    width: 20px;
+    height: 20px;
+  }
+  .input_field {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .errors {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  
+    color: #ef5050;
+  }
+  .error,
+  .error::placeholder {
+    border-color: #ef5050;
+    color: #ef5050;
+  }
