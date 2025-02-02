@@ -28,6 +28,10 @@
     transform: scaleX(-1);
   }
 }
+.btnInactive {
+  opacity: 0;
+  pointer-events: none;
+}
 .dateTitle {
   display: flex;
   align-items: center;
@@ -60,8 +64,8 @@
   height: 34px;
   border-radius: 50%;
   border: 1px solid #000;
-  background-color: #FFFFFF;
-  border-color: #FF9D43;
+  background-color: #ffffff;
+  border-color: #ff9d43;
 }
 .waterAim {
   text-align: center;

@@ -1,37 +1,32 @@
 import React from 'react';
 import css from './MonthStatsTable.module.css';
 import { useState } from 'react';
-import getMonthName from '../../js/getMonthName.js';
+import * as calendar from '../../js/calendar.js';
+import clsx from 'clsx';
 
 const MonthStatsTable = () => {
   const currentDate = new Date();
 
-  const [month, setMonth] = useState(currentDate.getMonth());
-  const [year, setYear] = useState(currentDate.getFullYear());
-  // const day = currentDate.getDate();
+  const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
+  const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний
   const percent = '60 %';
-  const getDaysInMonth = (month, year) =>
-    new Date(year, month + 1, 0).getDate();
-  const daysInMonth = getDaysInMonth(month, year); // Отримуємо кількість днів
-  const monthName = getMonthName(year, month);
+  const daysInMonth = calendar.getDaysInMonth(month, year); // Отримуємо кількість днів маючи місяць і рік
+  const monthName = calendar.getMonthName(year, month); // Трансформуємо число в назву місяця
 
+  // Формуємо правило для кнопок для реалізації зміни місяця і року.
   const handleMonthChange = direction => {
     if (direction === 'prev') {
-      if (month === 0) {
-        setMonth(11);
-        setYear(year - 1);
-      } else {
-        setMonth(month - 1);
-      }
+      setMonth(prev => (prev === 0 ? 11 : prev - 1));
+      if (month === 0) setYear(prev => prev - 1);
+      return;
     } else {
-      if (month === 11) {
-        setMonth(0);
-        setYear(year + 1);
-      } else {
-        setMonth(month + 1);
-      }
+      setMonth(prev => (prev === 11 ? 0 : prev + 1));
+      if (month === 11) setYear(prev => prev + 1);
     }
   };
+
+  const isNextHidden =
+    month === currentDate.getMonth() && year === currentDate.getFullYear(); // Константа для отримування сьогоднішного місяця і року і використання його для кнопки далі.
 
   return (
     <div className={css.calendarWrapper}>
@@ -40,7 +35,11 @@ const MonthStatsTable = () => {
           <h3 className={css.title}>Month</h3>
         </li>
         <li className={css.headerItem}>
-          <button className={css.button} type="button" onClick={()=> handleMonthChange('prev')}>
+          <button
+            className={css.button}
+            type="button"
+            onClick={() => handleMonthChange('prev')}
+          >
             <svg className={css.icon} width="20" height="20">
               <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
@@ -48,7 +47,11 @@ const MonthStatsTable = () => {
           <div className={css.dateTitle}>
             {monthName}, {year}
           </div>
-          <button className={css.button} type="button" onClick={()=> handleMonthChange('next')}>
+          <button
+            className={clsx(css.button, { [css.btnInactive]: isNextHidden })}
+            type="button"
+            onClick={() => handleMonthChange('next')}
+          >
             <svg className={css.icon} width="20" height="20">
               <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
