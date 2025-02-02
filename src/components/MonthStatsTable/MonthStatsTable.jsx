@@ -9,7 +9,7 @@ const MonthStatsTable = () => {
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
   const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний
-  const percent = '60 %';
+  const percent = 0;
   const daysInMonth = calendar.getDaysInMonth(month, year); // Отримуємо кількість днів маючи місяць і рік
   const monthName = calendar.getMonthName(year, month); // Трансформуємо число в назву місяця
 
@@ -61,8 +61,15 @@ const MonthStatsTable = () => {
       <ul className={css.calendarDays}>
         {Array.from({ length: daysInMonth }, (_, index) => (
           <li key={index} className={css.calendarDay}>
-            <div className={css.calendarCircle}>{index + 1}</div>
-            <div className={css.waterAim}>{percent}</div>
+            <div
+              className={clsx(css.calendarCircle, {
+                [css.calendarCircleEmpty]: percent === 0,
+                [css.calendarCircleFull]: percent === 100,
+              })}
+            >
+              {index + 1}
+            </div>
+            <div className={css.waterAim}>{percent} %</div>
           </li>
         ))}
       </ul>
