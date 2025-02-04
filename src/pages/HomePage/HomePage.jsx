@@ -1,12 +1,7 @@
-import React from 'react'
-import TodayWaterList from '../../components/TodayWaterList/TodayWaterList.jsx'
+import React from 'react';
 
 const HomePage = () => {
-  return (
-    <div>HomePage
-    <TodayWaterList/>
-    </div>
-  )
-}
+  return <div>HomePage</div>;
+};
 
-export default HomePage
+export default HomePage;
