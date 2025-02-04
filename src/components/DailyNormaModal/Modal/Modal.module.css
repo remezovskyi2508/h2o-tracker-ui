@@ -1,0 +1,84 @@
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: scroll;
+  overscroll-behavior: none;
+}
+
+.modal {
+  border-radius: 10px;
+  /* padding: 24px 12px; */
+  padding: 32px 24px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #ffffff;
+  width: 280px;
+  max-width: calc(100% - 40px);
+  line-height: 1.23;
+
+  @media screen and (min-width: 768px) {
+    /* padding: 32px 24px; */
+    max-width: calc(100% - 64px);
+    width: 592px;
+
+    top: 200px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* width: 704px; */
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal input {
+  background-color: var(--primary-color-white);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: var(--primary-color-black);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.23;
+}
+
+.closeModalBtn {
+  /* border: none; */
+  padding: 6px;
+  background: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  line-height: 1.11;
+}
+
+.actionBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
+}

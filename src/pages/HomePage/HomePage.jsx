@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div>
+      HomePage
+      <DailyNorma />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
