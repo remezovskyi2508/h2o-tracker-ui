@@ -1,0 +1,275 @@
+.no-scroll {
+  overflow: hidden;
+}
+/* Styles for Mobile devices */
+.modalContent {
+  background: white;
+  padding: 32px 16px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: auto;
+  min-width: 280px;
+  min-height: 852px;
+}
+.modalBackdrop {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.closeBtn {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 36px;
+  right: 12px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.closeBtnIcon {
+  fill: none;
+  stroke: #407bff;
+  stroke-width: 1.5px;
+}
+.title {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.uploadPhotoWrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: row-reverse;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 8px;
+}
+.uploadButton {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  border: none;
+  background-color: transparent;
+  color: #407bff;
+  min-width: 134px;
+  height: 18px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.uploadButtonIcon {
+  stroke: #407bff;
+  fill: none;
+}
+
+.photoPreview {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+}
+.initials {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  background-color: #9ebbff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  gap: 8px;
+}
+.NameGroupPasswords {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+.labelPassword {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input,
+.inputPassword {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #407bff;
+  min-width: 256px;
+  height: 44px;
+  padding: 12px 10px;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #d7e3ff;
+  position: relative;
+}
+.input::placeholder,
+.inputPassword::placeholder {
+  color: #9ebbff;
+}
+.input:hover,
+.input:focus,
+.input:active,
+.inputPassword:hover,
+.inputPassword:focus,
+.inputPassword:active {
+  border: 1px solid #d7e3ff;
+  outline: none;
+}
+.inputWrapper {
+  position: relative;
+  max-width: 256px;
+  height: 44px;
+}
+.inputPassword {
+  padding-right: 30px;
+}
+.btnShowPassword {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+.iconEye {
+  fill: none;
+  stroke: #407bff;
+}
+.radioWrapper {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  display: flex;
+  gap: 24px;
+}
+.input:invalid {
+  border: 1px solid #ef5050;
+  color: #ef5050;
+}
+.inputPassword.invalid {
+  border: 1px solid #ef5050;
+  color: #ef5050;
+}
+.errorMessage {
+  color: #ef5050;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.btnSave {
+  width: 256px;
+  height: 36px;
+  padding: 8px 30px;
+  gap: 10px;
+  border-radius: 10px;
+  background-color: #407bff;
+  border: none;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* Styles for Tablet devices */
+@media screen and (min-width: 768px) {
+  .closeBtn {
+    right: 24px;
+  }
+  .modalContent {
+    padding: 32px 24px;
+    min-width: 704px;
+    min-height: 860px;
+  }
+  .btnSave {
+    width: 160px;
+    height: 44px;
+    margin-left: auto;
+    position: absolute;
+    right: 24px;
+    bottom: 32px;
+  }
+  .input,
+  .inputPassword {
+    width: 392px;
+  }
+  .inputWrapper {
+    max-width: 392px;
+  }
+}
+/* Styles for Desktop devices */
+
+@media screen and (min-width: 1440px) {
+  .modalContent {
+    min-width: 1008px;
+    min-height: 592px;
+  }
+  .formGroupUserSetting {
+    display: flex;
+    gap: 24px;
+  }
+  .label {
+    margin-bottom: 0px;
+  }
+  .formGroupUserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .formGroupIdentity {
+    margin-bottom: 52px;
+  }
+  .formGroupName {
+    margin-bottom: 24px;
+  }
+  .formGroupEmail {
+    margin-bottom: 12px;
+  }
+}
