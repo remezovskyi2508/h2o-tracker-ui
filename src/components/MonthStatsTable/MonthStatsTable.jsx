@@ -1,17 +1,30 @@
-import React from 'react';
-import css from './MonthStatsTable.module.css';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import css from './MonthStatsTable.module.css';
 import * as calendar from '../../js/calendar.js';
 import clsx from 'clsx';
+import { useMemo } from 'react';
+
+import { fetchWaterData } from '../../redux/water/operations.js';
+import { selectWater } from '../../redux/water/selectors.js';
 
 const MonthStatsTable = () => {
+  const dispatch = useDispatch();
+  const days = useSelector(selectWater);
   const currentDate = new Date();
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
   const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний
-  const percent = 0;
-  const daysInMonth = calendar.getDaysInMonth(month, year); // Отримуємо кількість днів маючи місяць і рік
-  const monthName = calendar.getMonthName(year, month); // Трансформуємо число в назву місяця
+  const daysInMonth = useMemo(
+    () => calendar.getDaysInMonth(month, year),
+    [month, year]
+  ); // Отримуємо кількість днів маючи місяць і рік
+  const monthName = useMemo(
+    () => calendar.getMonthName(year, month),
+    [year, month]
+  ); // Трансформуємо число в назву місяця
 
   // Формуємо правило для кнопок для реалізації зміни місяця і року.
   const handleMonthChange = direction => {
@@ -27,6 +40,13 @@ const MonthStatsTable = () => {
 
   const isNextHidden =
     month === currentDate.getMonth() && year === currentDate.getFullYear(); // Константа для отримування сьогоднішного місяця і року і використання його для кнопки далі.
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchWaterData());
+    };
+    fetchData();
+  }, [dispatch, month, year]);
 
   return (
     <div className={css.calendarWrapper}>
@@ -59,19 +79,36 @@ const MonthStatsTable = () => {
         </li>
       </ul>
       <ul className={css.calendarDays}>
-        {Array.from({ length: daysInMonth }, (_, index) => (
-          <li key={index} className={css.calendarDay}>
-            <div
-              className={clsx(css.calendarCircle, {
-                [css.calendarCircleEmpty]: percent === 0,
-                [css.calendarCircleFull]: percent === 100,
-              })}
-            >
-              {index + 1}
-            </div>
-            <div className={css.waterAim}>{percent} %</div>
-          </li>
-        ))}
+        {Array.from({ length: daysInMonth }, (_, index) => {
+          const dayInCalendar = index + 1;
+          const dayData = days?.find(day => {
+            // console.log("Calendar: ", dayInCalendar, monthName);
+
+            const [dayStr, monthStrData] = day.date.split(', ');
+            const dayIntData = parseInt(dayStr);
+            console.log('MonthData:', monthStrData);
+            console.log('NrIntData:', dayIntData);
+            return dayIntData === dayInCalendar && monthStrData === monthName;
+          });
+
+          const percent = dayData
+            ? parseInt(dayData.percentage.replace('%', ''))
+            : 0;
+
+          return (
+            <li key={index} className={css.calendarDay}>
+              <div
+                className={clsx(css.calendarCircle, {
+                  [css.calendarCircleEmpty]: percent === 0,
+                  [css.calendarCircleFull]: percent === 100,
+                })}
+              >
+                {dayInCalendar}
+              </div>
+              <div className={css.waterAim}>{percent} %</div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
