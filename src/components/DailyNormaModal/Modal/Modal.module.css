@@ -57,7 +57,7 @@
 }
 
 .closeModalBtn {
-  /* border: none; */
+  border: none;
   padding: 6px;
   background: none;
   cursor: pointer;
