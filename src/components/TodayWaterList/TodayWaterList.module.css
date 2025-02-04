@@ -16,6 +16,8 @@
     flex-direction: column;
     height: 178px;
     overflow: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .waterListBox::-webkit-scrollbar {
@@ -35,74 +37,6 @@
 
 .waterListBox::-webkit-scrollbar-thumb:hover {
     background: #D7E3FF;
-}
-
-.waterElement{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 12px;
-    margin-top: 12px;
-    border-bottom: #D7E3FF solid 1px;
-    height: 38px;
-}
-
-.svgAndTextWaterElement{
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
-.SmallTextBox{
-    width: 128px;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 12px;
-}
-
-.waterElementMl{
-    color: #407BFF;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 133%;  
-    width: 60px;
-}
-
-.waterElementTime{
-    color: #2F2F2F;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 200%;
-    width: 56px;
-}
-
-.TwoBtnsToWater{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
-    margin-right: 10px;
-}
-
-.glassSvg{
-    width: 26px;
-    height: 26px;
-}
-
-.redactOpenBtn{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.deleteOpenBtn{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
 }
 
 .AddWaterModalBtn{
@@ -143,20 +77,7 @@
         flex-direction: column;
         height: 176px;
     }
-    .waterElement{
-        height: 48px;
-    }
-    .SmallTextBox{
-        gap: 16px;
-        width: 186px;
-    }
-    .glassSvg{
-        width: 36px;
-        height: 36px;
-    }
-    .waterElementTime{
-        width: 82px;
-    }
+    
     .plusSvg{
         width: 24px;
         height: 24px;
