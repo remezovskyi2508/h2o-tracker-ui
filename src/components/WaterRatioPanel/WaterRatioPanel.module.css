@@ -5,16 +5,18 @@
   flex-direction: column;
   gap: 16px;
   width: 280px;
-  margin: 0 auto;
   text-align: center;
+
+  margin: 0 12px; /* Центрує тільки по горизонталі */
 }
+
 .radio {
   width: 280px;
   height: 82px;
 }
 
 .title {
-  margin-bottom: 22px;
+  margin: 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33;
@@ -22,8 +24,46 @@
   color: #407bff;
 }
 
+.dial {
+  height: 8px;
+  margin-left: 7px;
+  margin-right: 17px;
+  background: #ecf2ff;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+
+.point {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #407bff;
+  box-shadow: 0 0 8px rgba(121, 158, 238, 0.3);
+}
+
+.factpercent {
+  height: 100%;
+  border-radius: 10px;
+  background: #9ebbff;
+  transition: width 0.5s ease-in-out;
+}
+
+.percentage {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: #407bff;
+}
+
 .percent {
-  /*  width: 391px; */
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -31,9 +71,8 @@
 }
 .percent_icon {
   display: flex;
-  padding-left: 2px;
   justify-content: space-between;
-  padding-right: 10px;
+  padding-right: 12px;
 }
 .percent_number {
   display: flex;
@@ -56,7 +95,6 @@
   align-items: baseline;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
 }
 
 .btn {
@@ -102,14 +140,9 @@
     height: 90px;
   }
   .radio {
-    width: 391px;
+    width: 356px;
     height: 90px;
   }
-
-  /*   .percent {
-    width: 391px;
-  } */
-
   .percent_icon {
     width: 356px;
   }
@@ -131,12 +164,14 @@
     width: 592px;
     height: 90px;
   }
-
-  .percent_icon {
+  .radio {
     width: 391px;
   }
-
-  .percent {
+  .dial {
+    margin-left: 7px;
+    margin-right: 17px;
+  }
+  .percent_icon {
     width: 391px;
   }
 
