@@ -12,7 +12,6 @@ import { lazy } from 'react';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
-import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 // Ліниве завантаження компонентів
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
