@@ -1,0 +1,130 @@
+.calendarWrapper {
+  margin: 0 auto;
+  width: 264px;
+  background-color: #ecf2ff;
+}
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.headerItem {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 27px;
+  line-height: 1.25;
+}
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  &:last-of-type {
+    transform: scaleX(-1);
+  }
+}
+.btnInactive {
+  opacity: 0;
+  pointer-events: none;
+}
+.dateTitle {
+  display: flex;
+  align-items: center;
+  color: #407bff;
+  padding: 0 12px;
+}
+.icon {
+  fill: #407bff;
+  width: 14px;
+  height: 14px;
+}
+.calendarDays {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 26px;
+  grid-row-gap: 16px;
+  width: fit-content;
+  list-style-type: none;
+  margin-top: 16px;
+}
+.calendarDay {
+  display: flex;
+  flex-direction: column;
+}
+.calendarCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 1.29;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background-color: #ffffff;
+  border-color: #ff9d43;
+}
+.calendarCircleEmpty {
+  border-color: transparent;
+  background-color: #e7dede;
+  color: #cbc4c4;
+}
+.calendarCircleFull {
+  border-color: transparent;
+}
+.waterAim {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #9ebbff;
+}
+
+@media screen and (min-width: 768px) {
+  .calendarWrapper {
+    width: 656px;
+  }
+  .calendarDays {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 34px;
+    grid-row-gap: 20px;
+  }
+  .calendarCircle {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .waterAim {
+    font-size: 13px;
+    line-height: 1.54;
+  }
+  .title {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.23;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .calendarWrapper {
+    width: 544px;
+  }
+  .calendarDays {
+    grid-auto-columns: minmax(5, 10);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 22px;
+    grid-row-gap: 20px;
+  }
+  .waterAim {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
