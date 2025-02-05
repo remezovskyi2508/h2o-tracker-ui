@@ -1,0 +1,162 @@
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+.desk_placement {
+  margin-top: 25px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.input_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.lable {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.input {
+  border: 1px solid #d7e3ff;
+  border-radius: 6px;
+  padding: 12px 10px;
+  width: 280px;
+  height: 44px;
+}
+
+.input::placeholder {
+  color: #d7e3ff;
+}
+
+.signup_btn {
+  border-radius: 10px;
+  padding: 8px 30px;
+  width: 280px;
+  height: 36px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: #407bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+.signup_btn:active {
+  box-shadow: none;
+}
+
+.signin_link {
+  color: #407bff;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.svg {
+  fill: black;
+  stroke: #407bff;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .desk_placement {
+    margin-top: 40px;
+  }
+
+  .input_cont {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .input {
+    width: 336px;
+    height: 44px;
+  }
+
+  .signup_btn {
+    padding: 10px 30px;
+    width: 336px;
+    height: 44px;
+  }
+
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .input {
+    width: 336px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+
+  .background {
+    min-height: 100vh;
+    background-image: url('/public/images/bobbleDesk.svg'),
+      url('/public/images/Botle_signup.svg');
+    background-size: contain, 920 680;
+    background-repeat: repeat, no-repeat;
+    background-position: left top, left top;
+  }
+
+  .desk_placement {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 150px;
+  }
+
+  .input {
+    width: 384px;
+    height: 44px;
+  }
+
+  .signup_btn:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
+
+  .input_cont {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .input {
+    width: 336px;
+    height: 44px;
+  }
+
+  .signup_btn {
+    padding: 10px 30px;
+    width: 336px;
+    height: 44px;
+  }
+}
