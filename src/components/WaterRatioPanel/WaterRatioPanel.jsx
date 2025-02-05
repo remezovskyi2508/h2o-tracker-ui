@@ -9,7 +9,7 @@ import css from './WaterRatioPanel.module.css';
 const WaterRatioPanel = () => {
   const [waterData, setWaterData] = useState({
     norma: 1500,
-    actual: 800,
+    actual: 400,
   });
   /* const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
