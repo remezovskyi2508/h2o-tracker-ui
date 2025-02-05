@@ -12,7 +12,7 @@ import { selectWater } from '../../redux/water/selectors.js';
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const days = useSelector(selectWater);
+  const days = useSelector(selectWater) || [];
   const currentDate = new Date();
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
@@ -48,6 +48,14 @@ const MonthStatsTable = () => {
     fetchData();
   }, [dispatch, month, year]);
 
+  const daysMap = useMemo(() => {
+    return days.reduce((acc, day) => {
+      const [dayStr, monthStrData] = day.date.split(', ');
+      acc[`${dayStr}-${monthStrData}`] = day;
+      return acc;
+    }, {});
+  }, [days]);
+
   return (
     <div className={css.calendarWrapper}>
       <ul className={css.calendarHeader}>
@@ -81,16 +89,9 @@ const MonthStatsTable = () => {
       <ul className={css.calendarDays}>
         {Array.from({ length: daysInMonth }, (_, index) => {
           const dayInCalendar = index + 1;
-          const dayData = days?.find(day => {
-            // console.log("Calendar: ", dayInCalendar, monthName);
-
-            const [dayStr, monthStrData] = day.date.split(', ');
-            const dayIntData = parseInt(dayStr);
-            console.log('MonthData:', monthStrData);
-            console.log('NrIntData:', dayIntData);
-            return dayIntData === dayInCalendar && monthStrData === monthName;
-          });
-
+          const dayKey = `${dayInCalendar}-${monthName}`;
+          const dayData = daysMap[dayKey];
+          
           const percent = dayData
             ? parseInt(dayData.percentage.replace('%', ''))
             : 0;
