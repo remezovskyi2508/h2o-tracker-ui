@@ -1,7 +1,4 @@
 .section {
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +6,6 @@
   gap: 16px;
   width: 280px;
   margin: 0 auto;
-  /*   height: 82px; */
   text-align: center;
 }
 .radio {
@@ -18,7 +14,7 @@
 }
 
 .title {
-  margin: 0;
+  margin-bottom: 22px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33;
@@ -26,46 +22,8 @@
   color: #407bff;
 }
 
-.dial {
-  height: 14px;
-  margin-left: 7px;
-  margin-right: 17px;
-  background: #ecf2ff;
-  border-radius: 10px;
-  position: relative;
-  overflow: visible;
-}
-
-.point {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid #407bff;
-  box-shadow: 0 0 8px rgba(121, 158, 238, 0.3);
-}
-
-.factpercent {
-  height: 100%;
-  border-radius: 10px;
-  background: #9ebbff;
-  transition: width 0.5s ease-in-out;
-}
-
-.percentage {
-  margin: 0;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  text-align: center;
-  color: #407bff;
-}
-
 .percent {
+  /*  width: 391px; */
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -73,8 +31,9 @@
 }
 .percent_icon {
   display: flex;
+  padding-left: 2px;
   justify-content: space-between;
-  padding-right: 12px;
+  padding-right: 10px;
 }
 .percent_number {
   display: flex;
@@ -97,6 +56,7 @@
   align-items: baseline;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 
 .btn {
@@ -108,7 +68,7 @@
   margin: auto;
   border-radius: 10px;
   padding: 6px 76px;
-  width: 280px;
+  min-width: 280px;
   height: 36px;
   background: #407bff;
   border: none;
@@ -142,15 +102,20 @@
     height: 90px;
   }
   .radio {
-    width: 356px;
+    width: 391px;
     height: 90px;
   }
+
+  /*   .percent {
+    width: 391px;
+  } */
+
   .percent_icon {
     width: 356px;
   }
   .btn {
     padding: 10px 104px;
-    width: 336px;
+    min-width: 336px;
     height: 44px;
   }
 }
@@ -158,25 +123,25 @@
 /* DESKTOP */
 @media screen and (min-width: 1440px) {
   .section {
-    margin-left: 20px;
+    /*   position: static; */
+    left: auto;
     transform: none;
+    margin: 0 auto;
     gap: 23px;
     width: 592px;
     height: 90px;
   }
-  .radio {
-    width: 391px;
-  }
-  .dial {
-    margin-left: 7px;
-    margin-right: 17px;
-  }
+
   .percent_icon {
     width: 391px;
   }
 
+  .percent {
+    width: 391px;
+  }
+
   .btn {
-    width: 178px;
+    min-width: 178px;
     height: 44px;
     padding: 10px 0;
 
