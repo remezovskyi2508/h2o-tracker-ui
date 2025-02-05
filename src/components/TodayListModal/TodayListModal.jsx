@@ -6,13 +6,25 @@ import closeIcon from './icon-close.svg';
 import glassIcon from './icon-glass.svg';
 // import minusIcon from './icon-minus.svg';
 // import plusIcon from './icon-plus.svg';
+import { fakeData } from './fakeData.js';
 import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
+// import { useDispatch } from 'react-redux';
+// import { addWater, updateWater } from './operations.js';
 
-const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
+const TodayListModal = ({
+  isOpen,
+  onClose,
+  // data,
+  operationType,
+}) => {
+  const data = fakeData;
+
   const [initialState, setInitialState] = useState({
     time: '',
     count: data ? data.volume : 50,
   });
+
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     if (isOpen) {
@@ -68,18 +80,21 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
 
     switch (operationType) {
       case 'add': {
-        // const result = dispatch(addWater(addWaterValue));
+        // const result = dispatch(addWater(updatedData));
         const result = updatedData;
         if (!result.error) {
           console.log(result);
+          alert(JSON.stringify(result, null, 2));
           onClose();
         }
         break;
       }
       case 'edit': {
+        // const result = dispatch(updateWater({ ...data, ...updatedData }));
         const result = { ...data, ...updatedData };
         if (!result.error) {
           console.log(result);
+          alert(JSON.stringify(result, null, 2));
           onClose();
         }
         break;
@@ -152,7 +167,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
                             onClick={() =>
                               setFieldValue(
                                 'count',
-                                Math.max(values.count - 50, 1)
+                                Math.max(values.count - 50)
                               )
                             }
                             disabled={values.count <= 1}
@@ -168,7 +183,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
                             onClick={() =>
                               setFieldValue(
                                 'count',
-                                Math.min(values.count + 50, 5000)
+                                Math.min(values.count + 50)
                               )
                             }
                             disabled={values.count >= 5000}
@@ -196,10 +211,11 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
                           name="count"
                           onChange={event => {
                             let value = Number(event.target.value);
-                            if (!isNaN(value) && value >= 1 && value <= 99999) {
+                            if (!isNaN(value) && value >= 0 && value <= 99999) {
                               setFieldValue('count', value);
                             }
                           }}
+                          onClick={event => event.stopPropagation()}
                         />
                         <ErrorMessage
                           name="count"
