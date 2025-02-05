@@ -1,0 +1,16 @@
+.baseStyle {
+  width: 100%;
+  min-height: 400px;
+  max-height: 500px;
+  background-image: url('/images/bottle-screen-404.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.header {
+  position: absolute;
+  font-size: 65px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
