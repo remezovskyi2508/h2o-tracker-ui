@@ -47,6 +47,7 @@ const TodayWaterList = () => {
           ))
           
         )}
+        
       </ul>
         <div>
           <button onClick={() => setIsOpenAddWaterModal(true)} className={styles.AddWaterModalBtn}>
