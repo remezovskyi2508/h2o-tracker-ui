@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { registerUser } from "../../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
+import { register} from "../../redux/auth/operations.js";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import AuthForm from "../../components/AuthForm/AuthForm.jsx";
 import css from "./SignupPage.module.css";
@@ -14,7 +14,8 @@ const SignupPage = () => {
 
   const handleSignup = async (userData) => {
     try {
-      const response = await dispatch(registerUser(userData)).unwrap();
+      const response = await dispatch(register(userData)).unwrap();
+      console.log(response);
       if (response.user) {
         navigate("/signin"); 
       }
@@ -30,16 +31,20 @@ const SignupPage = () => {
   }
 
   return (
-    <div className={css.container}>
+    <div className={css.signupPage}>
+  
+    <div className={css.formSection}>
       <h3>Sign Up</h3>
 
       {error && <p className={css.error}>{error}</p>}
 
       <AuthForm onSubmit={handleSignup} buttonText="Sign Up" />
 
-      <p>
-        Already have an account? <NavLink to="/signin">Sign in</NavLink>
-      </p>
+      
+    </div>
+     <div className={css.bottleIcon}>
+  
+         </div>
     </div>
   );
 };
