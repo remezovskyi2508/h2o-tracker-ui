@@ -4,7 +4,7 @@ import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 const HomePage = () => {
   return (
     <div>
-      <h2>HomePage</h2>
+      <div>HomePage</div>
       <MonthStatsTable />
     </div>
   );
