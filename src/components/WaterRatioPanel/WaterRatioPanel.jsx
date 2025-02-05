@@ -7,7 +7,7 @@ import TodayListModal from '../TodayListModal/TodayListModal';
 
 const WaterRatioPanel = () => {
   const [waterData, setWaterData] = useState({
-    percentage: '40%',
+    percentage: '70%',
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 

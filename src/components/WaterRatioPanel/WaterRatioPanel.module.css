@@ -6,8 +6,7 @@
   gap: 16px;
   width: 280px;
   text-align: center;
-
-  margin: 0 12px; /* Центрує тільки по горизонталі */
+  margin: 0 12px;
 }
 
 .radio {
@@ -156,10 +155,9 @@
 /* DESKTOP */
 @media screen and (min-width: 1440px) {
   .section {
-    /*   position: static; */
-    left: auto;
+    left: 0;
     transform: none;
-    margin: 0 auto;
+    margin: 0;
     gap: 23px;
     width: 592px;
     height: 90px;
