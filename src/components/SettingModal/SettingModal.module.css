@@ -82,6 +82,7 @@
   height: 80px;
   border: none;
   border-radius: 50%;
+  object-fit: cover;
 }
 .initials {
   width: 80px;
@@ -184,14 +185,13 @@
   display: flex;
   gap: 24px;
 }
-.input:invalid {
+.input:invalid,
+.inputPassword.invalid,
+.input.invalid {
   border: 1px solid #ef5050;
   color: #ef5050;
 }
-.inputPassword.invalid {
-  border: 1px solid #ef5050;
-  color: #ef5050;
-}
+
 .errorMessage {
   color: #ef5050;
   font-size: 14px;

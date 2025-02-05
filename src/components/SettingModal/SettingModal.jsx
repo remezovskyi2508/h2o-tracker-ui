@@ -3,14 +3,22 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './SettingModal.module.css';
 // import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 
-const SettingModal = ({ isOpen, onClose, userData = {} }) => {
-  const dispatch = useDispatch();
+Modal.setAppElement('#root');
+
+const SettingModal = ({ isOpen, onClose }) => {
+  // const dispatch = useDispatch();
   // const userData = useSelector(selectUser);
-
+  const [userData, setUserData] = useState({
+    photo:
+      'https://aperepelitsa.com.ua/assets/image/portfolio/woman/DSC08276.jpg',
+    name: 'Anna',
+    email: 'example@mail.com',
+    _id: '111',
+  });
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
     email: Yup.string().email('Invalid email address'),
@@ -26,11 +34,8 @@ const SettingModal = ({ isOpen, onClose, userData = {} }) => {
       .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
   });
   const initialValues = {
-    photo:
-      userData.photo ||
-      userData.name?.[0]?.toUpperCase() ||
-      userData.email?.split('@')[0]?.[0]?.toUpperCase() ||
-      null,
+    id: userData._id,
+    photo: userData.photo || null,
     gender: userData.gender || 'woman',
     name: userData.name || '',
     email: userData.email || '',
@@ -46,10 +51,13 @@ const SettingModal = ({ isOpen, onClose, userData = {} }) => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await dispatch(updateUser(values)).unwrap();
-      actions.resetForm();
+      // await dispatch(updateUser(values));
+      console.log(values);
+      setUserData(values);
+      actions.resetForm({ values });
       toast.success('Profile updated successfully!');
     } catch (error) {
+      console.log(error);
       toast.error(
         error.message || 'An error occurred while updating the data.'
       );
@@ -124,8 +132,8 @@ const SettingModal = ({ isOpen, onClose, userData = {} }) => {
                 >
                   <svg
                     className={css.uploadButtonIcon}
-                    width="12"
-                    height="12"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -186,7 +194,9 @@ const SettingModal = ({ isOpen, onClose, userData = {} }) => {
                     <Field
                       type="text"
                       name="name"
-                      className={css.input}
+                      className={`${css.input} ${
+                        errors.name ? css.invalid : ''
+                      }`}
                       placeholder="Your Name"
                     />
                     <ErrorMessage
