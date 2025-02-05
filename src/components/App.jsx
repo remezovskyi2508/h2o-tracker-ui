@@ -57,7 +57,6 @@ function App() {
               path="signup"
               element={<RestrictedRoute component={<SignupPage />} />}
             />
-            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>

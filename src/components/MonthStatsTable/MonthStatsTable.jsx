@@ -93,13 +93,17 @@ const MonthStatsTable = () => {
           const dayInCalendar = index + 1;
           const dayKey = `${dayInCalendar}-${monthName}`;
           const dayData = daysMap[dayKey];
-          
+
           const percent = dayData
             ? parseInt(dayData.percentage.replace('%', ''))
             : 0;
 
           return (
-            <li data-tooltip-id="stats-tooltip" key={index} className={css.calendarDay}>
+            <li
+              data-tooltip-id="stats-tooltip"
+              key={index}
+              className={css.calendarDay}
+            >
               <div
                 className={clsx(css.calendarCircle, {
                   [css.calendarCircleEmpty]: percent === 0,
@@ -110,7 +114,6 @@ const MonthStatsTable = () => {
               </div>
               <div className={css.waterAim}>{percent} %</div>
             </li>
-
           );
         })}
       </ul>
