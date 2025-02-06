@@ -1,12 +1,10 @@
 .wrapper {
-    
   background-color: #fff;
   padding: 24px 16px;
-  
-width:280px ;
- height: 304px;
-}
 
+  width: 280px;
+  height: 304px;
+}
 
 .title {
   font-weight: 700;
@@ -41,46 +39,38 @@ width:280px ;
   width: 100%;
   height: 44px;
   position: relative;
-  border-color: #fff
+  border-color: #fff;
 }
 .input {
   padding: 16px;
- 
+
   border: 1px solid #2f2f2f33;
   outline: none;
   background-color: #ffff;
   color: #ffff;
 }
-<<<<<<< HEAD
-.span{
-  font-size: 18px;
-}
-=======
->>>>>>> main
 
-.passwordContainer{
-position: relative;
-display: inline-block;
-width: 100% ;
-
+.passwordContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-
-.iconButton{
-border: #fff;
-position: absolute;
-right: 10px;
-top: 45%;
-transform: translateY(-50%); 
-background:none;
-border: none;
-cursor: pointer;
+.iconButton {
+  border: #fff;
+  position: absolute;
+  right: 10px;
+  top: 45%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .input:placeholder-shown {
   font-size: 14px;
   line-height: 129%;
-  color:#fff ;
+  color: #fff;
   letter-spacing: -0.01em;
 }
 .input:focus {
@@ -92,7 +82,7 @@ cursor: pointer;
   height: 50px;
   background: #407bff;
   border: none;
- margin-bottom: 16px;
+  margin-bottom: 16px;
   padding: 8px 30px 8px 30px;
   font-weight: 700;
   font-size: 14px;
@@ -101,12 +91,11 @@ cursor: pointer;
   text-align: center;
   color: #fff;
   cursor: pointer;
-
 }
 
 .button:hover,
 .button:focus {
-  background: #5082F2;
+  background: #5082f2;
 }
 
 .navLink {
@@ -150,7 +139,7 @@ cursor: pointer;
 
   .button:hover,
   .button:focus {
-    background: #5082F2;
+    background: #5082f2;
   }
 
   .description {

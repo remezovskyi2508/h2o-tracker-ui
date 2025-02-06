@@ -34,7 +34,6 @@ const SignupPage = () => {
     <div className={css.signupPage}>
   
     <div className={css.formSection}>
-      <h3>Sign Up</h3>
 
       {error && <p className={css.error}>{error}</p>}
 
