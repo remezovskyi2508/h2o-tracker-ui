@@ -1,0 +1,121 @@
+.header {
+    width: 100%;
+    max-width: 280px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin: 0 auto;
+    padding-top: 8px;
+}
+
+.waterTracker {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #407bff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 102px;
+    font-weight: bold;
+    text-decoration: none;
+    height: 48px;
+}
+
+.logoText {
+    width: 58px;
+    height: 28px;
+}
+
+.svgBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.singIn {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #407bff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.arrayBtn {
+    width: 48px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    fill: transparent;
+    stroke-width: 1px;
+    stroke: #2f2f2f;
+}
+
+.logo {
+    width: 40px;
+    height: 100%;
+}
+
+.iconUser {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    fill: transparent;
+    stroke-width: 1px;
+    stroke: #2f2f2f;
+    width: 28px;
+    height: 28px;
+}
+
+.userName {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: right;
+    color: #2f2f2f;
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    width: 122px;
+    height: 28px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .header {
+        max-width: 704px;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .header {
+
+        max-width: 1216px;
+    }
+}
