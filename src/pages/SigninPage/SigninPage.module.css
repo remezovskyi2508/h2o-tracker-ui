@@ -1,0 +1,83 @@
+
+.signinPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 680px; 
+   margin-top: 24px;
+   margin-bottom: 74px;
+   width: 100%;
+   height: 100vh;
+  /*background-image: url('../../../public/images/bottle.svg');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;*/
+}
+
+.formSection{
+    margin-top: 20px;
+    margin-bottom: 74px;
+    text-align: center;
+}
+
+.formContainer,
+.imageContainer {
+  flex: none;
+  width: 100%;
+  text-align: center;
+}
+
+/* .iconBackground {
+    width: 50px;
+    height: 50px;
+    mask-image: url("/public/images/bottle.svg#icon-Bottle-for-Sign-in-desc");
+    -webkit-mask-image: url("/public/images/bottle.svg#icon-Bottle-for-Sign-in-desc");
+    background-color: #407BFF;
+  } */
+
+    
+    @media screen and (min-width: 768px) {
+        .signinPageContainer {
+      
+         flex-direction: row;
+         align-items: baseline;
+       /*  background-image: url('../../../public/images/bottle.svg');
+   background-repeat: no-repeat;
+   background-position:left;
+   background-size: contain;*/
+        
+        }
+        .formSection{
+            margin-top: 20px;
+            text-align: center;
+            flex: 1;
+            width: 336px;
+        }
+       
+
+    }
+
+    @media screen and (min-width: 1400px) {
+        .signinPageContainer {
+        margin-left: 18px;
+        margin-right: 1px;
+       
+        /*background-image: url('../../../public/images/bottle.svg');
+        background-repeat: no-repeat;
+        background-position:right;
+        background-size: contain;*/
+        }
+        .formContainer {
+            flex: none;
+            width: 100%;
+          
+        }
+        
+      }
+    
+      
+    
+    
+     
+      
