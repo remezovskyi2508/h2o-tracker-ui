@@ -1,4 +1,14 @@
-.section{
+
+.signinPageContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 680px; 
+ margin-top: 24px;
+ margin-bottom: 74px;
+ width: 100%;
+ height: 100vh;
 
 }
 .signinPageContainer{
@@ -28,15 +38,8 @@ width: 100%;
 text-align: center;
 }
 
-.iconBackground {
-  width:280px; 
-  height: 210px; 
-  background-color: currentColor; 
-  background-image: url('../../../public/images/bottle.svg'); 
-  background-repeat: no-repeat;
-  background-position:center;
-  background-size: contain;
-}
+
+
   
   @media screen and (min-width: 768px) {
       .signinPageContainer {
