@@ -12,6 +12,8 @@ import { lazy } from 'react';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
+import { useSelector } from 'react-redux';
 
 // Ліниве завантаження компонентів
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -20,6 +22,7 @@ const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const SignupPage = lazy(() => import('../pages/SignupPage/SignupPage'));
 
 function App() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   // const dispatch = useDispatch();
   // const isRefreshing = useSelector(selectIsRefreshing);
 
@@ -36,6 +39,14 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
+            {!isLoggedIn ? (
+              <Route index element={<WelcomePage />} />
+            ) : (
+              <Route
+                index
+                element={<PrivateRoute component={<HomePage />} />}
+              />
+            )}
             <Route index element={<WelcomePage />} />
             {/* Обмежений доступ для неавторизованих користувачів */}
             <Route
