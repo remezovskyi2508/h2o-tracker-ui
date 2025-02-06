@@ -41,7 +41,7 @@ export const login = createAsyncThunk(
     //     //     "email": "across@mail.com",
     // }
     try {
-      const { data } = await authInstance.post('/users/login', formData);
+      const { data } = await authInstance.post('/users/signin', formData);
       console.log('Data: ', data);
       setToken(data.token);
       return data;
