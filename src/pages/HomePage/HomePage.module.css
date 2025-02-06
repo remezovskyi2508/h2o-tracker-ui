@@ -20,9 +20,6 @@
 .leftSide {
   display: flex;
   flex-direction: column;
-  width: 280px;
-  height: 500px;
-  background-color: burlywood;
 }
 @media screen and (min-width: 600px) {
   .wrapper {

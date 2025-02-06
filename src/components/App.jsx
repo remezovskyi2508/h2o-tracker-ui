@@ -36,6 +36,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
+            <Route index element={<WelcomePage />} />
             {/* Обмежений доступ для неавторизованих користувачів */}
             <Route
               path="welcome"
