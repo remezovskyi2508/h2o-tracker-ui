@@ -6,8 +6,14 @@ import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className={css.wrapper}>
+      <div className={css.leftSide}></div>
+      <div className={css.rightSide}>
+        <TodayWaterList />
+        <MonthStatsTable />
+      </div>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
