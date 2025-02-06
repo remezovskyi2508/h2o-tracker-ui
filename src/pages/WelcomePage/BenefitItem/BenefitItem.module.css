@@ -1,0 +1,31 @@
+.icon_benefits {
+  width: 32px;
+  height: 32px;
+}
+
+.benefits_list_item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .icon_benefits {
+    width: 40px;
+    height: 40px;
+  }
+
+  .benefits_list_item {
+    gap: 13px;
+    width: 225px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .benefits_list_item {
+    gap: 13px;
+    width: 225px;
+  }
+}

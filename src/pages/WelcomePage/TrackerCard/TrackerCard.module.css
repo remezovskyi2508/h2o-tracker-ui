@@ -1,40 +1,3 @@
-li {
-  list-style-type: none;
-}
-
-.container {
-  min-width: 320px;
-  max-width: 375px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
-}
-
-.background {
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/public/images/bottleMob.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 24px;
-}
-
-.icon_bottle {
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Щоб бути на фоні */
-  position: absolute;
-}
-
 .titel {
   font-size: 28px;
   font-weight: 700;
@@ -92,38 +55,6 @@ li {
 
 .signup_btn_tracker:active {
   box-shadow: none;
-}
-
-/* benefits_card */
-
-.benefits_card {
-  padding: 24px 16px;
-  width: 280px;
-  height: 416px;
-
-  border-radius: 10px;
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-  background: #d7e3ff;
-}
-
-.titel_benefits_card {
-  font-weight: 500;
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-.benefits_card_list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.benefits_card_item {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-weight: 400;
-  font-size: 16px;
 }
 
 @media screen and (min-width: 768px) {
