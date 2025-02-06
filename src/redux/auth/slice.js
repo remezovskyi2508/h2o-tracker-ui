@@ -9,7 +9,7 @@ const initialState = {
   token: null,
   error: null,
   loading: false,
-  isLoggedIn: false,
+  isLoggedIn: true,
   isRefreshing: false,
 };
 

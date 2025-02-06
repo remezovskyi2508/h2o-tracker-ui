@@ -1,17 +1,14 @@
 .section {
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%); */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 16px;
   width: 280px;
-  margin: 0 auto;
-  /*   height: 82px; */
   text-align: center;
+  margin: 0 12px;
 }
+
 .radio {
   width: 280px;
   height: 82px;
@@ -27,7 +24,7 @@
 }
 
 .dial {
-  height: 14px;
+  height: 8px;
   margin-left: 7px;
   margin-right: 17px;
   background: #ecf2ff;
@@ -108,7 +105,7 @@
   margin: auto;
   border-radius: 10px;
   padding: 6px 76px;
-  width: 280px;
+  min-width: 280px;
   height: 36px;
   background: #407bff;
   border: none;
@@ -150,7 +147,7 @@
   }
   .btn {
     padding: 10px 104px;
-    width: 336px;
+    min-width: 336px;
     height: 44px;
   }
 }
@@ -158,8 +155,9 @@
 /* DESKTOP */
 @media screen and (min-width: 1440px) {
   .section {
-    margin-left: 20px;
+    left: 0;
     transform: none;
+    margin: 0;
     gap: 23px;
     width: 592px;
     height: 90px;
@@ -176,7 +174,7 @@
   }
 
   .btn {
-    width: 178px;
+    min-width: 178px;
     height: 44px;
     padding: 10px 0;
 

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Tooltip } from 'react-tooltip';
 
 import css from './MonthStatsTable.module.css';
 import * as calendar from '../../js/calendar.js';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 
 import { fetchWaterData } from '../../redux/water/operations.js';
 import { selectWater } from '../../redux/water/selectors.js';
@@ -91,13 +93,17 @@ const MonthStatsTable = () => {
           const dayInCalendar = index + 1;
           const dayKey = `${dayInCalendar}-${monthName}`;
           const dayData = daysMap[dayKey];
-          
+
           const percent = dayData
             ? parseInt(dayData.percentage.replace('%', ''))
             : 0;
 
           return (
-            <li key={index} className={css.calendarDay}>
+            <li
+              data-tooltip-id="stats-tooltip"
+              key={index}
+              className={css.calendarDay}
+            >
               <div
                 className={clsx(css.calendarCircle, {
                   [css.calendarCircleEmpty]: percent === 0,
@@ -111,6 +117,22 @@ const MonthStatsTable = () => {
           );
         })}
       </ul>
+      <Tooltip
+        id="stats-tooltip"
+        place="top-end"
+        style={{
+          backgroundColor: '#FFFFFF',
+          padding: 0,
+        }}
+        className={clsx(css.tooltip)}
+      >
+        <DaysGeneralStats
+          date="5 квітня"
+          dailyNorm="1.8"
+          consumedPercentage="60"
+          portions="6"
+        />
+      </Tooltip>
     </div>
   );
 };

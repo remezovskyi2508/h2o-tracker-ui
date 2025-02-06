@@ -1,47 +1,22 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
-import AuthForm from "../../components/AuthForm/AuthForm.jsx";
-import css from "./SigninPage.module.css";
+import { Link } from 'react-router-dom';
+import css from './SigninPage.module.css';
+import AuthForm from '../../components/AuthForm/AuthForm.jsx';
 
 const SigninPage = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [error, setError] = useState(null);
 
-  const handleSignin = async (userData) => {
-    try {
-      console.log("Signing in with:", userData);
-     
-    } catch (err) {
-      setError(err.message);
-    }
-  };
 
   return (
-    
-    <div className={css.signinPageContainer} >
-     <div className={css.formSection}>
-    
- 
-
-      {!isLoggedIn && (
-        <>
-          {error && <p className={css.error}>{error}</p>}
-          <AuthForm onSubmit={handleSignin} buttonText="Sign in" />
-        
-        </>
-      )}
-
-</div>
-       
-
-
-<div className="iconBackground">
-   
-       </div> 
+    <div className={css.navContainer}>
+      <h3>Sign In</h3>
+      <AuthForm />
+      
+      <Link className="auth-link" to="/signup">
+        {('signup.title')} 
+      </Link>
     </div>
   );
 };
+
+export default SigninPage;
 
 export default SigninPage;
