@@ -51,6 +51,12 @@ width:280px ;
   background-color: #ffff;
   color: #ffff;
 }
+<<<<<<< HEAD
+.span{
+  font-size: 18px;
+}
+=======
+>>>>>>> main
 
 .passwordContainer{
 position: relative;

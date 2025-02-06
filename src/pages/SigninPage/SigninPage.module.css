@@ -9,11 +9,21 @@
  margin-bottom: 74px;
  width: 100%;
  height: 100vh;
-/*background-image: url('../../../public/images/bottle.svg');
- background-repeat: no-repeat;
- background-position: center;
- background-size: contain;*/
+
 }
+.signinPageContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 680px; 
+ margin-top: 24px;
+ margin-bottom: 74px;
+
+
+} 
+
+
 
 .formSection{
   margin-top: 20px;
@@ -28,13 +38,7 @@ width: 100%;
 text-align: center;
 }
 
-/* .iconBackground {
-  width: 50px;
-  height: 50px;
-  mask-image: url("/public/images/bottle.svg#icon-Bottle-for-Sign-in-desc");
-  -webkit-mask-image: url("/public/images/bottle.svg#icon-Bottle-for-Sign-in-desc");
-  background-color: #407BFF;
-} */
+
 
   
   @media screen and (min-width: 768px) {
@@ -77,4 +81,3 @@ text-align: center;
     }
   
     
-  
