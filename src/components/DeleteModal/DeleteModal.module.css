@@ -1,0 +1,83 @@
+.customOverlay {
+  /* background: rgba(36, 123, 160, 0.7); */
+}
+.customModal {
+  border-radius: 10px;
+  padding: 32px 24px;
+  width: 280px;
+  height: 280px;
+}
+
+.modalWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.headerAndBtnWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 111%;
+}
+
+.closeBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 8px 30px;
+  width: 232px;
+  height: 36px;
+  border: none;
+}
+
+.redBtn {
+  background-color: #ef5050;
+  color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+}
+
+.blueBtn {
+  color: #407bff;
+  background-color: #d7e3ff;
+}
+
+@media screen and (min-width: 768px) {
+  .customModal {
+    width: 592px;
+    height: 208px;
+  }
+
+  .btn {
+    padding: 10px 30px;
+    width: 160px;
+    height: 44px;
+  }
+
+  .btnWrapper {
+    flex-direction: row-reverse;
+  }
+}
