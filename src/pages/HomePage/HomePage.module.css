@@ -20,6 +20,7 @@
 .leftSide {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 @media screen and (min-width: 600px) {
   .wrapper {
@@ -44,6 +45,9 @@
     flex-direction: unset;
     align-items: normal;
     gap: 32px;
+  }
+  .leftSide {
+    padding: 32px 0 16px;
   }
   .rightSide {
     padding: 32px 24px;
