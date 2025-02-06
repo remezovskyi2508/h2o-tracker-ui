@@ -6,9 +6,10 @@ import { useSelector } from 'react-redux';
 import style from './Header.module.css';
 import SettingModal from '../SettingModal/SettingModal.jsx';
 import { Logo } from '../Logo/Logo.jsx';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 const Header = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const userData = useSelector(state => state.auth.user);
   const [user, setUser] = useState(null);
