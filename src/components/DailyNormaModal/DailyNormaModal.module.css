@@ -123,7 +123,7 @@
 }
 
 .btnSave {
-  color: #ffffff;
+  color: #ffffff !important;
   margin-left: auto;
   display: block;
   margin-top: 24px;
@@ -131,8 +131,8 @@
   line-height: 1.25;
   font-size: 16px;
   padding: 8px 30px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.34);
-  background-color: #407bff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.34) !important;
+  background-color: #407bff !important;
 
   @media screen and (min-width: 768px) {
     width: 160px;
