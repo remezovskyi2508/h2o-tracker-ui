@@ -1,5 +1,6 @@
 export const fakeData = {
-  volume: 367,
-  time: '2024-04-20T11:18:00Z',
-  id: '554556555555',
+  waterVolume: 167,
+  date: '2025-02-05T11:04:41.051Z',
+  userId: '67a32cdba56bdcc1ac56408b',
+  _id: '67a3496aeace5a0f67a013c0',
 };

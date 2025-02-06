@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-// import { Formik, Field, Form, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
 import css from './TodayListModal.module.css';
-import closeIcon from './icon-close.svg';
-import glassIcon from './icon-glass.svg';
-// import minusIcon from './icon-minus.svg';
-// import plusIcon from './icon-plus.svg';
+import closeIcon from '/images/icon-close.svg?url';
+import glassIcon from '/images/icon-glass.svg?url';
 import { fakeData } from './fakeData.js';
+
 import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
+
 // import { useDispatch } from 'react-redux';
 // import { addWater, updateWater } from './operations.js';
 
@@ -20,9 +18,17 @@ const TodayListModal = ({
   const data = fakeData;
 
   const [initialState, setInitialState] = useState({
-    time: '',
-    count: data ? data.volume : 50,
+    date: '',
+    waterVolume: data ? data.waterVolume : 50,
   });
+
+  const oldDate = `${new Date(data.date)
+    .getUTCHours()
+    .toString()
+    .padStart(2, '0')}:${new Date(data.date)
+    .getUTCMinutes()
+    .toString()
+    .padStart(2, '0')}`;
 
   // const dispatch = useDispatch();
 
@@ -31,11 +37,11 @@ const TodayListModal = ({
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
-      const currentTime = `${hours}:${minutes}`;
+      const currentDate = `${hours}:${minutes}`;
 
       setInitialState(prevState => ({
         ...prevState,
-        time: currentTime,
+        date: currentDate,
       }));
     }
   }, [isOpen]);
@@ -58,24 +64,24 @@ const TodayListModal = ({
     if (event.target.classList.contains(css.modalWrapper)) onClose();
   };
 
-  // const waterFormValidationSchema = Yup.object().shape({
-  //   count: Yup.number()
-  //     .required('Water amount is required')
-  //     .min(1, 'Minimum value is 1 ml')
-  //     .max(5000, 'Maximum value is 5000 ml'),
-  //   time: Yup.string()
-  //     .required('Recording time is required')
-  //     .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, 'Invalid time format'),
-  // });
-
   const handleSubmit = values => {
-    if (values.count <= 0) {
+    if (values.waterVolume <= 0) {
       return;
     }
 
+    const convertDate = dateBefore => {
+      const now = new Date();
+      const date = now.toISOString().split('T')[0];
+      const dateTimeStr = `${date}T${dateBefore}:00.000Z`;
+      return dateTimeStr;
+    };
+
+    const time = values.date;
+    const timeToSend = convertDate(time);
+
     const updatedData = {
-      volume: values.count,
-      time: `2025-02-01T${values.time}:00`,
+      waterVolume: values.waterVolume,
+      date: timeToSend,
     };
 
     switch (operationType) {
@@ -126,18 +132,10 @@ const TodayListModal = ({
                     <p>
                       <img src={glassIcon} alt="Glass of water icon" />
                     </p>
-                    <p className={css.modalOldAmountVolume}>{data.volume} ml</p>
-                    <p className={css.modalOldAmountTime}>
-                      {new Date(data.time)
-                        .getUTCHours()
-                        .toString()
-                        .padStart(2, '0')}
-                      :
-                      {new Date(data.time)
-                        .getUTCMinutes()
-                        .toString()
-                        .padStart(2, '0')}
+                    <p className={css.modalOldAmountVolume}>
+                      {data.waterVolume} ml
                     </p>
+                    <p className={css.modalOldAmountTime}>{oldDate}</p>
                   </div>
                   <h3 className={css.modalTitleNew}>Correct entered data:</h3>
                 </div>
@@ -149,92 +147,6 @@ const TodayListModal = ({
                 </div>
               )}
 
-              {/* <Formik
-                initialValues={initialState}
-                enableReinitialize={true}
-                validationSchema={waterFormValidationSchema}
-                onSubmit={handleSubmit}
-              >
-                {({ setFieldValue, values }) => {
-                  return (
-                    <>
-                      <Form>
-                        <p className={css.modalText}>Amount of water:</p>
-                        <div className={css.modalAmountBox}>
-                          <button
-                            className={css.modalAmountBoxBtn}
-                            type="button"
-                            onClick={() =>
-                              setFieldValue(
-                                'count',
-                                Math.max(values.count - 50)
-                              )
-                            }
-                            disabled={values.count <= 1}
-                          >
-                            <img src={minusIcon} alt="Minus icon" />
-                          </button>
-                          <p className={css.modalAmountBoxText}>
-                            {values.count} ml
-                          </p>
-                          <button
-                            className={css.modalAmountBoxBtn}
-                            type="button"
-                            onClick={() =>
-                              setFieldValue(
-                                'count',
-                                Math.min(values.count + 50)
-                              )
-                            }
-                            disabled={values.count >= 5000}
-                          >
-                            <img src={plusIcon} alt="Plus icon" />
-                          </button>
-                        </div>
-                        <p className={css.modalText}>Recording time:</p>
-                        <Field
-                          className={css.modalInput}
-                          type="time"
-                          name="time"
-                        />
-                        <ErrorMessage
-                          name="time"
-                          component="div"
-                          className={css.error}
-                        />
-                        <h3 className={css.modalTitleCorrect}>
-                          Enter the value of the water used:
-                        </h3>
-                        <Field
-                          className={css.modalInput}
-                          type="number"
-                          name="count"
-                          onChange={event => {
-                            let value = Number(event.target.value);
-                            if (!isNaN(value) && value >= 0 && value <= 99999) {
-                              setFieldValue('count', value);
-                            }
-                          }}
-                          onClick={event => event.stopPropagation()}
-                        />
-                        <ErrorMessage
-                          name="count"
-                          component="div"
-                          className={css.error}
-                        />
-                        <div className={css.modalSaveBox}>
-                          <p className={css.modalSaveBoxCount}>
-                            {values.count} ml
-                          </p>
-                          <button type="submit" className={css.modalSaveBtn}>
-                            Save
-                          </button>
-                        </div>
-                      </Form>
-                    </>
-                  );
-                }}
-              </Formik> */}
               <TodayListModalForm
                 initialState={initialState}
                 handleSubmit={handleSubmit}
