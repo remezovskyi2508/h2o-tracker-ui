@@ -1,0 +1,145 @@
+.modal {
+  padding: 24px 12px;
+  max-width: 100%;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 24px;
+    max-width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 592px;
+  }
+}
+
+.formulas {
+  margin-bottom: 12px;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+.formulasItem {
+  margin-bottom: 16px;
+  line-height: 1.25;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+.formulasItem:last-child {
+  margin-bottom: 0;
+}
+
+.formula {
+  color: #407bff;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.desc {
+  border: 1px solid var(--secondary-color---5);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8f8f8f;
+}
+
+.desc span {
+  color: var(--primary-color-blue);
+}
+
+.subtitle {
+  font-weight: 500;
+  color: var(--primery-color-black);
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+.radioGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.inputWithLabel {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.inputLabel {
+  color: var(--primary-color-black);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.inputField {
+  padding: 12px 10px;
+  border: 1px solid var(--secondary-color---5);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-blue);
+  height: 44px;
+}
+
+.textAmount {
+  margin-bottom: 24px;
+  color: var(--primary-color-black);
+  display: flex;
+  align-items: center;
+}
+
+.textAmount p {
+  width: 190px;
+  margin: 0;
+  margin-right: 6px;
+
+  @media screen and (min-width: 768px) {
+    width: 328px;
+  }
+}
+
+.textAmount span {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+  color: var(--primary-color-blue);
+}
+
+.labelAmount {
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: var(--primery-color-black);
+}
+
+.btnSave {
+  color: #ffffff !important;
+  margin-left: auto;
+  display: block;
+  margin-top: 24px;
+  width: 256px;
+  line-height: 1.25;
+  font-size: 16px;
+  padding: 8px 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.34) !important;
+  background-color: #407bff !important;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 44px;
+    padding: 10px 30px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}

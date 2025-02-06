@@ -1,0 +1,90 @@
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+}
+
+.closeModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.modalText {
+  width: 232px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+}
+
+.optionBtns {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+}
+
+.modalCancelBtn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  background-color: #d7e3ff;
+  border: none;
+  width: 232px;
+  border-radius: 10px;
+  padding: 8px 30px;
+  color: #407bff;
+}
+
+.modalOutBtn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background-color: #ef5050;
+  border: none;
+  width: 232px;
+  border-radius: 10px;
+  padding: 8px 30px;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .optionBtns {
+    flex-direction: row;
+    justify-content: end;
+  }
+  .modalCancelBtn {
+    font-size: 18px;
+    line-height: 133%;
+    width: 160px;
+    height: 44px;
+    padding: 10px 30px;
+  }
+  .modalOutBtn {
+    font-size: 18px;
+    line-height: 133%;
+    width: 160px;
+    height: 44px;
+    padding: 10px 30px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .optionBtns {
+    justify-content: start;
+  }
+}

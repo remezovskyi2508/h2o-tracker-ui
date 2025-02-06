@@ -1,0 +1,98 @@
+.todayWaterListBox{
+    max-width: 264px;
+    height: 258px;
+    background-color: #ECF2FF;
+}
+
+.waterListToday{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 125%;
+    margin-bottom: 16px;
+}
+
+.waterListBox{
+    display: flex;
+    flex-direction: column;
+    height: 178px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.waterListBox::-webkit-scrollbar {
+    width: 4px; 
+    border-radius: 8px; 
+}
+
+.waterListBox::-webkit-scrollbar-track {
+    background: #D7E3FF; 
+    border-radius: 8px;
+}
+
+.waterListBox::-webkit-scrollbar-thumb {
+    background: #407BFF; 
+    border-radius: 8px;
+}
+
+.waterListBox::-webkit-scrollbar-thumb:hover {
+    background: #D7E3FF;
+}
+
+.AddWaterModalBtn{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    padding: 0;
+}
+
+.plusSvg{
+    width: 16px;
+    height: 16px;
+}
+
+.AddWaterBtnText{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: #407BFF;
+    width: 73px;
+}
+
+@media screen and (min-width: 768px) {
+    .todayWaterListBox{
+        max-width: 656px;
+        height: 260px;  
+    }
+    .waterListToday{
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 123%;
+    }
+    .waterListBox{
+        display: flex;
+        flex-direction: column;
+        height: 176px;
+    }
+    
+    .plusSvg{
+        width: 24px;
+        height: 24px;
+    }
+    .AddWaterBtnText{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 133%;
+        width: 82px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .todayWaterListBox{
+        width: 544px;
+        height: 260px;
+    }
+}
