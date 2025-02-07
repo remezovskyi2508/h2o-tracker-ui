@@ -4,7 +4,6 @@ import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
 
 import css from './HomePage.module.css';
-import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
 
 const HomePage = () => {
   return (
