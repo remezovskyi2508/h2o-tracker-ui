@@ -57,13 +57,18 @@ const AuthForm = () => {
         validationSchema={AuthSchema(isSignup)}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting,errors, touched }) => (
           <Form className={css.form}>
             <h2 className={css.formTitle}>{isSignup ? "Sign Up" : "Sign In"}</h2>
 
             <label className={css.label}>
               <span className={css.span}>Enter your email:</span>
-              <Field className={css.input_field} type="email" name="email" placeholder="E-mail" />
+              <Field className={`${css.input_field} ${
+                errors.email && touched.email ? css.inputError : ""
+              }`}
+               type="email"
+               name="email"
+                placeholder="E-mail" />
               <ErrorMessage className={css.errorMessage} name="email" component="span" />
             </label>
 
@@ -71,7 +76,9 @@ const AuthForm = () => {
               <span className={css.span}>Enter your password:</span>
               <div className={css.passwordContainer}>
                 <Field
-                  className={css.input_field}
+                  className={`${css.input_field} ${
+                    errors.password && touched.password ? css.inputError : ""
+                  }`}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
@@ -91,8 +98,10 @@ const AuthForm = () => {
               <label>
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
-                  <Field
-                    className={css.input_field}
+                <Field
+                  className={`${css.input_field} ${
+                    errors.password && touched.password ? css.inputError : ""
+                  }`}
                     type={showRepeatPassword ? "text" : "password"}
                     name="repeatPassword"
                     placeholder="Repeat Password"

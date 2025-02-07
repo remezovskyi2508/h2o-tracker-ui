@@ -31,9 +31,10 @@ const SignupPage = () => {
   }
 
   return (
-    <div className={css.signupPage}>
+    <div className={css.signupPageContainer}>
   
     <div className={css.formSection}>
+    
 
       {error && <p className={css.error}>{error}</p>}
 
@@ -41,7 +42,7 @@ const SignupPage = () => {
 
       
     </div>
-     <div className={css.bottleIcon}>
+      <div className={css.background}>
   
          </div>
     </div>
