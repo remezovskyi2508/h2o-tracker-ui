@@ -93,6 +93,7 @@ const MonthStatsTable = () => {
           const dayInCalendar = index + 1;
           const dayKey = `${dayInCalendar}-${monthName}`;
           const dayData = daysMap[dayKey];
+          const tooltipId = `stats-tooltip-${dayInCalendar}`;
 
           const percent = dayData
             ? parseInt(dayData.percentage.replace('%', ''))
@@ -100,9 +101,10 @@ const MonthStatsTable = () => {
 
           return (
             <li
-              data-tooltip-id="stats-tooltip"
+              data-tooltip-id={tooltipId}
               key={index}
               className={css.calendarDay}
+              data-tooltip-offset={0}
             >
               <div
                 className={clsx(css.calendarCircle, {
@@ -113,27 +115,31 @@ const MonthStatsTable = () => {
                 {dayInCalendar}
               </div>
               <div className={css.waterAim}>{percent} %</div>
+              <Tooltip
+                id={tooltipId}
+                place="top-end"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  padding: 0,
+                }}
+                className={clsx(css.tooltip)}
+                openOnClick="true"
+                noArrow="true"
+                delayHide={1}
+              >
+                {dayData && (
+                  <DaysGeneralStats
+                    date={dayData.date}
+                    dailyNorm={dayData.dailyNorm}
+                    percentage={dayData.percentage}
+                    consumptionCount={dayData.consumptionCount}
+                  />
+                )}
+              </Tooltip>
             </li>
           );
         })}
       </ul>
-      <Tooltip
-        id="stats-tooltip"
-        place="top-end"
-        style={{
-          backgroundColor: '#FFFFFF',
-          padding: 0,
-        }}
-        className={clsx(css.tooltip)}
-        openOnClick="true"
-      >
-        <DaysGeneralStats
-          date="5 квітня"
-          dailyNorm="1.8"
-          consumedPercentage="60"
-          portions="6"
-        />
-      </Tooltip>
     </div>
   );
 };
