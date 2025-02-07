@@ -6,16 +6,17 @@
   gap: 16px;
   width: 280px;
   text-align: center;
-  margin: 0 12px;
+  margin: 0;
 }
 
 .radio {
+  position: relative;
   width: 280px;
   height: 82px;
 }
 
 .title {
-  margin: 0;
+  margin-bottom: 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33;
@@ -24,42 +25,51 @@
 }
 
 .dial {
+  position: relative;
   height: 8px;
   margin-left: 7px;
   margin-right: 17px;
   background: #ecf2ff;
   border-radius: 10px;
-  position: relative;
   overflow: visible;
 }
 
 .point {
   position: absolute;
-  z-index: 10;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 15px;
-  height: 15px;
+  /* z-index: 10; */
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  border: 2px solid #407bff;
   border-radius: 50%;
-  background: white;
-  border: 1px solid #407bff;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.3s ease-in-out;
   box-shadow: 0 0 8px rgba(121, 158, 238, 0.3);
 }
 
 .factpercent {
-  height: 100%;
-  border-radius: 10px;
-  background: #9ebbff;
-  transition: width 0.5s ease-in-out;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #407bff;
+  /* background: #9ebbff; */
+  transition: width 0.3s ease-in-out;
 }
 
 .percentage {
-  margin: 0;
+  position: absolute;
+  z-index: 10;
+  white-space: nowrap;
+  bottom: 12px;
+  left: 50%;
+  font-size: 14px;
+  color: #407bff;
+  transform: translateX(-50%);
+  /*  margin: 0; */
   font-weight: 500;
-  font-size: 16px;
   line-height: 1.25;
   text-align: center;
-  color: #407bff;
+  transition: left 0.3s ease-in-out;
 }
 
 .percent {
