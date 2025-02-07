@@ -20,9 +20,10 @@
 .leftSide {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 280px;
-  height: 500px;
-  background-color: burlywood;
+  height: 492px;
+  /*   background-color: burlywood; */
 }
 @media screen and (min-width: 600px) {
   .wrapper {
@@ -40,6 +41,10 @@
     padding: 32px 24px;
     width: 704px;
   }
+  .leftSide {
+    width: 704px;
+    height: 404px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .wrapper {
@@ -47,9 +52,15 @@
     flex-direction: unset;
     align-items: normal;
     gap: 32px;
+    height: 680px;
   }
   .rightSide {
     padding: 32px 24px;
     width: 592px;
+  }
+  .leftSide {
+    justify-content: space-between;
+    width: 592px;
+    height: 680px;
   }
 }
