@@ -12,7 +12,7 @@ const DaysGeneralStats = ({
   return (
     <div className={clsx(css.hover)}>
       <div className={clsx(css.stats)}>
-        <p className={clsx(css.statsData)}>{date}</p>
+        <p className={clsx(css.date)}>{date}</p>
       </div>
 
       <div className={clsx(css.stats)}>
