@@ -41,6 +41,7 @@
   stroke: #407bff;
   stroke-width: 1.5px;
 }
+
 .title {
   font-size: 26px;
   font-weight: 500;
@@ -185,9 +186,14 @@
   display: flex;
   gap: 24px;
 }
+.radio {
+  display: flex;
+  gap: 8px;
+}
 .input:invalid,
 .inputPassword.invalid,
-.input.invalid {
+.input.invalid,
+.inputPassword:invalid .invalid {
   border: 1px solid #ef5050;
   color: #ef5050;
 }
@@ -197,7 +203,6 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
-  margin-top: 4px;
 }
 
 .btnSave {
@@ -216,6 +221,7 @@
   text-align: center;
   cursor: pointer;
   margin-top: 12px;
+  display: block;
 }
 
 /* Styles for Tablet devices */
@@ -232,9 +238,7 @@
     width: 160px;
     height: 44px;
     margin-left: auto;
-    position: absolute;
-    right: 24px;
-    bottom: 32px;
+    margin-right: 24px;
   }
   .input,
   .inputPassword {

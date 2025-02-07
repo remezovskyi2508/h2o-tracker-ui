@@ -1,0 +1,72 @@
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+const authInstance = axios.create({
+  baseURL: 'https://h2o-tracker-api.onrender.com',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+const authInstanceAvatar = axios.create({
+  baseURL: 'https://h2o-tracker-api.onrender.com',
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+});
+
+export const fetchUserInfo = createAsyncThunk(
+  'userInfo/fetchUserInfo',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await authInstance.get(`/users/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const updateUserInfo = createAsyncThunk(
+  'userInfo/updateUserData',
+  async ({ id, name, email, gender }, thunkAPI) => {
+    try {
+      const { data } = await authInstance.patch(`/users/${id}`, {
+        name,
+        email,
+        gender,
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserAvatar = createAsyncThunk(
+  'userInfo/updateUserAvatar',
+  async ({ id, formData }, thunkAPI) => {
+    try {
+      const { data } = await authInstanceAvatar.patch(
+        `/users/${id}/avatar`,
+        formData
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserPassword = createAsyncThunk(
+  'userInfo/updateUserPassword',
+  async ({ id, oldPassword, newPassword }, thunkAPI) => {
+    try {
+      const { data } = await authInstance.patch(`/users/${id}`, {
+        password: oldPassword,
+        newPassword,
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
