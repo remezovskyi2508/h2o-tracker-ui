@@ -1,101 +1,165 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate,NavLink } from 'react-router-dom';
-import { login } from '../../redux/auth/operations.js';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import { useDispatch } from 'react-redux';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { login, register } from '../../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import css from './AuthForm.module.css'; 
+import css from './AuthForm.module.css';
 import { useState } from 'react';
 
-const INITIAL_VALUES = {
-  email: '',
-  password: '',
-};
-
-export const LoginSchema = Yup.object({
-  email: Yup.string()
-    .required("Email is required")
-    .email("Invalid email address"),
-  
-  password: Yup.string()
-    .min(8, "Password length must be at least 8 characters")
-    .required("Password is required")
-});
+const AuthSchema = isSignup =>
+  Yup.object().shape({
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(8, 'Password must be at least 8 characters')
+      .max(64, 'Password must be maximum of 64 characters')
+      .required('Password is required'),
+    ...(isSignup && {
+      repeatPassword: Yup.string()
+        .oneOf([Yup.ref('password')], 'Passwords must match')
+        .required('Please confirm your password'),
+    }),
+  });
 
 const AuthForm = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isSignup = location.pathname === '/signup';
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
-  const handleSubmit = (values, actions) => {
-    dispatch(login(values));
-    actions.resetForm();
+  const initialValues = isSignup
+    ? { email: '', password: '', repeatPassword: '' }
+    : { email: '', password: '' };
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      const {repeatPassword, ...formData} = values;
+      if (isSignup) {
+        await dispatch(register(formData)).unwrap();
+        navigate('/signin');
+      } else {
+        await dispatch(login(formData)).unwrap();
+      }
+      console.log(values);
+
+      actions.resetForm();
+    } catch (error) {
+      console.error('Authentication error:', error);
+    }
   };
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  // If the user is logged in, redirect to /home
-  if (isLoggedIn) {
-    return <Navigate to="/home" />;
-  }
 
   return (
     <div className={css.wrapper}>
       <Formik
-        initialValues={INITIAL_VALUES}
-        validationSchema={LoginSchema}
+        initialValues={initialValues}
+        validationSchema={AuthSchema(isSignup)}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
+        {({ isSubmitting, errors, touched }) => (
           <Form className={css.form}>
-            <h2 className={css.formTitle}>Sign In</h2>
-            <div className={css.listForm}>
-              <label className={css.label}>
-                <span>Email:</span>
+            <h2 className={css.formTitle}>
+              {isSignup ? 'Sign Up' : 'Sign In'}
+            </h2>
+
+            <label className={css.label}>
+              <span className={css.span}>Enter your email:</span>
+              <Field
+                className={`${css.input_field} ${
+                  errors.email && touched.email ? css.inputError : ''
+                }`}
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <ErrorMessage
+                className={css.errorMessage}
+                name="email"
+                component="span"
+              />
+            </label>
+
+            <label>
+              <span className={css.span}>Enter your password:</span>
+              <div className={css.passwordContainer}>
                 <Field
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                />
-                <ErrorMessage
-                  className={css.errorMessage}
-                  name="email"
-                  component="span"
-                />
-              </label>
-              <label className={errors.password && touched.password ? 'input-with-error' : null}>
-                <span>Password:</span>
-                <Field
+                  className={`${css.input_field} ${
+                    errors.password && touched.password ? css.inputError : ''
+                  }`}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
-                  className={css.input}
-                  placeholder="Enter your password"
+                  placeholder="Password"
                 />
+                <button
+                  type="button"
+                  className={css.iconButton}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <FiEyeOff size={16} color="#407BFF" />
+                  ) : (
+                    <FiEye size={16} color="#407BFF" />
+                  )}
+                </button>
+              </div>
+              <ErrorMessage
+                className={css.errorMessage}
+                name="password"
+                component="span"
+              />
+            </label>
+
+            {isSignup && (
+              <label>
+                <span>Repeat Password:</span>
+                <div className={css.passwordContainer}>
+                  <Field
+                    className={`${css.input_field} ${
+                      errors.password && touched.password ? css.inputError : ''
+                    }`}
+                    type={showRepeatPassword ? 'text' : 'password'}
+                    name="repeatPassword"
+                    placeholder="Repeat Password"
+                  />
+                  <button
+                    type="button"
+                    className={css.iconButton}
+                    onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                  >
+                    {showRepeatPassword ? (
+                      <FiEyeOff size={16} color="#407BFF" />
+                    ) : (
+                      <FiEye size={16} color="#407BFF" />
+                    )}
+                  </button>
+                </div>
                 <ErrorMessage
                   className={css.errorMessage}
-                  name="password"
+                  name="repeatPassword"
                   component="span"
                 />
-                <button type="button" onClick={toggleShowPassword}>
-                  {showPassword ? <FiEyeOff size={16} color="#407BFF" style={{transform: 'rotate(180deg)'}} /> : <FiEye size={16} color="#407BFF" />}
-                </button>
               </label>
-              <div>
-                <button type="submit" className={css.button}>
-                  {'Sign In'}
-                </button>
-                
-                <p className={css.signupText}>
-                  {'Already have an account? '}
-                  <NavLink to="/signin" className={css.navLink}>
-                    Sign In
-                  </NavLink>
-                </p>
-              </div>
-            </div>
+            )}
+
+            <button
+              className={css.button}
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSignup ? 'Sign Up' : 'Sign In'}
+            </button>
+
+            <p className={css.signupText}>
+              <NavLink
+                to={isSignup ? '/signin' : '/signup'}
+                className={css.navLink}
+              >
+                {isSignup ? 'Sign In' : 'Sign Up'}
+              </NavLink>
+            </p>
           </Form>
         )}
       </Formik>

@@ -6,28 +6,28 @@ import css from './DaysGeneralStats.module.css';
 const DaysGeneralStats = ({
   date,
   dailyNorm,
-  consumedPercentage,
-  portions,
+  percentage,
+  consumptionCount,
 }) => {
   return (
     <div className={clsx(css.hover)}>
       <div className={clsx(css.stats)}>
-        <p className={clsx(css.statsData)}>{date}</p>
+        <p className={clsx(css.date)}>{date}</p>
       </div>
 
       <div className={clsx(css.stats)}>
         <p>Daily norma:</p>
-        <p className={clsx(css.statsData)}>{dailyNorm} л</p>
+        <p className={clsx(css.statsData)}>{dailyNorm}</p>
       </div>
 
       <div className={clsx(css.stats)}>
         <p>Fulfillment of the daily norm:</p>
-        <p className={clsx(css.statsData)}>{consumedPercentage}%</p>
+        <p className={clsx(css.statsData)}>{percentage}</p>
       </div>
 
       <div className={clsx(css.stats)}>
         <p>How many servings of water:</p>
-        <p className={clsx(css.statsData)}>{portions}</p>
+        <p className={clsx(css.statsData)}>{consumptionCount}</p>
       </div>
     </div>
   );
