@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchWaterData } from './operations';
+import { fetchWaterToday, fetchWaterMonth } from './operations';
 // import { login, logout, refreshUser, register } from '../auth/operations';
 
 const initialState = {
-  data: null,
+  today: [],
+  month: [],
   loading: false,
   error: null,
 };
@@ -14,15 +15,29 @@ const waterSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchWaterData.pending, state => {
+      // Today
+      .addCase(fetchWaterToday.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchWaterData.fulfilled, (state, action) => {
+      .addCase(fetchWaterToday.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.today = action.payload;
       })
-      .addCase(fetchWaterData.rejected, (state, action) => {
+      .addCase(fetchWaterToday.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Month
+      .addCase(fetchWaterMonth.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchWaterMonth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.month = action.payload;
+      })
+      .addCase(fetchWaterMonth.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
