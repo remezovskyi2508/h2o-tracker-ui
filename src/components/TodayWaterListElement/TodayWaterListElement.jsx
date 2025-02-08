@@ -1,24 +1,29 @@
 import {useState} from "react";
 import styles from "./TodayWaterListElement.module.css"
-import icon from "/fonts/small-glass-TodayWaterList.svg"
+import icon from "/images/small-glass-TodayWaterList.svg"
 import TodayListModal from "../TodayListModal/TodayListModal.jsx"
 import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 
-const TodayWaterListElement = (id, amount, time, { closeModalAndUpdate }) => {
+const TodayWaterListElement = (item) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
-    const onCloseModal = setIsOpenDeleteModal(false);
-
+    const onCloseRedactModal = () => setIsOpenModal(false);
+    const onCloseModal = () => setIsOpenDeleteModal(false);
     const operationType = 'edit';
+
+    const formatTime = (time) => {
+        const date = new Date(time);
+        return date.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+      };
 
     return(
         <div className={styles.waterElement}>
           <div className={styles.svgAndTextWaterElement}>
           <img src={icon} alt="glass" className={styles.glassSvg} />
           <div className={styles.SmallTextBox}>
-            <p className={styles.waterElementMl}>250 ml</p>
-            <p className={styles.waterElementTime}>7:00</p>
+            <p className={styles.waterElementMl}>{item.waterVolume} ml</p>
+            <p className={styles.waterElementTime}>{formatTime(item.date)}</p>
           </div>
           </div>
           <div className={styles.TwoBtnsToWater}>
@@ -28,7 +33,11 @@ const TodayWaterListElement = (id, amount, time, { closeModalAndUpdate }) => {
               <path d="M11.2413 2.99135L12.366 1.86601C12.6005 1.63156 12.9184 1.49985 13.25 1.49985C13.5816 1.49985 13.8995 1.63156 14.134 1.86601C14.3685 2.10046 14.5002 2.41845 14.5002 2.75001C14.5002 3.08158 14.3685 3.39956 14.134 3.63401L7.05467 10.7133C6.70222 11.0656 6.26758 11.3245 5.79 11.4667L4 12L4.53333 10.21C4.67552 9.73244 4.93442 9.2978 5.28667 8.94535L11.2413 2.99135ZM11.2413 2.99135L13 4.75001M12 9.33335V12.5C12 12.8978 11.842 13.2794 11.5607 13.5607C11.2794 13.842 10.8978 14 10.5 14H3.5C3.10218 14 2.72064 13.842 2.43934 13.5607C2.15804 13.2794 2 12.8978 2 12.5V5.50001C2 5.10219 2.15804 4.72066 2.43934 4.43935C2.72064 4.15805 3.10218 4.00001 3.5 4.00001H6.66667" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             </button>
-            {isOpenModal && <TodayListModal onClose={() => closeModalAndUpdate(setIsOpenDeleteModal)} operationType={operationType} id={id} data={time}/>}
+            {isOpenModal && <TodayListModal 
+              onClose={onCloseRedactModal} 
+              operationType={operationType} 
+              item={item}
+            />}
           </div>
           <div>
             <button onClick={() => setIsOpenDeleteModal(!isOpenDeleteModal)}  className={styles.deleteOpenBtn}>
