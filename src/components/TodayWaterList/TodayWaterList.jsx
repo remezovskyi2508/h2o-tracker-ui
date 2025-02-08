@@ -1,37 +1,30 @@
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "./TodayWaterList.module.css"
-import axios from 'axios'
-import TodayWaterListElement from '../TodayWaterListElement/TodayWaterListElement'
-import TodayListModal from '../TodayListModal/TodayListModal'
+import TodayWaterListElement from '../TodayWaterListElement/TodayWaterListElement.jsx';
+import TodayListModal from '../TodayListModal/TodayListModal.jsx'
+import { selectWaterToday, selectWaterLoading } from '../../redux/water/selectors.js';
+import { fetchWaterToday } from '../../redux/water/operations.js';
 
 const TodayWaterList = () => {
-  const [loading, setLoading] = useState(true);
-  const [waterData, setWaterData] = useState([]);
   const [isOpenAddWaterModal, setIsOpenAddWaterModal] = useState(false);
+  const todayWaterData = useSelector(selectWaterToday);
+  const loading = useSelector(selectWaterLoading);
+  const dispatch = useDispatch();
 
+  const closeModal = () => setIsOpenAddWaterModal(false);
   const operationType = 'add';
 
-  const fetchWaterData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get('http://localhost:3000/water-intake');
-      setWaterData(response.data);
-    } catch (err) {
-      console.error('Помилка отримання даних:', err);      
-    }
-    finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchWaterData();
-  }, []);
+    dispatch(fetchWaterToday());
+  }, [dispatch]);
 
-  const closeModalAndUpdate = (setModalState) => {
-    setModalState(false);
-    fetchWaterData();
-  };
+  // {
+  //   "_id": "67a348c96892e9b8ec104be4",
+  //   "date": "2025-02-05T11:04:21.051Z",
+  //   "waterVolume": 100,
+  //   "userId": "67a32cdba56bdcc1ac56408b"
+  // }
 
   return (
     <div className={styles.todayWaterListBox}>
@@ -40,14 +33,12 @@ const TodayWaterList = () => {
         {loading ? (
           <p>Loading...</p>
         ):(
-          waterData.map(({id, amount, time}) => (
-            <li key={id} className={styles.waterElement}>
-              <TodayWaterListElement id={id} amount={amount} time={time} closeModalAndUpdate={closeModalAndUpdate}/>
+          todayWaterData.map((item) => (
+            <li key={item._id} className={styles.todayWaterElement}>
+              <TodayWaterListElement item={item}/>
             </li>
-          ))
-          
+           ))
         )}
-        
       </ul>
         <div>
           <button onClick={() => setIsOpenAddWaterModal(true)} className={styles.AddWaterModalBtn}>
@@ -56,7 +47,7 @@ const TodayWaterList = () => {
             </svg>
             <h5 className={styles.AddWaterBtnText}>Add water</h5>
           </button>
-          {isOpenAddWaterModal && <TodayListModal onClose={() => closeModalAndUpdate(setIsOpenAddWaterModal)} operationType={operationType} isOpen={isOpenAddWaterModal}/>}
+          {isOpenAddWaterModal && <TodayListModal onClose={() => closeModal()} operationType={operationType} isOpen={isOpenAddWaterModal}/>}
         </div>
     </div>
   )
