@@ -7,7 +7,7 @@
     justify-content: space-between;
     background: white;
     margin: 0 auto;
-    padding-top: 8px;
+    margin-top: 8px;
 }
 
 .waterTracker {
@@ -34,6 +34,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    padding: 0;
 }
 
 .singIn {
@@ -61,8 +62,8 @@
 
 .icon {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 16px;
+    height: 16px;
     stroke-width: 0;
     fill: transparent;
     stroke-width: 1px;
@@ -76,14 +77,13 @@
 
 .iconUser {
     display: inline-block;
-    width: 1em;
-    height: 1em;
     stroke-width: 0;
     fill: transparent;
     stroke-width: 1px;
     stroke: #2f2f2f;
     width: 28px;
     height: 28px;
+    margin-right: 4px;
 }
 
 .userName {
@@ -97,11 +97,17 @@
 .userProfile {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: end;
+    /* gap: 10px; */
     cursor: pointer;
     width: 122px;
     height: 28px;
+}
+
+.placeholder {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
 
@@ -109,6 +115,7 @@
 @media screen and (min-width: 768px) {
     .header {
         max-width: 704px;
+        margin-top: 16px;
     }
 }
 
@@ -117,5 +124,6 @@
     .header {
 
         max-width: 1216px;
+        margin-top: 12px;
     }
 }
