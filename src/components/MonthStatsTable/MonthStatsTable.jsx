@@ -9,13 +9,15 @@ import clsx from 'clsx';
 import { useMemo } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 
-import { fetchWaterData } from '../../redux/water/operations.js';
-import { selectWater } from '../../redux/water/selectors.js';
+import { fetchWaterMonth } from '../../redux/water/operations.js';
+import { selectWaterMonth } from '../../redux/water/selectors.js';
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const days = useSelector(selectWater) || [];
+  const days = useSelector(selectWaterMonth);
   const currentDate = new Date();
+  console.log(days);
+  
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
   const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний
@@ -45,7 +47,7 @@ const MonthStatsTable = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchWaterData());
+      await dispatch(fetchWaterMonth(month, year));
     };
     fetchData();
   }, [dispatch, month, year]);
