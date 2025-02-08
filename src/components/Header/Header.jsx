@@ -1,25 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import style from './Header.module.css';
-import SettingModal from '../SettingModal/SettingModal.jsx';
 import { Logo } from '../Logo/Logo.jsx';
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import { UserLogo } from '../UserLogo/UserLogo.jsx';
+import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [isSettingsOpen, setSettingsOpen] = useState(false);
-  const userData = useSelector(state => state.auth.user);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get('/api/user')
-      .then(response => setUser(response.data))
-      .catch(error => console.error('User not found', error));
-  }, []);
+  // const isLoggedIn = true;
+  const [isUserModalOpen, setUserModalOpen] = useState(false);
 
   return (
     <header className={style.header}>
@@ -30,22 +21,10 @@ const Header = () => {
             <div className={style.logoText}>Tracker of water</div>
           </NavLink>
           <div className={style.userProfile}>
-            <div className={style.user}>
-              <span className={style.userName}>{user?.name}</span>
-              {user?.photo ? (
-                <img src={user.photo} alt="Avatar" width="28" height="28" />
-              ) : (
-                <div className={style.placeholder}>
-                  {user?.name ? user.name[0] : 'User'}
-                  <svg className={style.iconUser} width="28" height="28">
-                    <use href="/public/images/icons.svg#icon-outline"></use>
-                  </svg>
-                </div>
-              )}
-            </div>
+            <UserLogo />
             <div>
               <button
-                onClick={() => setSettingsOpen(true)}
+                onClick={() => setUserModalOpen(true)}
                 type="button"
                 className={style.svgBtn}
               >
@@ -54,11 +33,13 @@ const Header = () => {
                 </svg>
               </button>
             </div>
-            <SettingModal
-              isOpen={isSettingsOpen}
-              onClose={() => setSettingsOpen(false)}
-              userData={userData}
-            />
+            <div className={style.wrapper}>
+              <UserLogoModal
+                className={style.userModal}
+                isOpen={isUserModalOpen}
+                onClose={() => setUserModalOpen(false)}
+              />
+            </div>
           </div>
         </>
       ) : (
