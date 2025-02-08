@@ -21,6 +21,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 280px;
+  height: 492px;
+  /*   background-color: burlywood; */
 }
 @media screen and (min-width: 600px) {
   .wrapper {

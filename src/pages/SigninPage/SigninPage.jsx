@@ -19,11 +19,11 @@ const SigninPage = () => {
   };
 
   return (
- 
+
     <div className={css.signinPageContainer} >
+    
      <div className={css.formSection}>
     
- 
 
       {!isLoggedIn && (
         <>
@@ -32,14 +32,15 @@ const SigninPage = () => {
         
         </>
       )}
-
+      
+   <div className={css.background}>
 </div>
+
     </div>
-   
+    </div>
+ 
   );
 };
 
 export default SigninPage;
-
-
 
