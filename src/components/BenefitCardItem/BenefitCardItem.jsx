@@ -1,4 +1,3 @@
-import React from 'react';
 import css from './BenefitCardItem.module.css';
 
 const BenefitCardItem = ({ text }) => {

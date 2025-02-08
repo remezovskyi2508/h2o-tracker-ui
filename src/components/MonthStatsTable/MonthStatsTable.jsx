@@ -125,6 +125,7 @@ const MonthStatsTable = () => {
           padding: 0,
         }}
         className={clsx(css.tooltip)}
+        openOnClick="true"
       >
         <DaysGeneralStats
           date="5 квітня"

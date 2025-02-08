@@ -1,4 +1,3 @@
-import React from 'react';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';

@@ -21,9 +21,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 280px;
-  height: 492px;
-  /*   background-color: burlywood; */
 }
 @media screen and (min-width: 600px) {
   .wrapper {
@@ -53,6 +50,9 @@
     align-items: normal;
     gap: 32px;
     height: 680px;
+  }
+  .leftSide {
+    padding: 32px 0 16px;
   }
   .rightSide {
     padding: 32px 24px;
