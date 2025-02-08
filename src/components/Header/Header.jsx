@@ -8,7 +8,7 @@ import SettingModal from '../SettingModal/SettingModal.jsx';
 import { Logo } from '../Logo/Logo.jsx';
 
 const Header = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const userData = useSelector(state => state.auth.user);
   const [user, setUser] = useState(null);
@@ -29,13 +29,13 @@ const Header = () => {
             <div className={style.logoText}>Tracker of water</div>
           </NavLink>
           <div className={style.userProfile}>
-            <div>
+            <div className={style.user}>
               <span className={style.userName}>{user?.name}</span>
               {user?.photo ? (
                 <img src={user.photo} alt="Avatar" width="28" height="28" />
               ) : (
                 <div className={style.placeholder}>
-                  {user?.name ? user.name[0] : ''}
+                  {user?.name ? user.name[0] : 'User'}
                   <svg className={style.iconUser} width="28" height="28">
                     <use href="/public/images/icons.svg#icon-outline"></use>
                   </svg>
@@ -48,7 +48,7 @@ const Header = () => {
                 type="button"
                 className={style.svgBtn}
               >
-                <svg className={style.icon} width="16" height="16">
+                <svg className={style.icon} width="12" height="7">
                   <use href="/public/images/icons.svg#icon-vector"></use>
                 </svg>
               </button>
@@ -77,7 +77,5 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;
 
 export default Header;
