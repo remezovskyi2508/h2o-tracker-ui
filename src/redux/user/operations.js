@@ -27,13 +27,12 @@ export const fetchUserInfo = createAsyncThunk(
 );
 export const updateUserInfo = createAsyncThunk(
   'userInfo/updateUserData',
-  async ({ id, name, email, gender }, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const { data } = await authInstance.patch(`/users/${id}`, {
-        name,
-        email,
-        gender,
-      });
+      const { data } = await authInstance.patch(
+        `/users/${formData.id}`,
+        formData
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,12 +57,9 @@ export const updateUserAvatar = createAsyncThunk(
 
 export const updateUserPassword = createAsyncThunk(
   'userInfo/updateUserPassword',
-  async ({ id, oldPassword, newPassword }, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const { data } = await authInstance.patch(`/users/${id}`, {
-        password: oldPassword,
-        newPassword,
-      });
+      const { data } = await authInstance.put(`/auth/reset-pwd`, formData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

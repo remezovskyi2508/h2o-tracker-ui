@@ -74,22 +74,9 @@ const SettingModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await dispatch(
-        updateUserInfo({
-          id: values.id,
-          name: values.name,
-          email: values.email,
-          gender: values.gender,
-        })
-      ).unwrap();
+      await dispatch(updateUserInfo(values)).unwrap();
       if (values.oldPassword && values.newPassword) {
-        await dispatch(
-          updateUserPassword({
-            id: values.id,
-            password: values.oldPassword,
-            newPassword: values.newPassword,
-          })
-        ).unwrap();
+        await dispatch(updateUserPassword(values)).unwrap();
       }
       actions.resetForm({ values });
       toast.success('Profile updated successfully!');
