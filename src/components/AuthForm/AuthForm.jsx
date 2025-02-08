@@ -38,6 +38,7 @@ const AuthForm = () => {
   const handleSubmit = async (values, actions) => {
     try {
       const {repeatPassword, ...formData} = values;
+      void repeatPassword;
       if (isSignup) {
         await dispatch(register(formData)).unwrap();
         navigate('/signin');
