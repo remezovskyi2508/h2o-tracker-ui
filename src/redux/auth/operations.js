@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+
 export const authInstance = axios.create({
   baseURL: 'https://h2o-tracker-api.onrender.com/',
   headers: { 'Content-Type': 'application/json' },
@@ -23,8 +24,8 @@ export const register = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.post('/auth/register', formData);
-      console.log('RegisterData: ', data);
-      setToken(data.token);
+      setToken(data.data.accessToken);
+      localStorage.setItem('accessToken', data.data.accessToken);
       return data;
     } catch (error) {
       console.error('Error response: ', error.response);
@@ -42,8 +43,8 @@ export const login = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.post('/auth/login', formData);
-      console.log('LoginData: ', data);
-      setToken(data.token);
+      localStorage.setItem('accessToken', data.data.accessToken);
+      setToken(data.data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,9 +55,8 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const { data } = await authInstance.post('/users/logout');
-
     clearToken();
-
+    localStorage.removeItem('accessToken');
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -73,10 +73,10 @@ export const resetPassword = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.put('/auth/reset-pwd', formData);
-      console.log('ResetData: ', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+

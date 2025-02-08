@@ -35,6 +35,7 @@ const TodayWaterListElement = ({item, handleDelete}) => {
             </svg>
             </button>
             {isOpenModal && <TodayListModal 
+              isOpen={isOpenModal}
               onClose={onCloseRedactModal} 
               operationType={operationType} 
               item={item}
