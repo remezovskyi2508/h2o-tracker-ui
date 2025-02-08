@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "./TodayWaterList.module.css"
 import TodayWaterListElement from '../TodayWaterListElement/TodayWaterListElement.jsx';
 import TodayListModal from '../TodayListModal/TodayListModal.jsx'
 import { selectWaterToday, selectWaterLoading } from '../../redux/water/selectors.js';
-import { fetchWaterToday } from '../../redux/water/operations.js';
+import { fetchWaterToday, deleteWater } from '../../redux/water/operations.js';
 
-const TodayWaterList = () => {
+const TodayWaterList =() => {
   const [isOpenAddWaterModal, setIsOpenAddWaterModal] = useState(false);
   const todayWaterData = useSelector(selectWaterToday);
   const loading = useSelector(selectWaterLoading);
@@ -18,6 +18,12 @@ const TodayWaterList = () => {
   useEffect(() => {
     dispatch(fetchWaterToday());
   }, [dispatch]);
+
+  const handleDelete = useCallback(async (itemId) => {
+    await dispatch(deleteWater(itemId));
+    dispatch(fetchWaterToday());
+  }, [dispatch]);
+  
 
   // {
   //   "_id": "67a348c96892e9b8ec104be4",
@@ -35,7 +41,7 @@ const TodayWaterList = () => {
         ):(
           todayWaterData.map((item) => (
             <li key={item._id} className={styles.todayWaterElement}>
-              <TodayWaterListElement item={item}/>
+              <TodayWaterListElement item={item} handleDelete={handleDelete}/>
             </li>
            ))
         )}
