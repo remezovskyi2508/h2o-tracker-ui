@@ -10,11 +10,16 @@ import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 
 import { fetchWaterMonth } from '../../redux/water/operations.js';
 import { selectWaterMonth } from '../../redux/water/selectors.js';
+import { fetchWaterMonth } from '../../redux/water/operations.js';
+import { selectWaterMonth } from '../../redux/water/selectors.js';
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
   const days = useSelector(selectWaterMonth);
+  const days = useSelector(selectWaterMonth);
   const currentDate = new Date();
+  console.log(days);
+  
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
   const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний

@@ -2,7 +2,6 @@ import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
-
 import css from './HomePage.module.css';
 
 const HomePage = () => {
