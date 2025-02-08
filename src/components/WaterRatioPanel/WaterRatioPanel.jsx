@@ -5,14 +5,14 @@ import { IoIosRemove } from 'react-icons/io';
 import css from './WaterRatioPanel.module.css';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import { useSelector } from 'react-redux';
-import { selectWater } from '../../redux/water/selectors';
+import { selectWaterToday } from '../../redux/water/selectors';
 
 const WaterRatioPanel = () => {
-  /*  const water = useSelector(selectWater); */
-
-  const [waterData, setWaterData] = useState({
-    percentage: '70%',
-  });
+  const waterData = useSelector(selectWaterToday); 
+  
+  // const [waterData, setWaterData] = useState({
+  //   percentage: '70%',
+  // });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const percentage = Number(parseFloat(waterData.percentage).toFixed(1)) || 0;
