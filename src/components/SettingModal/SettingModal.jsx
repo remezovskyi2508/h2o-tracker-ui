@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updateUserAvatar,
   updateUserInfo,
-  updateUserPassword,
 } from '../../redux/user/operations.js';
 import { selectUserInfo } from '../../redux/user/selectors.js';
+import { resetPassword } from '../../redux/auth/operations.js';
 
 Modal.setAppElement('#root');
 
@@ -33,7 +33,7 @@ const SettingModal = ({ isOpen, onClose }) => {
       .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
   });
   const initialValues = {
-    id: userData._id,
+    id: '67a77a74dbb857111ba82731',
     avatar: userData.avatar || null,
     gender: userData.gender || 'female',
     name: userData.name || '',
@@ -56,7 +56,7 @@ const SettingModal = ({ isOpen, onClose }) => {
       const formData = new FormData();
       formData.append('avatar', file);
       const response = await dispatch(
-        updateUserAvatar({ id: userData._id, formData })
+        updateUserAvatar({ id: '67a77a74dbb857111ba82731', formData })
       ).unwrap();
 
       if (response?.avatar) {
@@ -76,7 +76,7 @@ const SettingModal = ({ isOpen, onClose }) => {
     try {
       await dispatch(updateUserInfo(values)).unwrap();
       if (values.oldPassword && values.newPassword) {
-        await dispatch(updateUserPassword(values)).unwrap();
+        await dispatch(resetPassword(values)).unwrap();
       }
       actions.resetForm({ values });
       toast.success('Profile updated successfully!');

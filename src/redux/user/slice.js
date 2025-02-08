@@ -3,7 +3,6 @@ import {
   fetchUserInfo,
   updateUserAvatar,
   updateUserInfo,
-  updateUserPassword,
 } from './operations.js';
 
 const initialState = {
@@ -63,18 +62,6 @@ const userInfoSlice = createSlice({
         state.userInfo.gender = action.payload.gender;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      .addCase(updateUserPassword.pending, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(updateUserPassword.fulfilled, state => {
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(updateUserPassword.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

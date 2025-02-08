@@ -54,15 +54,3 @@ export const updateUserAvatar = createAsyncThunk(
     }
   }
 );
-
-export const updateUserPassword = createAsyncThunk(
-  'userInfo/updateUserPassword',
-  async (formData, thunkAPI) => {
-    try {
-      const { data } = await authInstance.put(`/auth/reset-pwd`, formData);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
