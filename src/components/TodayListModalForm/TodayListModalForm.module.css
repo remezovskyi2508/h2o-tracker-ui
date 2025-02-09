@@ -1,4 +1,5 @@
 .modalText {
+  text-align: left;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
@@ -49,6 +50,7 @@
 }
 
 .modalTitleCorrect {
+  text-align: left;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;
@@ -69,6 +71,7 @@
 }
 
 .error {
+  text-align: left;
   color: red;
   font-size: 14px;
   font-weight: 600;
@@ -124,7 +127,7 @@
 @media screen and (min-width: 768px) {
   .modalSaveBox {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: right;
     column-gap: 24px;
     width: 261px;
     margin-left: auto;

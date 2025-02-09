@@ -13,7 +13,7 @@ export const fetchWaterToday = createAsyncThunk(
       const token = localStorage.getItem('accessToken');
       const { data } = await waterInstance.get('/water/today', {
         headers: {
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       });
       return data.records;
@@ -28,11 +28,14 @@ export const fetchWaterMonth = createAsyncThunk(
   async ({ year, month }, thunkAPI) => {
     try {
       const token = localStorage.getItem('accessToken');
-      const { data } = await waterInstance.get(`/water/month?year=${year}&month=${month}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await waterInstance.get(
+        `/water/month?year=${year}&month=${month}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -45,11 +48,15 @@ export const addWater = createAsyncThunk(
   async ({ date, waterVolume }, thunkAPI) => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await waterInstance.post(`/water`, {date, waterVolume}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await waterInstance.post(
+        `/water`,
+        { date, waterVolume },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -76,14 +83,18 @@ export const deleteWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/updateWater',
-  async ({ id, waterVolume }, thunkAPI) => {
+  async ({ id, waterVolume, date }, thunkAPI) => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await waterInstance.post(`/water/${id}`, {waterVolume}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await waterInstance.patch(
+        `/water/${id}`,
+        { waterVolume, date },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
