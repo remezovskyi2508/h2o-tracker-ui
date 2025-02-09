@@ -19,7 +19,8 @@ const SigninPage = () => {
   };
 
   return (
-
+    
+   
     <div className={css.signinPageContainer} >
     
      <div className={css.formSection}>
@@ -33,9 +34,9 @@ const SigninPage = () => {
         </>
       )}
       
-   <div className={css.background}>
-</div>
 
+</div>
+<div className={css.background}>
     </div>
     </div>
  

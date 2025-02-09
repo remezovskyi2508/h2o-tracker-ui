@@ -31,6 +31,7 @@ const SignupPage = () => {
   }
 
   return (
+
     <div className={css.signupPageContainer}>
   
     <div className={css.formSection}>
@@ -46,6 +47,7 @@ const SignupPage = () => {
   
          </div>
     </div>
+  
   );
 };
 
