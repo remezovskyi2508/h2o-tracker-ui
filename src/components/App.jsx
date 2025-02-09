@@ -47,7 +47,6 @@ function App() {
                 element={<PrivateRoute component={<HomePage />} />}
               />
             )}
-            <Route index element={<WelcomePage />} />
             {/* Обмежений доступ для неавторизованих користувачів */}
             <Route
               path="welcome"
