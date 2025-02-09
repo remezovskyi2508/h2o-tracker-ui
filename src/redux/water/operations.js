@@ -88,7 +88,7 @@ export const deleteWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/updateWater',
-  async ({ id, waterVolume }, thunkAPI) => {
+  async ({ id, waterVolume, date }, thunkAPI) => {
     try {
       const persistToken = localStorage.getItem('persist:auth');
       const token = parseToken(persistToken);
