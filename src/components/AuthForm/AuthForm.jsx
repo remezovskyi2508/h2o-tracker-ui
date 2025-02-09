@@ -37,7 +37,7 @@ const AuthForm = () => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      const {repeatPassword, ...formData} = values;
+      const { repeatPassword, ...formData } = values;
       void repeatPassword;
       if (isSignup) {
         await dispatch(register(formData)).unwrap();
@@ -45,7 +45,6 @@ const AuthForm = () => {
       } else {
         await dispatch(login(formData)).unwrap();
       }
-      console.log(values);
 
       actions.resetForm();
     } catch (error) {
@@ -114,7 +113,7 @@ const AuthForm = () => {
             </label>
 
             {isSignup && (
-                     <label className={css.label}>
+              <label className={css.label}>
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
                   <Field
