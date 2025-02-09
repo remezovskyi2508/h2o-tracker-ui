@@ -1,17 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import style from './Header.module.css';
 import { Logo } from '../Logo/Logo.jsx';
-// import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
 import UserAuth from '../UserAuth/UserAuth.jsx';
 
 const Header = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = true;
   const [isUserModalOpen, setUserModalOpen] = useState(false);
+  const userData = useSelector(state => state.auth.user);
 
   return (
     <header className={style.header}>
@@ -22,7 +23,7 @@ const Header = () => {
             <div className={style.logoText}>Tracker of water</div>
           </NavLink>
           <div className={style.userProfile}>
-            <UserLogo />
+            <UserLogo userName={userData?.name} />
             <div>
               <button
                 onClick={() => setUserModalOpen(true)}

@@ -37,19 +37,6 @@
     padding: 0;
 }
 
-.singIn {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #407bff;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .arrayBtn {
     width: 48px;
     height: 28px;
@@ -75,16 +62,7 @@
     height: 100%;
 }
 
-.iconUser {
-    display: inline-block;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: #2f2f2f;
-    width: 28px;
-    height: 28px;
-    margin-right: 4px;
-}
+
 
 
 .userProfile {

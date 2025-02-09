@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import style from './UserLogo.module.css';
 import axios from 'axios';
 
-export const UserLogo = () => {
+export const UserLogo = ({ userName, userEmail }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -11,6 +11,10 @@ export const UserLogo = () => {
       .then(response => setUser(response.data))
       .catch(error => console.error('User not found', error));
   }, []);
+  const firstLetter =
+    userName?.charAt(0).toUpperCase() ||
+    userEmail?.charAt(0).toUpperCase() ||
+    'U';
   return (
     <div className={style.user}>
       <span className={style.userName}>{user?.name}</span>
@@ -19,9 +23,7 @@ export const UserLogo = () => {
       ) : (
         <div className={style.placeholder}>
           {user?.name ? user.name[0] : 'User'}
-          <svg className={style.iconUser} width="28" height="28">
-            <use href="/public/images/icons.svg#icon-outline"></use>
-          </svg>
+          <div className={style.avatar}>{firstLetter}</div>
         </div>
       )}
     </div>
