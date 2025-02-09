@@ -38,7 +38,7 @@
 }
 .closeBtnIcon {
   fill: none;
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
   stroke-width: 1.5px;
 }
 .title {
@@ -64,7 +64,7 @@
   line-height: 18px;
   border: none;
   background-color: transparent;
-  color: #407bff;
+  color: var(--prim-color-blue);
   min-width: 134px;
   height: 18px;
   gap: 8px;
@@ -73,7 +73,7 @@
   cursor: pointer;
 }
 .uploadButtonIcon {
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
   fill: none;
 }
 
@@ -132,7 +132,7 @@
   font-weight: 400;
   line-height: 20px;
   text-align: left;
-  color: #407bff;
+  color: var(--prim-color-blue);
   min-width: 256px;
   height: 44px;
   padding: 12px 10px;
@@ -175,7 +175,7 @@
 }
 .iconEye {
   fill: none;
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
 }
 .radioWrapper {
   font-size: 16px;
@@ -188,12 +188,12 @@
 .input:invalid,
 .inputPassword.invalid,
 .input.invalid {
-  border: 1px solid #ef5050;
-  color: #ef5050;
+  border: 1px solid var(--second-del-error-color);
+  color: var(--second-del-error-color);
 }
 
 .errorMessage {
-  color: #ef5050;
+  color: var(--second-del-error-color);
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
@@ -206,9 +206,9 @@
   padding: 8px 30px;
   gap: 10px;
   border-radius: 10px;
-  background-color: #407bff;
+  background-color: var(--prim-color-blue);
   border: none;
-  color: #ffffff;
+  color: var(--prim-color-white);
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;

@@ -36,8 +36,8 @@
      }
     
      .inputError{
-     border-color: #ef5050;
-       color: #ef5050;
+     border-color: var(--second-del-error-color);
+       color: var(--second-del-error-color);
      }
     
     
@@ -63,7 +63,7 @@
     
     
      .input:focus {
-       border: 1px solid #2f2f2f66;
+       border: 1px solid var(--prim-color-black)66;
        color: inherit;
      }
     
@@ -75,12 +75,12 @@
      }
     
      inputError{
-       border-color: #ef5050;
-       color:#ef5050
+       border-color: var(--second-del-error-color);
+       color:var(--second-del-error-color)
      }
     
      .errorMessage {
-       color: #ef5050;
+       color: var(--second-del-error-color);
        font-size: 14px;
        margin-top: 5px;
      }
@@ -94,9 +94,9 @@
      color: #fff;
        border: none;
        cursor: pointer;
-       background-color: #407bff;
+       background-color: var(--prim-color-blue);
        border-radius: 10px;
-       box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+       box-shadow: var(--box-shadow-btn);
        transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     
      }
@@ -111,7 +111,7 @@
          font-weight: 400;
          font-size: 16px;
          line-height: 1.25;
-         color: #407bff;
+         color: var(--prim-color-blue);
          display: flex;
         text-align: left;
          gap: 4px;

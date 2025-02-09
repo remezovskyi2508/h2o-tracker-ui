@@ -21,7 +21,7 @@
   font-size: 16px;
   line-height: 1.33;
   text-align: left;
-  color: #407bff;
+  color: var(--prim-color-blue);
 }
 
 .dial {
@@ -29,7 +29,7 @@
   height: 8px;
   margin-left: 7px;
   margin-right: 17px;
-  background: #ecf2ff;
+  background: var(--second-background-color);
   border-radius: 10px;
   overflow: visible;
 }
@@ -39,8 +39,8 @@
   /* z-index: 10; */
   width: 14px;
   height: 14px;
-  background-color: white;
-  border: 2px solid #407bff;
+  background-color:var(--prim-color-white);
+  border: 2px solid var(--prim-color-blue);
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
@@ -51,7 +51,7 @@
 .factpercent {
   height: 8px;
   border-radius: 5px;
-  background-color: #407bff;
+  background-color: var(--prim-color-blue);
   /* background: #9ebbff; */
   transition: width 0.3s ease-in-out;
 }
@@ -63,7 +63,7 @@
   bottom: 12px;
   left: 50%;
   font-size: 14px;
-  color: #407bff;
+  color: var(--prim-color-blue);
   transform: translateX(-50%);
   /*  margin: 0; */
   font-weight: 500;
@@ -76,7 +76,7 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  color: #407bff;
+  color: var(--prim-color-blue);
 }
 .percent_icon {
   display: flex;
@@ -90,7 +90,7 @@
   font-size: 12px;
   line-height: 1.33;
   text-align: center;
-  color: #407bff;
+  color: var(--prim-color-blue);
 }
 
 .icon {
@@ -117,24 +117,24 @@
   padding: 6px 76px;
   min-width: 280px;
   height: 36px;
-  background: #407bff;
+  background: var(--prim-color-blue);
   border: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.25;
   text-align: center;
-  color: #fff;
+  color: var(--prim-color-white);
   cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  box-shadow: var(--box-shadow-btn);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
-  background: #407bff;
+  box-shadow: var(--box-shadow-btn)-activ;
+  background: var(--prim-color-blue);
 }
 
 .icon_btn {
-  color: white;
+  color:var(--prim-color-white);
   margin-right: 10px;
   width: 24px;
   height: 24px;

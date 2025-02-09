@@ -1,7 +1,7 @@
 .todayWaterListBox{
     max-width: 264px;
     height: 258px;
-    background-color: #ECF2FF;
+    background-color: var(--second-background-color);
 }
 
 .waterListToday{
@@ -31,7 +31,7 @@
 }
 
 .waterListBox::-webkit-scrollbar-thumb {
-    background: #407BFF; 
+    background: var(--prim-color-blue); 
     border-radius: 8px;
 }
 
@@ -58,7 +58,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 125%;
-    color: #407BFF;
+    color: var(--prim-color-blue);
     width: 73px;
 }
 

@@ -86,7 +86,7 @@ const UserLogoutModal =
               >
                 <path
                   d="M6 18L18 6M6 6L18 18"
-                  stroke="#407BFF"
+                  stroke="var(--prim-color-blue)"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -1,6 +1,6 @@
 .calendarWrapper {
   width: 264px;
-  background-color: #ecf2ff;
+  background-color: var(--second-background-color);
 }
 .calendarHeader {
   display: flex;
@@ -34,11 +34,11 @@
 .dateTitle {
   display: flex;
   align-items: center;
-  color: #407bff;
+  color: var(--prim-color-blue);
   padding: 0 12px;
 }
 .icon {
-  fill: #407bff;
+  fill: var(--prim-color-blue);
   width: 14px;
   height: 14px;
 }
@@ -66,8 +66,8 @@
   line-height: 1.29;
   border-radius: 50%;
   border: 1px solid #000;
-  background-color: #ffffff;
-  border-color: #ff9d43;
+  background-color: var(--prim-color-white);
+  border-color: var(--second-warning-color);
 }
 .calendarCircleEmpty {
   border-color: transparent;
