@@ -6,14 +6,16 @@ import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div className={css.wrapper}>
-      <div className={css.leftSide}>
-        <DailyNorma />
-        <WaterRatioPanel />
-      </div>
-      <div className={css.rightSide}>
-        <TodayWaterList />
-        <MonthStatsTable />
+    <div className={css.background}>
+      <div className={css.wrapper}>
+        <div className={css.leftSide}>
+          <DailyNorma />
+          <WaterRatioPanel />
+        </div>
+        <div className={css.rightSide}>
+          <TodayWaterList />
+          <MonthStatsTable />
+        </div>
       </div>
     </div>
   );

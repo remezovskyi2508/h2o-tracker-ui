@@ -1,10 +1,21 @@
+.background {
+  background-image: url('/public/images/mobilebottle.svg'),
+    url('/public/images/bobbleMob.svg');
+  background-size: 280px 208px, 320px 1328px;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center 82px, center 32px;
+  width: 100vw;
+  height: 100vh;
+}
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 0 20px;
-  margin: 20px 0 40px;
+  margin: 24px 0 40px;
   gap: 40px;
+  height: 100vh;
 }
 .rightSide {
   display: flex;
@@ -20,19 +31,23 @@
 .leftSide {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 232px;
   width: 280px;
-  height: 492px;
-  /*   background-color: burlywood; */
 }
-@media screen and (min-width: 600px) {
-  .wrapper {
+/* @media screen and (min-width: 600px) { */
+/*  .wrapper {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
-  }
-}
+  } }*/
+
 @media screen and (min-width: 768px) {
+  .background {
+    background-image: url('/public/images/tabletbottle.svg'),
+      url('/public/images/bobbleTab.svg');
+    background-size: 518px 386px, 768px 1280px;
+    background-position: center 6px, center 4px;
+  }
   .wrapper {
     padding: 0 32px;
     margin: 40px 0 44px;
@@ -41,12 +56,19 @@
     padding: 32px 24px;
     width: 704px;
   }
+
   .leftSide {
     width: 704px;
-    height: 404px;
+    gap: 326px;
   }
 }
 @media screen and (min-width: 1440px) {
+  .background {
+    background-image: url('/public/images/desctopbottle.svg'),
+      url('/public/images/bobbleDesk.svg');
+    background-size: 738px 548px, 1404px 582px;
+    background-position: 24px 30px, 14px 10px;
+  }
   .wrapper {
     flex-wrap: nowrap;
     flex-direction: unset;
@@ -54,9 +76,7 @@
     gap: 32px;
     height: 680px;
   }
-  .leftSide {
-    padding: 32px 0 16px;
-  }
+
   .rightSide {
     padding: 32px 24px;
     width: 592px;
@@ -64,6 +84,6 @@
   .leftSide {
     justify-content: space-between;
     width: 592px;
-    height: 680px;
+    padding: 32px 16px 0px 16px;
   }
 }
