@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   addWater,
   fetchWaterToday,
+  fetchWaterMonth,
   updateWater,
 } from '../../redux/water/operations.js';
 import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
@@ -17,6 +18,10 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
     date: '',
     waterVolume: data ? data.waterVolume : 50,
   });
+
+  const today = new Date();
+  const year = today.getFullYear(); 
+  const month = today.getMonth() + 1;
 
   const oldDate = data
     ? `${new Date(data.date)
@@ -85,6 +90,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
         const result = dispatch(addWater(waterData));
         if (!result.error) {
           dispatch(fetchWaterToday());
+          dispatch(fetchWaterMonth({year, month}));
           onClose();
         }
         break;
@@ -99,6 +105,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
         );
         if (!result.error) {
           dispatch(fetchWaterToday());
+          dispatch(fetchWaterMonth({year, month}));
           onClose();
         }
         break;
