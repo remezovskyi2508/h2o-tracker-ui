@@ -92,9 +92,9 @@ export const updateWater = createAsyncThunk(
     try {
       const persistToken = localStorage.getItem('persist:auth');
       const token = parseToken(persistToken);
-      const response = await waterInstance.post(
+      const response = await waterInstance.patch(
         `/water/${id}`,
-        { waterVolume },
+        { waterVolume, date },
         {
           headers: {
             Authorization: `Bearer ${token}`,
