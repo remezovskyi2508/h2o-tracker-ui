@@ -12,14 +12,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import waterReducer from './water/slice';
-// import filtersReducer from './filters/slice';
 import authReducer from './auth/slice';
-
-// const contactConfig = {
-//   key: 'contactsData',
-//   storage,
-//   whitelist: ['contacts'],
-// };
+import { userInfoReducer } from './user/slice.js';
 
 const authConfig = {
   key: 'auth',
@@ -29,7 +23,7 @@ const authConfig = {
 
 const rootReducer = combineReducers({
   water: waterReducer,
-  // filters: filtersReducer,
+  userInfo: userInfoReducer,
   auth: persistReducer(authConfig, authReducer),
 });
 

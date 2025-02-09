@@ -17,7 +17,6 @@ li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  overflow: hidden;
 }
 
 .wrapper {
@@ -193,7 +192,7 @@ li {
       url('/public/images/bottleDesk.svg');
     background-size: contain, contain; /* Масштабування без спотворень */
     background-repeat: no-repeat, no-repeat; /* Без повторення */
-    background-position: center, center bottom; /* Вирівнюємо по центру і вниз */
+    background-position: center, bottom - 50; /* Вирівнюємо по центру і вниз */
   }
 
   .wrapper {

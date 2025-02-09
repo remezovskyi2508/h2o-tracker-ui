@@ -1,6 +1,3 @@
-.no-scroll {
-  overflow: hidden;
-}
 /* Styles for Mobile devices */
 .modalContent {
   background: white;
@@ -11,6 +8,10 @@
   overflow: auto;
   min-width: 280px;
   min-height: 852px;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 .modalBackdrop {
   background: rgba(0, 0, 0, 0.8);
@@ -24,6 +25,7 @@
   align-items: center;
   padding: 20px;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .closeBtn {
@@ -41,6 +43,7 @@
   stroke: var(--prim-color-blue);
   stroke-width: 1.5px;
 }
+
 .title {
   font-size: 26px;
   font-weight: 500;
@@ -77,13 +80,6 @@
   fill: none;
 }
 
-.photoPreview {
-  width: 80px;
-  height: 80px;
-  border: none;
-  border-radius: 50%;
-  object-fit: cover;
-}
 .initials {
   width: 80px;
   height: 80px;
@@ -98,7 +94,14 @@
   font-weight: 500;
   color: #fff;
 }
-
+.photoPreview {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: transparent;
+}
 .label {
   font-size: 18px;
   font-weight: 500;
@@ -185,9 +188,14 @@
   display: flex;
   gap: 24px;
 }
+.radio {
+  display: flex;
+  gap: 8px;
+}
 .input:invalid,
 .inputPassword.invalid,
-.input.invalid {
+.input.invalid, 
+.inputPassword:invalid .invalid{
   border: 1px solid var(--second-del-error-color);
   color: var(--second-del-error-color);
 }
@@ -197,7 +205,6 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
-  margin-top: 4px;
 }
 
 .btnSave {
@@ -216,6 +223,7 @@
   text-align: center;
   cursor: pointer;
   margin-top: 12px;
+  display: block;
 }
 
 /* Styles for Tablet devices */
@@ -232,9 +240,7 @@
     width: 160px;
     height: 44px;
     margin-left: auto;
-    position: absolute;
-    right: 24px;
-    bottom: 32px;
+    margin-right: 24px;
   }
   .input,
   .inputPassword {

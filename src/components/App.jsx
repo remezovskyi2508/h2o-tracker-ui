@@ -24,11 +24,13 @@ const SignupPage = lazy(() => import('../pages/SignupPage/SignupPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
+  // const token = useSelector(selectToken);
 
   // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  //   if(token){
+  //     isLoggedIn = true;
+  //   }
+  // });
 
   // if (isRefreshing) {
   //   return <div className={css.loader}>Loading...</div>;

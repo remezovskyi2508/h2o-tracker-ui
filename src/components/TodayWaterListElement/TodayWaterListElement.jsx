@@ -38,7 +38,7 @@ const TodayWaterListElement = ({item, handleDelete}) => {
               isOpen={isOpenModal}
               onClose={onCloseRedactModal} 
               operationType={operationType} 
-              item={item}
+              data={item}
             />}
           </div>
           <div>

@@ -6,6 +6,9 @@ import UserLogoModal from '../UserLogoModal/UserLogoModal';
 export const UserLogo = ({ userName, userEmail }) => {
   const [user, setUser] = useState(null);
   const [isUserModalOpen, setUserModalOpen] = useState(false);
+  const toggleModal = () => {
+    setUserModalOpen(prev => !prev);
+  };
   useEffect(() => {
     axios
       .get('/api/user')
@@ -18,34 +21,27 @@ export const UserLogo = ({ userName, userEmail }) => {
     'U';
   return (
     <>
-      <div className={style.user}>
-        <span className={style.userName}>{user?.name}</span>
-        {user?.photo ? (
-          <img src={user.photo} alt="Avatar" width="28" height="28" />
-        ) : (
-          <div className={style.placeholder}>
-            {user?.name ? user.name[0] : 'User'}
-            <div className={style.avatar}>{firstLetter}</div>
-          </div>
-        )}
-      </div>
-      <div>
-        <button
-          onClick={() => setUserModalOpen(true)}
-          type="button"
-          className={style.svgBtn}
-        >
+      <button onClick={toggleModal} type="button" className={style.svgBtn}>
+        <div className={style.user}>
+          <span className={style.userName}>{user?.name}</span>
+          {user?.avatar ? (
+            <img src={user.avatar} alt="Avatar" width="28" height="28" />
+          ) : (
+            <div className={style.placeholder}>
+              {user?.name ? user.name[0] : 'User'}
+              <div className={style.avatar}>{firstLetter}</div>
+            </div>
+          )}
+        </div>
+        <div>
           <svg className={style.icon} width="12" height="7">
             <use href="/public/images/icons.svg#icon-vector"></use>
           </svg>
-        </button>
-      </div>
-      <div className={style.wrapper}>
-        <UserLogoModal
-          className={style.userModal}
-          isOpen={isUserModalOpen}
-          onClose={() => setUserModalOpen(false)}
-        />
+        </div>
+      </button>
+
+      <div className={`${style.wrapper} ${isUserModalOpen ? style.show : ''}`}>
+        <UserLogoModal isOpen={isUserModalOpen} onClose={toggleModal} />
       </div>
     </>
   );

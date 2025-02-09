@@ -49,6 +49,11 @@
     padding: 0;
 }
 
+.plusSvgPath {
+    stroke: #407BFF;
+    transition: stroke 0.2s ease-in-out;
+}
+
 .plusSvg{
     width: 16px;
     height: 16px;
@@ -60,6 +65,15 @@
     line-height: 125%;
     color: var(--prim-color-blue);
     width: 73px;
+    transition: color 0.2s ease-in-out;
+}
+
+.AddWaterModalBtn:hover .AddWaterBtnText {
+    color: #FF9D43;
+}
+
+.AddWaterModalBtn:hover .plusSvgPath {
+    stroke: #FF9D43;
 }
 
 @media screen and (min-width: 768px) {
