@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { login, logout, register, resetPassword } from '../auth/operations';
+import { persistor } from '../store';
 
 const initialState = {
   user: {
@@ -21,12 +22,9 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
         state.loading = false;
-        state.isLoggedIn = true;
         state.error = null;
-        state.token = action.payload.token;
-        state.user = action.payload.user;
       })
       .addCase(register.rejected, (state, action) => {
         state.loading = false;
@@ -40,7 +38,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;
-        state.token = action.payload.token;
+        state.token = action.payload.data.accessToken;
         state.user = action.payload.user;
       })
       .addCase(login.rejected, (state, action) => {
@@ -52,6 +50,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logout.fulfilled, () => {
+        persistor.purge(); // очищення Persist store
         return initialState;
       })
       .addCase(logout.rejected, (state, action) => {

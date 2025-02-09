@@ -6,10 +6,10 @@ import { Logo } from '../Logo/Logo.jsx';
 import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import UserAuth from '../UserAuth/UserAuth.jsx';
 import { Link } from 'react-router-dom';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 const Header = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const userData = useSelector(state => state.auth.user);
 

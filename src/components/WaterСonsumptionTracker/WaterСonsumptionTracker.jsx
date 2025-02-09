@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './WaterСonsumptionTracker.module.css';
+import { NavLink } from 'react-router-dom'; // Импортируем NavLink
 import BenefitItem from '../BenefitItem/BenefitItem';
 
 const WaterСonsumptionTracker = () => {
@@ -13,7 +14,9 @@ const WaterСonsumptionTracker = () => {
         <BenefitItem icon="icon-statisctic" text="View statistics" />
         <BenefitItem icon="icon-wrench" text="Personal rate setting" />
       </ul>
-      <button className={css.signup_btn_tracker}>Try tracker</button>
+      <NavLink to="/signup">
+        <button className={css.signup_btn_tracker}>Try tracker</button>
+      </NavLink>
     </div>
   );
 };

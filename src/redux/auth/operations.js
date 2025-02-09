@@ -23,8 +23,6 @@ export const register = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.post('/auth/register', formData);
-      console.log('RegisterData: ', data);
-      setToken(data.token);
       return data;
     } catch (error) {
       console.error('Error response: ', error.response);
@@ -42,8 +40,8 @@ export const login = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.post('/auth/login', formData);
-      console.log('LoginData: ', data);
-      setToken(data.token);
+      const accessToken = data.data.accessToken;
+      setToken(accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,16 +52,13 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const { data } = await authInstance.post('/users/logout');
-
     clearToken();
-
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-//add functio to autoLogin
 export const resetPassword = createAsyncThunk(
   'auth/reset-pwd',
   async (formData, thunkAPI) => {
@@ -73,10 +68,28 @@ export const resetPassword = createAsyncThunk(
     // }
     try {
       const { data } = await authInstance.put('/auth/reset-pwd', formData);
-      console.log('ResetData: ', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refreshUser',
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
+
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Failed to refresh user');
+    }
+
+    try {
+      const { data } = await authInstance.get('/user/current');
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

@@ -5,13 +5,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
- width: 100%;
-
   position: relative; 
-
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 320px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .formSection {
@@ -22,7 +19,7 @@
 }
 
 .background {
-  position: absolute;
+ position: absolute;
   width: 280px;
   height: 210px;
   background-image: url('/images/mobilebottle.svg');
@@ -31,8 +28,9 @@
   background-position: center;
   overflow: hidden;
   left: 20px;
-  top: 450px;
-  pointer-events: none;
+  top: 380px;
+  pointer-events: none; 
+
 }
 
 
@@ -40,7 +38,8 @@
  /* ================= TABLET VERSION ================== */ 
  @media screen and (min-width: 768px) {
   .signinPageContainer {
-    max-width: 768px;
+    width:768px;
+    padding: 0 32px;
     display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -68,7 +67,8 @@
 /* ================= DESKTOP VERSION ================== */
  @media screen and (min-width: 1440px) {
   .signinPageContainer {
-    max-width: 1200px;
+    width:1440px;
+        padding: 0 112px;
     margin-left: 18px;
     margin-right: 18px;
     display: flex;
@@ -86,10 +86,11 @@
     background-image: url('/images/desctopbottle.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: left center;
     left: -8%;
-    top: -5%;
-    pointer-events: none;
+    top: 2%;
+  pointer-events: none;
+    
   }
 
   .formSection {
