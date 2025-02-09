@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, logout, register, resetPassword } from '../auth/operations';
+import { login, logout, register } from '../auth/operations';
 import { persistor } from '../store';
 
 const initialState = {
-  user: {
-    email: null,
-    password: null,
-  },
+  data: {},
   token: null,
   error: null,
   loading: false,
@@ -22,7 +19,7 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state) => {
+      .addCase(register.fulfilled, state => {
         state.loading = false;
         state.error = null;
       })
@@ -39,7 +36,7 @@ const authSlice = createSlice({
         state.error = null;
         state.isLoggedIn = true;
         state.token = action.payload.data.accessToken;
-        state.user = action.payload.user;
+        state.data = action.payload.data;
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -56,18 +53,6 @@ const authSlice = createSlice({
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
-      .addCase(resetPassword.pending, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(resetPassword.fulfilled, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(resetPassword.rejected, state => {
-        state.loading = true;
-        state.error = null;
       });
   },
 });

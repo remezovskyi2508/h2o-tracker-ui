@@ -1,6 +1,3 @@
-.no-scroll {
-  overflow: hidden;
-}
 /* Styles for Mobile devices */
 .modalContent {
   background: white;
@@ -11,6 +8,10 @@
   overflow: auto;
   min-width: 280px;
   min-height: 852px;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 .modalBackdrop {
   background: rgba(0, 0, 0, 0.8);
@@ -24,6 +25,7 @@
   align-items: center;
   padding: 20px;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .closeBtn {
@@ -78,13 +80,6 @@
   fill: none;
 }
 
-.photoPreview {
-  width: 80px;
-  height: 80px;
-  border: none;
-  border-radius: 50%;
-  object-fit: cover;
-}
 .initials {
   width: 80px;
   height: 80px;
@@ -99,7 +94,14 @@
   font-weight: 500;
   color: #fff;
 }
-
+.photoPreview {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: transparent;
+}
 .label {
   font-size: 18px;
   font-weight: 500;

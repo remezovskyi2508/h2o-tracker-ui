@@ -1,17 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchUserInfo,
+  resetPassword,
   updateUserAvatar,
   updateUserInfo,
 } from './operations.js';
 
 const initialState = {
-  userInfo: {
-    avatar: null,
-    name: '',
-    email: '',
-    gender: '',
-  },
+  userInfo: {},
   loading: false,
   error: null,
 };
@@ -28,14 +24,11 @@ const userInfoSlice = createSlice({
       .addCase(fetchUserInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.userInfo.name = action.payload.name;
-        state.userInfo.email = action.payload.email;
-        state.userInfo.gender = action.payload.gender;
-        state.userInfo.avatar = action.payload.avatar;
+        state.userInfo = action.payload.data;
       })
       .addCase(fetchUserInfo.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(updateUserAvatar.pending, state => {
         state.loading = true;
@@ -57,13 +50,23 @@ const userInfoSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.userInfo.name = action.payload.name;
-        state.userInfo.email = action.payload.email;
-        state.userInfo.gender = action.payload.gender;
+        state.userInfo = action.payload;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(resetPassword.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resetPassword.fulfilled, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resetPassword.rejected, state => {
+        state.loading = true;
+        state.error = null;
       });
   },
 });

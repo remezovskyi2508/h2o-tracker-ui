@@ -3,20 +3,29 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './SettingModal.module.css';
 import toast, { Toaster } from 'react-hot-toast';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  fetchUserInfo,
   updateUserAvatar,
   updateUserInfo,
+  resetPassword,
 } from '../../redux/user/operations.js';
 import { selectUserInfo } from '../../redux/user/selectors.js';
-import { resetPassword } from '../../redux/auth/operations.js';
+import { selectUserId } from '../../redux/auth/selectors.js';
 
 Modal.setAppElement('#root');
 
 const SettingModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserInfo);
+  const userId = useSelector(selectUserId);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserInfo(userId));
+    }
+  }, [dispatch, userId]);
 
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
@@ -32,16 +41,7 @@ const SettingModal = ({ isOpen, onClose }) => {
       .max(64, 'Password must be no more than 64 characters')
       .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
   });
-  const initialValues = {
-    id: '67a77a74dbb857111ba82731',
-    avatar: userData.avatar || null,
-    gender: userData.gender || 'female',
-    name: userData.name || '',
-    email: userData.email || '',
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: '',
-  };
+
   const [showPassword, setShowPassword] = useState({
     oldPassword: false,
     newPassword: false,
@@ -56,11 +56,12 @@ const SettingModal = ({ isOpen, onClose }) => {
       const formData = new FormData();
       formData.append('avatar', file);
       const response = await dispatch(
-        updateUserAvatar({ id: '67a77a74dbb857111ba82731', formData })
+        updateUserAvatar({ id: userId, formData })
       ).unwrap();
 
-      if (response?.avatar) {
-        setFieldValue('avatar', response.avatar);
+      if (response?.data.avatarUrl) {
+        setFieldValue('avatar', response.data.avatarUrl);
+        dispatch(fetchUserInfo(userId));
       } else {
         throw new Error('Invalid avatar response');
       }
@@ -72,13 +73,31 @@ const SettingModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleSubmit = async (values, actions) => {
-    try {
-      await dispatch(updateUserInfo(values)).unwrap();
-      if (values.oldPassword && values.newPassword) {
-        await dispatch(resetPassword(values)).unwrap();
+  const handleSubmit = async values => {
+    const fieldsToCheck = ['gender', 'email', 'name'];
+    const changedValues = {};
+
+    fieldsToCheck.forEach(key => {
+      if (values[key] !== userData[key]) {
+        changedValues[key] = values[key];
       }
-      actions.resetForm({ values });
+    });
+
+    try {
+      if (Object.keys(changedValues).length > 0) {
+        await dispatch(updateUserInfo({ id: userId, changedValues })).unwrap();
+      }
+
+      if (values.oldPassword && values.newPassword) {
+        await dispatch(
+          resetPassword({
+            id: userId,
+            oldPassword: values.oldPassword,
+            newPassword: values.newPassword,
+          })
+        ).unwrap();
+      }
+      dispatch(fetchUserInfo(userId));
       toast.success('Profile updated successfully!');
     } catch (error) {
       console.log(error);
@@ -122,7 +141,16 @@ const SettingModal = ({ isOpen, onClose }) => {
 
       <h2 className={css.title}>Setting</h2>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          id: userId,
+          avatar: userData?.avatar?.url || null,
+          gender: userData?.gender || 'female',
+          name: userData?.name || '',
+          email: userData?.email || '',
+          oldPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+        }}
         onSubmit={handleSubmit}
         validationSchema={SettingSchema}
       >
@@ -144,13 +172,13 @@ const SettingModal = ({ isOpen, onClose }) => {
                 <input
                   type="file"
                   id="avatar"
-                  name="avar"
+                  name="avatar"
                   className={css.photo}
                   accept="image/*"
                   onChange={e => handleUpdateAvatar(e, setFieldValue)}
                   style={{ display: 'none' }}
                 />
-                <div className={css.initials}>
+                <div>
                   {values?.avatar ? (
                     <img
                       src={values.avatar}
@@ -158,8 +186,10 @@ const SettingModal = ({ isOpen, onClose }) => {
                       className={css.photoPreview}
                     />
                   ) : (
-                    values?.name?.[0]?.toUpperCase() ||
-                    values?.email?.split('@')[0]?.[0]?.toUpperCase()
+                    <div className={css.initials}>
+                      {values?.name?.[0]?.toUpperCase() ||
+                        values?.email?.split('@')[0]?.[0]?.toUpperCase()}
+                    </div>
                   )}
                 </div>
               </div>

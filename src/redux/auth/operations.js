@@ -59,22 +59,6 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const resetPassword = createAsyncThunk(
-  'auth/reset-pwd',
-  async (formData, thunkAPI) => {
-    // {
-    //   "oldPassword": "password123",
-    //   "newPassword": "password098"
-    // }
-    try {
-      const { data } = await authInstance.put('/auth/reset-pwd', formData);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
