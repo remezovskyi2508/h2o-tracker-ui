@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import style from './Header.module.css';
 import { Logo } from '../Logo/Logo.jsx';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+// import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
 
 const Header = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const isLoggedIn = true;
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = true;
   const [isUserModalOpen, setUserModalOpen] = useState(false);
 
   return (
