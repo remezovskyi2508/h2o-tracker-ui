@@ -2,23 +2,31 @@ import Modal from 'react-modal';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './SettingModal.module.css';
-// import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchUserInfo,
+  updateUserAvatar,
+  updateUserInfo,
+  resetPassword,
+} from '../../redux/user/operations.js';
+import { selectUserInfo } from '../../redux/user/selectors.js';
+import { selectUserId } from '../../redux/auth/selectors.js';
 
 Modal.setAppElement('#root');
 
 const SettingModal = ({ isOpen, onClose }) => {
-  // const dispatch = useDispatch();
-  // const userData = useSelector(selectUser);
-  const [userData, setUserData] = useState({
-    photo:
-      'https://aperepelitsa.com.ua/assets/image/portfolio/woman/DSC08276.jpg',
-    name: 'Anna',
-    email: 'example@mail.com',
-    _id: '111',
-  });
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUserInfo);
+  const userId = useSelector(selectUserId);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserInfo(userId));
+    }
+  }, [dispatch, userId]);
+
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
     email: Yup.string().email('Invalid email address'),
@@ -33,28 +41,63 @@ const SettingModal = ({ isOpen, onClose }) => {
       .max(64, 'Password must be no more than 64 characters')
       .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
   });
-  const initialValues = {
-    id: userData._id,
-    photo: userData.photo || null,
-    gender: userData.gender || 'woman',
-    name: userData.name || '',
-    email: userData.email || '',
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: '',
-  };
+
   const [showPassword, setShowPassword] = useState({
     oldPassword: false,
     newPassword: false,
     confirmPassword: false,
   });
 
-  const handleSubmit = async (values, actions) => {
+  const handleUpdateAvatar = async (event, setFieldValue) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
     try {
-      // await dispatch(updateUser(values));
-      console.log(values);
-      setUserData(values);
-      actions.resetForm({ values });
+      const formData = new FormData();
+      formData.append('avatar', file);
+      const response = await dispatch(
+        updateUserAvatar({ id: userId, formData })
+      ).unwrap();
+
+      if (response?.data.avatarUrl) {
+        setFieldValue('avatar', response.data.avatarUrl);
+        dispatch(fetchUserInfo(userId));
+      } else {
+        throw new Error('Invalid avatar response');
+      }
+    } catch (error) {
+      console.error('Avatar update failed:', error);
+      toast.error(
+        error.message || 'An error occurred while updating the avatar.'
+      );
+    }
+  };
+
+  const handleSubmit = async values => {
+    const fieldsToCheck = ['gender', 'email', 'name'];
+    const changedValues = {};
+
+    fieldsToCheck.forEach(key => {
+      if (values[key] !== userData[key]) {
+        changedValues[key] = values[key];
+      }
+    });
+
+    try {
+      if (Object.keys(changedValues).length > 0) {
+        await dispatch(updateUserInfo({ id: userId, changedValues })).unwrap();
+      }
+
+      if (values.oldPassword && values.newPassword) {
+        await dispatch(
+          resetPassword({
+            id: userId,
+            oldPassword: values.oldPassword,
+            newPassword: values.newPassword,
+          })
+        ).unwrap();
+      }
+      dispatch(fetchUserInfo(userId));
       toast.success('Profile updated successfully!');
     } catch (error) {
       console.log(error);
@@ -67,25 +110,12 @@ const SettingModal = ({ isOpen, onClose }) => {
   const PasswordToggleButton = ({ isVisible, onClick }) => (
     <button className={css.btnShowPassword} type="button" onClick={onClick}>
       {isVisible ? (
-        <svg
-          className={css.iconEye}
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M2.03613 12.322C1.96712 12.1146 1.96712 11.8904 2.03613 11.683C3.42313 7.51 7.36013 4.5 12.0001 4.5C16.6381 4.5 20.5731 7.507 21.9631 11.678C22.0331 11.885 22.0331 12.109 21.9631 12.317C20.5771 16.49 16.6401 19.5 12.0001 19.5C7.36213 19.5 3.42613 16.493 2.03613 12.322Z" />
-          <path d="M15 12C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 15 12 15C11.2044 15 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 12C9 11.2044 9.31607 10.4413 9.87868 9.87868C10.4413 9.31607 11.2044 9 12 9C12.7956 9 13.5587 9.31607 14.1213 9.87868C14.6839 10.4413 15 11.2044 15 12Z" />
+        <svg className={css.iconEye} width="16" height="16">
+          <use href="../../../public/images/symbol-defs.svg#icon-eye"></use>
         </svg>
       ) : (
-        <svg
-          className={css.iconEye}
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M3.98008 8.223C3.04454 9.32718 2.3479 10.6132 1.93408 12C3.22608 16.338 7.24408 19.5 12.0001 19.5C12.9931 19.5 13.9531 19.362 14.8631 19.105M6.22808 6.228C7.9407 5.09781 9.94816 4.49682 12.0001 4.5C16.7561 4.5 20.7731 7.662 22.0651 11.998C21.357 14.3673 19.8371 16.4115 17.7721 17.772M6.22808 6.228L3.00008 3M6.22808 6.228L9.87808 9.878M17.7721 17.772L21.0001 21M17.7721 17.772L14.1221 14.122C14.4007 13.8434 14.6217 13.5127 14.7725 13.1486C14.9232 12.7846 15.0008 12.3945 15.0008 12.0005C15.0008 11.6065 14.9232 11.2164 14.7725 10.8524C14.6217 10.4883 14.4007 10.1576 14.1221 9.879C13.8435 9.6004 13.5127 9.3794 13.1487 9.22863C12.7847 9.07785 12.3946 9.00025 12.0006 9.00025C11.6066 9.00025 11.2164 9.07785 10.8524 9.22863C10.4884 9.3794 10.1577 9.6004 9.87908 9.879M14.1211 14.121L9.88008 9.88" />
+        <svg className={css.iconEye} width="16" height="16">
+          <use href="../../../public/images/symbol-defs.svg#icon-eye-slash"></use>
         </svg>
       )}
     </button>
@@ -100,23 +130,27 @@ const SettingModal = ({ isOpen, onClose }) => {
       bodyOpenClassName="no-scroll"
       overlayClassName={css.modalBackdrop}
     >
+      <Toaster />
       <div className={css.closeBtnWrapper}>
         <button className={css.closeBtn} onClick={onClose}>
-          <svg
-            className={css.closeBtnIcon}
-            width="12"
-            height="12"
-            viewBox="0 0 14 14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M1 13L13 1M1 1L13 13" />
+          <svg className={css.closeBtnIcon} width="24" height="24">
+            <use href="../../../public/images/symbol-defs.svg#icon-close"></use>
           </svg>
         </button>
       </div>
 
       <h2 className={css.title}>Setting</h2>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          id: userId,
+          avatar: userData?.avatar?.url || null,
+          gender: userData?.gender || 'female',
+          name: userData?.name || '',
+          email: userData?.email || '',
+          oldPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+        }}
         onSubmit={handleSubmit}
         validationSchema={SettingSchema}
       >
@@ -128,49 +162,36 @@ const SettingModal = ({ isOpen, onClose }) => {
                 <button
                   type="button"
                   className={css.uploadButton}
-                  onClick={() => document.getElementById('photo').click()}
+                  onClick={() => document.getElementById('avatar').click()}
                 >
-                  <svg
-                    className={css.uploadButtonIcon}
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M3 16.5V18.75C3 19.3467 3.23705 19.919 3.65901 20.341C4.08097 20.7629 4.65326 21 5.25 21H18.75C19.3467 21 19.919 20.7629 20.341 20.341C20.7629 19.919 21 19.3467 21 18.75V16.5M7.5 7.5L12 3M12 3L16.5 7.5M12 3V16.5" />
+                  <svg className={css.uploadButtonIcon} width="16" height="16">
+                    <use href="../../../public/images/symbol-defs.svg#icon-arrow-up-tray"></use>
                   </svg>
                   Upload a photo
                 </button>
                 <input
                   type="file"
-                  id="photo"
-                  name="photo"
+                  id="avatar"
+                  name="avatar"
                   className={css.photo}
                   accept="image/*"
-                  onChange={e => {
-                    const file = e.target.files[0];
-                    setFieldValue('photo', file);
-                  }}
+                  onChange={e => handleUpdateAvatar(e, setFieldValue)}
                   style={{ display: 'none' }}
                 />
-
-                {values.photo ? (
-                  <img
-                    src={
-                      typeof values.photo === 'string'
-                        ? values.photo
-                        : URL.createObjectURL(values.photo)
-                    }
-                    alt="User"
-                    className={css.photoPreview}
-                  />
-                ) : (
-                  <div className={css.initials}>
-                    {values?.photo ||
-                      values?.name?.[0]?.toUpperCase() ||
-                      values?.email?.split('@')[0]?.[0]?.toUpperCase()}
-                  </div>
-                )}
+                <div>
+                  {values?.avatar ? (
+                    <img
+                      src={values.avatar}
+                      alt="User"
+                      className={css.photoPreview}
+                    />
+                  ) : (
+                    <div className={css.initials}>
+                      {values?.name?.[0]?.toUpperCase() ||
+                        values?.email?.split('@')[0]?.[0]?.toUpperCase()}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             <div className={css.formGroupUserSetting}>
@@ -180,10 +201,11 @@ const SettingModal = ({ isOpen, onClose }) => {
                     Your gender identity
                     <div className={css.radioWrapper}>
                       <label className={css.radio}>
-                        <Field type="radio" name="gender" value="woman" /> Woman
+                        <Field type="radio" name="gender" value="female" />
+                        Woman
                       </label>
                       <label className={css.radio}>
-                        <Field type="radio" name="gender" value="man" /> Man
+                        <Field type="radio" name="gender" value="male" /> Man
                       </label>
                     </div>
                   </label>
@@ -232,7 +254,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                     <Field
                       type={showPassword.oldPassword ? 'text' : 'password'}
                       name="oldPassword"
-                      className={`${css.inputPassword} ${
+                      className={`${css.input} ${
                         errors.oldPassword ? css.invalid : ''
                       }`}
                       placeholder="Password"
@@ -259,10 +281,11 @@ const SettingModal = ({ isOpen, onClose }) => {
                     <Field
                       type={showPassword.newPassword ? 'text' : 'password'}
                       name="newPassword"
-                      className={`${css.inputPassword} ${
+                      className={`${css.input} ${
                         errors.newPassword ? css.invalid : ''
                       }`}
                       placeholder="Password"
+                      disabled={!values.oldPassword}
                     />
                     <PasswordToggleButton
                       isVisible={showPassword.newPassword}
@@ -286,11 +309,13 @@ const SettingModal = ({ isOpen, onClose }) => {
                     <Field
                       type={showPassword.confirmPassword ? 'text' : 'password'}
                       name="confirmPassword"
-                      className={`${css.inputPassword} ${
+                      className={`${css.input} ${
                         errors.confirmPassword ? css.invalid : ''
                       }`}
                       placeholder="Password"
+                      disabled={!values.oldPassword}
                     />
+
                     <PasswordToggleButton
                       isVisible={showPassword.confirmPassword}
                       onClick={() =>

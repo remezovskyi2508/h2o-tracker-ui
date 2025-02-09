@@ -67,5 +67,23 @@
 <path fill="#407bff" style="fill: var(--color1, #407bff)" d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
 </symbol>
 
+
+<!-- Icon for SettingModal -->
+<symbol id="icon-arrow-up-tray" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M4 22v3c0 1.657 1.343 3 3 3v0h18c1.657 0 3-1.343 3-3v0-3M10 10l6-6M16 4l6 6M16 4v18"></path>
+</symbol>
+<symbol id="icon-eye-slash" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M5.307 10.964c-1.203 1.412-2.138 3.094-2.702 4.937l-0.026 0.099c1.723 5.784 7.080 10 13.421 10 1.324 0 2.604-0.184 3.817-0.527M8.304 8.304c2.16-1.444 4.817-2.304 7.674-2.304 0.008 0 0.015 0 0.023 0h-0.001c6.341 0 11.697 4.216 13.42 9.997-0.985 3.228-3.008 5.891-5.673 7.666l-0.051 0.032M8.304 8.304l-4.304-4.304M8.304 8.304l4.867 4.867M23.696 23.696l4.304 4.304M23.696 23.696l-4.867-4.867c0.738-0.726 1.195-1.736 1.195-2.852 0-2.209-1.791-4-4-4-1.116 0-2.125 0.457-2.851 1.194l-0.001 0.001M18.829 18.828l-5.655-5.655"></path>
+</symbol>
+<symbol id="icon-eye" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M2.715 16.429c-0.044-0.127-0.069-0.274-0.069-0.426s0.025-0.299 0.072-0.435l-0.003 0.009c1.849-5.564 7.099-9.577 13.285-9.577 6.184 0 11.431 4.009 13.284 9.571 0.093 0.276 0.093 0.575 0 0.852-1.848 5.564-7.097 9.577-13.284 9.577-6.184 0-11.432-4.009-13.285-9.571z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M20 16c0 2.209-1.791 4-4 4s-4-1.791-4-4v0c0-2.209 1.791-4 4-4s4 1.791 4 4v0z"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path   stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M8 24l16-16M8 8l16 16"></path>
+</symbol>
+
+
+
 </defs>
 </svg>
