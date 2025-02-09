@@ -1,10 +1,9 @@
 .signinPageContainer {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 320px;
-  margin: 20px auto;
+  margin: 24px auto;
   padding: 0 20px;
   height: 100vh;
 }
@@ -68,7 +67,7 @@
   }
 
   .background {
-     order: -1;
+    order: -1;
     width: 916px;
     height: 680px;
     background-image: url('/images/desctopbottle.svg');
@@ -83,7 +82,6 @@
   .formSection {
     flex: auto;
     width: 384px;
-    height: 303px;
     order: 0;
   }
 }
