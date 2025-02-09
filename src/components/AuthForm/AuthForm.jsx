@@ -72,7 +72,7 @@ const AuthForm = () => {
                 className={`${css.input} ${
                   errors.email && touched.email ? css.inputError : ''
                 }`}
-                type="email"
+                type="text"
                 name="email"
                 placeholder="E-mail"
               />

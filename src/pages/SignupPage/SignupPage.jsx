@@ -47,7 +47,7 @@ const SignupPage = () => {
   
          </div>
     </div>
-  
+   
   );
 };
 
