@@ -1,8 +1,8 @@
 .singIn {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
+    font-size: 18px;
+    line-height: 1.33333;
     color: #407bff;
     display: flex;
     align-items: center;
@@ -20,4 +20,12 @@
     width: 28px;
     height: 28px;
     margin-right: 4px;
+}
+
+.singIn:hover {
+    color: #ff9d43;
+}
+
+.singIn:focus {
+    color: #ff9d43;
 }

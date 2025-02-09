@@ -1,3 +1,8 @@
+.modal {
+    position: fixed;
+    pointer-events: none;
+}
+
 .modal_content {
     display: flex;
     flex-direction: column;
@@ -14,6 +19,7 @@
     font-size: 16px;
     line-height: 1.25;
     color: #407bff;
+    pointer-events: auto;
 }
 
 .btn {
@@ -33,18 +39,22 @@
     outline: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /*  transition: border-color 0.3s ease, background-color 0.3s ease; */
 }
 
 .btn:focus,
 .btn:active {
     outline: none;
     border: none;
+    color: #ff9d43;
 }
 
 .icon {
     width: 16px;
     height: 16px;
+}
+
+.btn:hover {
+    color: #ff9d43;
 }
 
 @media screen and (min-width: 768px) {
