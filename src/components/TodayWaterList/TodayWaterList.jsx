@@ -4,7 +4,7 @@ import styles from "./TodayWaterList.module.css"
 import TodayWaterListElement from '../TodayWaterListElement/TodayWaterListElement.jsx';
 import TodayListModal from '../TodayListModal/TodayListModal.jsx'
 import { selectWaterToday, selectWaterLoading } from '../../redux/water/selectors.js';
-import { fetchWaterToday, deleteWater } from '../../redux/water/operations.js';
+import { fetchWaterToday, fetchWaterMonth, deleteWater } from '../../redux/water/operations.js';
 
 const TodayWaterList =() => {
   const [isOpenAddWaterModal, setIsOpenAddWaterModal] = useState(false);
@@ -14,6 +14,9 @@ const TodayWaterList =() => {
 
   const closeModal = () => setIsOpenAddWaterModal(false);
   const operationType = 'add';
+  const today = new Date();
+  const year = today.getFullYear(); 
+  const month = today.getMonth() + 1;
 
   useEffect(() => {
     dispatch(fetchWaterToday());
@@ -21,8 +24,9 @@ const TodayWaterList =() => {
   
   const handleDelete = useCallback(async (itemId) => {
     await dispatch(deleteWater(itemId));
-    dispatch(fetchWaterToday());
-  }, [dispatch]);
+    await dispatch(fetchWaterToday());
+    await dispatch(fetchWaterMonth({year, month}));
+  }, [dispatch, month, year]);
 
   const water = todayWaterData.records;
 
@@ -42,14 +46,14 @@ const TodayWaterList =() => {
               </li>
             ))
           ) : (
-            <p>No water data available</p> 
+            <p>No notes yet</p> 
           )
         )}
       </ul>
       <div>
         <button onClick={() => setIsOpenAddWaterModal(true)} className={styles.AddWaterModalBtn}>
           <svg className={styles.plusSvg} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 4V12M12 8H4" stroke="#407BFF" strokeLinecap="round" strokeLinejoin="round" />
+            <path className={styles.plusSvgPath} d="M8 4V12M12 8H4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <h5 className={styles.AddWaterBtnText}>Add water</h5>
         </button>
