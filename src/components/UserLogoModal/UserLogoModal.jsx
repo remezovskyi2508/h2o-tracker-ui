@@ -11,11 +11,11 @@ const UserLogoModal = ({ isOpen, onClose }) => {
   const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  const closeAllModals = () => {
-    setIsSettingModalOpen(false);
-    setIsLogoutModalOpen(false);
-    onClose();
-  };
+  // const closeAllModals = () => {
+  //   setIsSettingModalOpen(false);
+  //   setIsLogoutModalOpen(false);
+  //   onClose();
+  // };
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -33,7 +33,7 @@ const UserLogoModal = ({ isOpen, onClose }) => {
 
   const onBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      closeAllModals();
+      onClose();
     }
   };
 
