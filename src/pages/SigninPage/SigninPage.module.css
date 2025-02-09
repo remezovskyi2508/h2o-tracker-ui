@@ -1,14 +1,17 @@
+ 
 
-   
 .signinPageContainer {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative; 
   width: 320px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 0 20px;
+  
+
 }
 
 .formSection {
@@ -28,8 +31,9 @@
   background-position: center;
   overflow: hidden;
   left: 20px;
-  top: 380px;
-  pointer-events: none; 
+  top: 370px;
+  pointer-events: none;  
+
 
 }
 
@@ -58,8 +62,8 @@
     height: 548px;
     background-image: url('/images/tabletbottle.svg');
     background-position: right;
-    left: 112px;
-    top: 116px;
+    left: 120px;
+    top: 54px;
     z-index: 1;
   }
 }
@@ -68,7 +72,7 @@
  @media screen and (min-width: 1440px) {
   .signinPageContainer {
     width:1440px;
-        padding: 0 112px;
+    padding: 0 198px;
     margin-left: 18px;
     margin-right: 18px;
     display: flex;
@@ -80,17 +84,18 @@
   
 
   .background {
-    order: -1;
+     order: -1;
     width: 916px;
     height: 680px;
     background-image: url('/images/desctopbottle.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
-    left: -8%;
-    top: 2%;
-  pointer-events: none;
-    
+    left: 1%;
+    top: -16%;
+  pointer-events: none; 
+ 
+
   }
 
   .formSection {

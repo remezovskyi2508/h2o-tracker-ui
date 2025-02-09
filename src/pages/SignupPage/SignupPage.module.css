@@ -5,10 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; 
+  /* position: relative;  */
   width: 320px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 0 20px;
+  
 }
 
 .formSection {
@@ -22,13 +23,13 @@
   position: absolute;
   width: 280px;
   height: 210px;
-  background-image: url('/images/mobilebottle.svg');
+  background-image: url('/images/mobilebottle.svg') ;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
   left: 20px;
-  top: 400px;
+  top: 485px;
   pointer-events: none;
 }
 
@@ -57,8 +58,8 @@
     height: 548px;
     background-image: url('/images/tabletbottle.svg');
     background-position: right;
-    left: 112px;
-    top: 116px;
+    left: 140px;
+    top: 130px;
     z-index: 1;
   }
 }
@@ -67,8 +68,8 @@
  @media screen and (min-width: 1440px) {
   .signupPageContainer {
     width:1440px;
-        padding: 0 112px;
-    margin-left: 18px;
+        padding: 0 198px;
+    margin-left:  18px;
     margin-right: 18px;
     display: flex;
     flex-direction: row;
@@ -86,8 +87,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
-    left: -8%;
-    top: 2%;
+    left: 1%;
+    top: -16%;
   pointer-events: none;
     
   }
