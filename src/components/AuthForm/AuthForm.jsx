@@ -67,9 +67,9 @@ const AuthForm = () => {
             </h2>
 
             <label className={css.label}>
-              <span className={css.span}>Enter your email:</span>
+              <span> Enter your email:</span>
               <Field
-                className={`${css.input_field} ${
+                className={`${css.input} ${
                   errors.email && touched.email ? css.inputError : ''
                 }`}
                 type="email"
@@ -83,11 +83,11 @@ const AuthForm = () => {
               />
             </label>
 
-            <label>
-              <span className={css.span}>Enter your password:</span>
+            <label className={css.label}>
+              <span>Enter your password:</span>
               <div className={css.passwordContainer}>
                 <Field
-                  className={`${css.input_field} ${
+                  className={`${css.input} ${
                     errors.password && touched.password ? css.inputError : ''
                   }`}
                   type={showPassword ? 'text' : 'password'}
@@ -114,11 +114,11 @@ const AuthForm = () => {
             </label>
 
             {isSignup && (
-              <label>
+                     <label className={css.label}>
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
                   <Field
-                    className={`${css.input_field} ${
+                    className={`${css.input} ${
                       errors.password && touched.password ? css.inputError : ''
                     }`}
                     type={showRepeatPassword ? 'text' : 'password'}
