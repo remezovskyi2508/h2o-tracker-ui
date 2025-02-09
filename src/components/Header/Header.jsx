@@ -6,10 +6,11 @@ import { Logo } from '../Logo/Logo.jsx';
 // import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
+import UserAuth from '../UserAuth/UserAuth.jsx';
 
 const Header = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   const [isUserModalOpen, setUserModalOpen] = useState(false);
 
   return (
@@ -48,12 +49,7 @@ const Header = () => {
             <Logo />
             Tracker of water
           </NavLink>
-          <NavLink to="/signin" className={style.singIn}>
-            Sign in
-            <svg className={style.iconUser} width="28" height="28">
-              <use href="/public/images/icons.svg#icon-outline"></use>
-            </svg>
-          </NavLink>
+          <UserAuth />
         </>
       )}
     </header>
