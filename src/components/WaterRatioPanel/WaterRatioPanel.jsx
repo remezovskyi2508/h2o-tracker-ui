@@ -8,8 +8,6 @@ import { useSelector } from 'react-redux';
 import { selectWaterToday } from '../../redux/water/selectors';
 
 const WaterRatioPanel = () => {
-  const waterData = useSelector(selectWaterToday); 
-  
   // const [waterData, setWaterData] = useState({
   //   percentage: '70%',
   // });
