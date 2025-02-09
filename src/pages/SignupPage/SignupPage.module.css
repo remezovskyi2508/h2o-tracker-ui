@@ -6,6 +6,16 @@
   margin: 0 auto;
 }
 
+.background {
+  min-height: 100vh;
+  background-image: url('/public/images/bobbleDesk.svg'),
+    url('/public/images/signup/botle_mob_signup.svg');
+  background-size: contain, 280 210;
+  background-repeat: no-repeat, no-repeat;
+  background-position: top, center 70%;
+  overflow: hidden;
+}
+
 .desk_placement {
   margin-top: 25px;
 }
@@ -70,11 +80,42 @@
   stroke: #407bff;
 }
 
+.input_icon_container {
+  position: relative;
+}
+
+.eye_close {
+  position: absolute;
+  top: 23px;
+  right: 65px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.eye_close svg {
+  stroke: #407bff;
+  fill: none;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
+  }
+  .eye_close {
+    position: absolute;
+    /* top: 23px; */
+    right: 375px;
+  }
+
+  .background {
+    background-image: url('/public/images/bobbleDesk.svg'),
+      url('/public/images/signup/botleTab_signup.svg');
+    background-size: contain, 736px 548px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top, right;
   }
 
   .desk_placement {
@@ -117,12 +158,15 @@
     padding-left: 112px;
     padding-right: 112px;
   }
+  .eye_close {
+    right: 15px;
+  }
 
   .background {
     min-height: 100vh;
     background-image: url('/public/images/bobbleDesk.svg'),
-      url('/public/images/Botle_signup.svg');
-    background-size: contain, 920 680;
+      url('/public/images/signup/Botle_signup.svg');
+    background-size: cover, 916px 680px;
     background-repeat: repeat, no-repeat;
     background-position: left top, left top;
   }

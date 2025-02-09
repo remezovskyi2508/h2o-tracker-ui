@@ -45,27 +45,38 @@ const SignupPage = () => {
                   <label className={css.lable} htmlFor="password">
                     Enter your password
                   </label>
-                  <Field
-                    className={css.input}
-                    type="text"
-                    name="password"
-                    placeholder="Password"
-                  />
+                  <div className={css.input_icon_container}>
+                    <Field
+                      className={css.input}
+                      type="text"
+                      name="password"
+                      placeholder="Password"
+                    />
+                    <button className={css.eye_close}>
+                      <svg height="24" width="24">
+                        <use href="/images/symbol-defs.svg#icon-eye-off"></use>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
                 <div className={css.input_cont}>
                   <label className={css.lable} htmlFor="repeat-password">
                     Repeat password
                   </label>
-                  <Field
-                    className={css.input}
-                    type="text"
-                    name="repeat-password"
-                    placeholder="Repeat password"
-                  />
-                  <svg className={css.svg} height="16" width="16">
-                    <use href="/symbol-defs.svg#input_icon"></use>
-                  </svg>
+                  <div className={css.input_icon_container}>
+                    <Field
+                      className={css.input}
+                      type="text"
+                      name="repeat-password"
+                      placeholder="Repeat password"
+                    />
+                    <button className={css.eye_close}>
+                      <svg height="24" width="24">
+                        <use href="/images/symbol-defs.svg#icon-eye-off"></use>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
                 <button className={css.signup_btn} type="submit">
