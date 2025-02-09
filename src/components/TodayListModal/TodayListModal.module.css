@@ -46,6 +46,7 @@
 }
 
 .modalTitle {
+  text-align: left;
   font-weight: 500;
   font-size: 26px;
   line-height: 1.23;
@@ -78,6 +79,7 @@
 }
 
 .modalTitleNew {
+  text-align: left;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;

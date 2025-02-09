@@ -37,19 +37,6 @@
     padding: 0;
 }
 
-.singIn {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: var(--prim-color-blue);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .arrayBtn {
     width: 48px;
     height: 28px;
@@ -75,39 +62,33 @@
     height: 100%;
 }
 
-.iconUser {
-    display: inline-block;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: var(--prim-color-black);
-    width: 28px;
-    height: 28px;
-    margin-right: 4px;
-}
 
-.userName {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    text-align: right;
-    color: var(--prim-color-black);
-}
+
 
 .userProfile {
     display: flex;
     align-items: center;
     justify-content: end;
-    /* gap: 10px; */
     cursor: pointer;
     width: 122px;
     height: 28px;
+    position: relative;
 }
 
-.placeholder {
+.wrapper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    gap: 8px;
-    align-items: center;
+    justify-content: flex-end;
+
+    align-items: flex-start;
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    right: 20px;
+    z-index: 10;
 }
 
 

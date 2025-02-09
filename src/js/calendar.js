@@ -6,10 +6,8 @@ export function getMonthName(year, monthIndex) {
 export function getDaysInMonth(month, year) {
   return new Date(year, month + 1, 0).getDate();
 }
-export async function findDayAndSplit(array) {
-  for (const day of array) {
-    if (day.date) {
-      [dayNumber, monthTag] = day.date.split(', ');
-    }
-  }
+export function parseToken(token) {
+  const parsedToken = token ? JSON.parse(token).token : null;
+  const cleanedToken = parsedToken ? parsedToken.replace(/"/g, '') : null;
+  return cleanedToken;
 }

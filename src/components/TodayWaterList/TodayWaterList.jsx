@@ -24,7 +24,9 @@ const TodayWaterList =() => {
     dispatch(fetchWaterToday());
   }, [dispatch]);
 
-  const isArray = Array.isArray(todayWaterData);
+  const water = todayWaterData.records;
+
+  const isArray = Array.isArray(water);
 
   return (
     <div className={styles.todayWaterListBox}>
@@ -33,8 +35,8 @@ const TodayWaterList =() => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          isArray && todayWaterData.length > 0 ? (
-            todayWaterData.map((item) => (
+          isArray && water.length > 0 ? (
+            water.map((item) => (
               <li key={item._id} className={styles.todayWaterElement}>
                 <TodayWaterListElement item={item} handleDelete={handleDelete}/>
               </li>

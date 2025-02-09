@@ -1,36 +1,32 @@
 import { useEffect, useState } from 'react';
-import css from './TodayListModal.module.css';
+import { useDispatch } from 'react-redux';
+import {
+  addWater,
+  fetchWaterToday,
+  updateWater,
+} from '../../redux/water/operations.js';
+import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
 import closeIcon from '/images/icon-close.svg?url';
 import glassIcon from '/images/icon-glass.svg?url';
-import { fakeData } from './fakeData.js';
+import css from './TodayListModal.module.css';
 
-import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
-
-// import { useDispatch } from 'react-redux';
-// import { addWater, updateWater } from './operations.js';
-
-const TodayListModal = ({
-  isOpen,
-  onClose,
-  // data,
-  operationType,
-}) => {
-  const data = fakeData;
+const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
+  const dispatch = useDispatch();
 
   const [initialState, setInitialState] = useState({
     date: '',
     waterVolume: data ? data.waterVolume : 50,
   });
 
-  const oldDate = `${new Date(data.date)
-    .getUTCHours()
-    .toString()
-    .padStart(2, '0')}:${new Date(data.date)
-    .getUTCMinutes()
-    .toString()
-    .padStart(2, '0')}`;
-
-  // const dispatch = useDispatch();
+  const oldDate = data
+    ? `${new Date(data.date)
+        .getUTCHours()
+        .toString()
+        .padStart(2, '0')}:${new Date(data.date)
+        .getUTCMinutes()
+        .toString()
+        .padStart(2, '0')}`
+    : '';
 
   useEffect(() => {
     if (isOpen) {
@@ -79,28 +75,30 @@ const TodayListModal = ({
     const time = values.date;
     const timeToSend = convertDate(time);
 
-    const updatedData = {
+    const waterData = {
       waterVolume: values.waterVolume,
       date: timeToSend,
     };
 
     switch (operationType) {
       case 'add': {
-        // const result = dispatch(addWater(updatedData));
-        const result = updatedData;
+        const result = dispatch(addWater(waterData));
         if (!result.error) {
-          console.log(result);
-          alert(JSON.stringify(result, null, 2));
+          dispatch(fetchWaterToday());
           onClose();
         }
         break;
       }
       case 'edit': {
-        // const result = dispatch(updateWater({ ...data, ...updatedData }));
-        const result = { ...data, ...updatedData };
+        const result = dispatch(
+          updateWater({
+            id: data._id,
+            waterVolume: waterData.waterVolume,
+            date: waterData.date,
+          })
+        );
         if (!result.error) {
-          console.log(result);
-          alert(JSON.stringify(result, null, 2));
+          dispatch(fetchWaterToday());
           onClose();
         }
         break;
@@ -133,7 +131,8 @@ const TodayListModal = ({
                       <img src={glassIcon} alt="Glass of water icon" />
                     </p>
                     <p className={css.modalOldAmountVolume}>
-                      {data.waterVolume} ml
+                      {/* {data.waterVolume} ml */}
+                      {data && data.waterVolume ? data.waterVolume : 50} ml
                     </p>
                     <p className={css.modalOldAmountTime}>{oldDate}</p>
                   </div>
