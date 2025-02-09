@@ -1,8 +1,10 @@
 import React from 'react';
 import css from './TrackerCard.module.css';
 import BenefitItem from '../BenefitItem/BenefitItem';
+import { useNavigate } from 'react-router-dom';
 
 const TrackerCard = () => {
+  const navigate = useNavigate();
   return (
     <div className={css.tracker_card}>
       <h1 className={css.titel}>Water consumption tracker</h1>
@@ -13,7 +15,12 @@ const TrackerCard = () => {
         <BenefitItem icon="icon-statisctic" text="View statistics" />
         <BenefitItem icon="icon-wrench" text="Personal rate setting" />
       </ul>
-      <button className={css.signup_btn_tracker}>Try tracker</button>
+      <button
+        className={css.signup_btn_tracker}
+        onClick={() => navigate('/signup')}
+      >
+        Try tracker
+      </button>
     </div>
   );
 };

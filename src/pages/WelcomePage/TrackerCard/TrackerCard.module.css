@@ -15,25 +15,11 @@
   font-size: 18px;
   margin-bottom: 12px;
 }
-
-.icon_benefits {
-  width: 32px;
-  height: 32px;
-}
-
 .benefits_list {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 25px;
-}
-
-.benefits_list_item {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-weight: 400;
-  font-size: 16px;
 }
 
 .signup_btn_tracker {
@@ -58,21 +44,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  .background {
-    background-image: url('/public/images/bottleTab.svg');
-  }
-
-  .wrapper {
-    gap: 60px;
-    margin-top: 40px;
-  }
-
   .titel {
     font-size: 36px;
   }
@@ -86,16 +57,6 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 25px;
-  }
-
-  .icon_benefits {
-    width: 40px;
-    height: 40px;
-  }
-
-  .benefits_list_item {
-    gap: 13px;
-    width: 225px;
   }
 
   .signup_btn_tracker {
@@ -113,26 +74,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding-left: 112px;
-    padding-right: 112px;
-  }
-
-  .background {
-    background-image: url('/public/images/bobbleDesk.svg'),
-      url('/public/images/bottleDesk.svg');
-    background-size: contain, contain; /* Масштабування без спотворень */
-    background-repeat: no-repeat, no-repeat; /* Без повторення */
-    background-position: center, center bottom; /* Вирівнюємо по центру і вниз */
-  }
-
-  .wrapper {
-    flex-direction: row;
-    gap: 60px;
-    margin-top: 80px;
-  }
-
   .titel {
     font-size: 36px;
   }
@@ -146,16 +87,7 @@
     flex-direction: column;
   }
 
-  .benefits_list_item {
-    gap: 13px;
-    width: 225px;
-  }
-
   .signup_btn_tracker {
     width: 384px;
-  }
-
-  .benefits_card {
-    margin-top: 35px;
   }
 }
