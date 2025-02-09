@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-
 import css from './UserLogoutModal.module.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -18,7 +17,6 @@ const customStyles = width => ({
     padding: '32px 24px',
     backgroundColor: '#fff',
     border: '0',
-
     borderRadius: '10px',
     width: width < 767 ? '280px' : '592px',
     height: width < 767 ? '260px' : '208px',
@@ -29,84 +27,66 @@ const customStyles = width => ({
   },
 });
 
-const UserLogoutModal =
-  (/*{  modalIsOpen -> isOpen, modalIsClosed -> onClose }*/) => {
-    //  const modalIsOpen = () => {
-    //    setIsOpen(true);
-    //    document.body.style.overflow = 'hidden';
-    //  };
-    // const modalIsClosed = () => {
-    //   setIsOpen(false);
-    //   document.body.style.overflow = "";
-    // };
-    const [modalStyles, setModalStyles] = useState(
-      customStyles(window.innerWidth)
-    );
-    const [isOpen, setIsOpen] =
-      useState(
-        true
-      ); /* Потрібно буде перенести до випадаючої кнопки Log Out у хедері
-      з дефолтним значенням false */
-    const dispatch = useDispatch();
+const UserLogoutModal = ({ isOpen, onClose }) => {
+  const [modalStyles, setModalStyles] = useState(
+    customStyles(window.innerWidth)
+  );
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      const handleResize = () =>
-        setModalStyles(customStyles(window.innerWidth));
-      window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    const handleResize = () => setModalStyles(customStyles(window.innerWidth));
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const onLogout = () => {
-      dispatch(logout());
-    };
-
-    const modalIsClosed = () => {
-      // onClose()
-      setIsOpen(false);
-    };
-
-    return (
-      isOpen && (
-        <Modal
-          isOpen={isOpen}
-          style={modalStyles}
-          onRequestClose={modalIsClosed}
-        >
-          <div className={css.titleWrapper}>
-            <h2 className={css.modalTitle}>Log out</h2>
-            <button className={css.closeModal} onClick={modalIsClosed}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={css.svg}
-              >
-                <path
-                  d="M6 18L18 6M6 6L18 18"
-                  stroke="#407BFF"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {/* Поки додав СВГ кодом, як з'явиться icons.svg перероблю */}
-            </button>
-          </div>
-          <p className={css.modalText}>Do you really want to leave?</p>
-          <div className={css.optionBtns}>
-            <button className={css.modalCancelBtn} onClick={modalIsClosed}>
-              Cancel
-            </button>
-            <button className={css.modalOutBtn} onClick={onLogout}>
-              Log out
-            </button>
-          </div>
-        </Modal>
-      )
-    );
+  const onLogout = async () => {
+    try {
+      await dispatch(logout());
+      onClose();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      style={modalStyles}
+      onRequestClose={onClose}
+      onAfterOpen={() => {
+        document.addEventListener('keydown', handleKeyDown);
+      }}
+      onAfterClose={() => {
+        document.removeEventListener('keydown', handleKeyDown);
+      }}
+    >
+      <div className={css.titleWrapper}>
+        <h2 className={css.modalTitle}>Log out</h2>
+        <div>
+          <button className={css.closeModal} onClick={onClose}>
+            <svg className={css.svg} width="14" height="14">
+              <use href="/images/icons.svg#icon-close-btn"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p className={css.modalText}>Do you really want to leave?</p>
+      <div className={css.optionBtns}>
+        <button className={css.modalCancelBtn} onClick={onClose}>
+          Cancel
+        </button>
+        <button className={css.modalOutBtn} onClick={onLogout}>
+          Log out
+        </button>
+      </div>
+    </Modal>
+  );
+
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  }
+};
 
 export default UserLogoutModal;

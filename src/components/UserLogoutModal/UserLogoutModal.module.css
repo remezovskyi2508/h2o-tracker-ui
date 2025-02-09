@@ -19,6 +19,21 @@
   width: 24px;
   height: 24px;
   padding: 0;
+  background: transparent;
+}
+
+.svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.svg:hover,
+.svg:focus {
+  stroke: #0451f5;
 }
 
 .modalText {
@@ -48,6 +63,11 @@
   color: #407bff;
 }
 
+.modalCancelBtn:hover,
+.modalCancelBtn:focus {
+  background-color: #9bb6f5;
+}
+
 .modalOutBtn {
   font-weight: 500;
   font-size: 16px;
@@ -62,11 +82,21 @@
   color: #fff;
 }
 
+.modalOutBtn:hover,
+.modalOutBtn:focus {
+  background-color: #ee0909;
+}
+
+.button:hover {
+  cursor: url('/public/images/cursor.svg'), auto;
+}
+
 @media screen and (min-width: 768px) {
   .optionBtns {
     flex-direction: row;
     justify-content: end;
   }
+
   .modalCancelBtn {
     font-size: 18px;
     line-height: 133%;
@@ -74,6 +104,7 @@
     height: 44px;
     padding: 10px 30px;
   }
+
   .modalOutBtn {
     font-size: 18px;
     line-height: 133%;
