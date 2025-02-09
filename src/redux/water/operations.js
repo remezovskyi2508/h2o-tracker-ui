@@ -18,7 +18,7 @@ export const fetchWaterToday = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      return data.records;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
