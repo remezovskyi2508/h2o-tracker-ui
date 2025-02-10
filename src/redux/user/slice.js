@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchUserInfo,
-  resetPassword,
   updateUserAvatar,
   updateUserInfo,
 } from './operations.js';
@@ -55,18 +54,6 @@ const userInfoSlice = createSlice({
       .addCase(updateUserInfo.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
-      .addCase(resetPassword.pending, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(resetPassword.fulfilled, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(resetPassword.rejected, state => {
-        state.loading = true;
-        state.error = null;
       });
   },
 });
