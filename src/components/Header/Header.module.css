@@ -15,7 +15,7 @@
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
-    color: #407bff;
+    color: var(--prim-color-blue);
     display: flex;
     align-items: center;
     gap: 4px;

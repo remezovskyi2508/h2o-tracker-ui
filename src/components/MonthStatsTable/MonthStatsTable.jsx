@@ -123,7 +123,7 @@ const MonthStatsTable = () => {
                 id={tooltipId}
                 place="top-end"
                 style={{
-                  backgroundColor: '#FFFFFF',
+                  backgroundColor: 'var(--prim-color-white)',
                   padding: 0,
                 }}
                 className={clsx(css.tooltip)}

@@ -19,11 +19,11 @@
   flex-direction: column;
   padding: 24px 8px;
   width: 280px;
-  background-color: #ecf2ff;
+  background-color: var(--second-background-color);
   justify-content: center;
   gap: 24px;
   border-radius: 10px;
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  box-shadow: var(--box-shadow-card);
 }
 .leftSide {
   display: flex;
