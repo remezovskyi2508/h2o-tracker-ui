@@ -99,9 +99,9 @@ const AuthForm = () => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <FiEyeOff size={16} color="var(--prim-color-blue)" />
-                  ) : (
                     <FiEye size={16} color="var(--prim-color-blue)" />
+                  ) : (
+                    <FiEyeOff size={16} color="var(--prim-color-blue)" />
                   )}
                 </button>
               </div>
@@ -130,9 +130,9 @@ const AuthForm = () => {
                     onClick={() => setShowRepeatPassword(!showRepeatPassword)}
                   >
                     {showRepeatPassword ? (
-                      <FiEyeOff size={16} color="var(--prim-color-blue)" />
-                    ) : (
                       <FiEye size={16} color="var(--prim-color-blue)" />
+                    ) : (
+                      <FiEyeOff  size={16} color="var(--prim-color-blue)" />
                     )}
                   </button>
                 </div>
