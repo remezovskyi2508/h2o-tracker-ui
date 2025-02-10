@@ -108,7 +108,6 @@ const MonthStatsTable = () => {
               data-tooltip-id={tooltipId}
               key={index}
               className={css.calendarDay}
-              data-tooltip-offset={0}
             >
               <div
                 className={clsx(css.calendarCircle, {
@@ -127,16 +126,18 @@ const MonthStatsTable = () => {
                   padding: 0,
                 }}
                 className={clsx(css.tooltip)}
-                openOnClick="true"
+                // openOnClick="true"
                 noArrow="true"
-                delayHide={1}
+                delayHide={0}
+                float="true"
+                offset={10}
               >
                 {dayData && (
                   <DaysGeneralStats
                     date={dayData.date}
-                    dailyNorm={dayData.dailyNorm}
+                    dailyNorm={dayData.dailyGoal}
                     percentage={dayData.percentage}
-                    consumptionCount={dayData.consumptionCount}
+                    consumptionCount={dayData.entries}
                   />
                 )}
               </Tooltip>
