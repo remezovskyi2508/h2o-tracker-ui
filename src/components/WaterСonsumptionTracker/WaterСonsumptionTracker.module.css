@@ -1,3 +1,7 @@
+.tracker_card {
+  width: 280px;
+}
+
 .titel {
   font-size: 28px;
   font-weight: 700;
@@ -64,6 +68,10 @@
     padding-right: 32px;
   }
 
+  .tracker_card {
+    width: 704px;
+  }
+
   .background {
     background-image: url('/public/images/bottleTab.svg');
   }
@@ -117,6 +125,10 @@
     max-width: 1440px;
     padding-left: 112px;
     padding-right: 112px;
+  }
+
+  .tracker_card {
+    width: 439px;
   }
 
   .background {

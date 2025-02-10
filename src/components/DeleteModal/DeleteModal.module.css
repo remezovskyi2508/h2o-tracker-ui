@@ -52,6 +52,7 @@
   width: 232px;
   height: 36px;
   border: none;
+  cursor: pointer;
 }
 
 .redBtn {
