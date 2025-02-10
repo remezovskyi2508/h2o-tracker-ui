@@ -37,7 +37,7 @@
 .closeBtn {
   border: none;
   background-color: transparent;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .btnWrapper {
@@ -52,7 +52,7 @@
   width: 232px;
   height: 36px;
   border: none;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .redBtn {
@@ -63,7 +63,7 @@
 
 .blueBtn {
   color: var(--prim-color-blue);
-  background-color: #d7e3ff;
+  background-color: var(--second-background-trecer-color);
 }
 
 @media screen and (min-width: 768px) {

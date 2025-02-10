@@ -52,7 +52,7 @@
   height: 8px;
   border-radius: 5px;
   background-color: var(--prim-color-blue);
-  /* background: #9ebbff; */
+  /* background: var(--second-blue-color); */
   transition: width 0.3s ease-in-out;
 }
 
@@ -96,7 +96,7 @@
 .icon {
   transform: rotate(90deg);
   display: block;
-  color: #d7e3ff;
+  color: var(--second-background-trecer-color);
 }
 
 .btn_section {
@@ -124,12 +124,12 @@
   line-height: 1.25;
   text-align: center;
   color: var(--prim-color-white);
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   box-shadow: var(--box-shadow-btn);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn:hover {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
   background: var(--prim-color-blue);
 }
 

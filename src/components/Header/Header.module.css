@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
+    background:var(--prim-color-white);
     margin: 0 auto;
     margin-top: 8px;
 }
@@ -39,7 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    cursor: pointer;
+    cursor: var(--cursor-url), pointer;
     width: 122px;
     height: 28px;
     position: relative;

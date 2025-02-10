@@ -26,7 +26,7 @@
 }
 
 .waterListBox::-webkit-scrollbar-track {
-    background: #D7E3FF; 
+    background: var(--second-background-trecer-color); 
     border-radius: 8px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .waterListBox::-webkit-scrollbar-thumb:hover {
-    background: #D7E3FF;
+    background: var(--second-background-trecer-color);
 }
 
 .AddWaterModalBtn{
@@ -44,13 +44,13 @@
     border: none;
     display: flex;
     gap: 8px;
-    cursor: pointer;
+    cursor: var(--cursor-url), pointer;
     margin-top: 12px;
     padding: 0;
 }
 
 .plusSvgPath {
-    stroke: #407BFF;
+    stroke: var(--prim-color-blue);
     transition: stroke 0.2s ease-in-out;
 }
 
@@ -69,11 +69,11 @@
 }
 
 .AddWaterModalBtn:hover .AddWaterBtnText {
-    color: #FF9D43;
+    color:var(--second-warning-color);
 }
 
 .AddWaterModalBtn:hover .plusSvgPath {
-    stroke: #FF9D43;
+    stroke: var(--second-warning-color);
 }
 
 @media screen and (min-width: 768px) {

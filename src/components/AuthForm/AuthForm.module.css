@@ -9,7 +9,7 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 1.23;
-  color:#2f2f2f;
+  color:var(--prim-color-black);
 }
 
 .label {
@@ -28,10 +28,10 @@
       padding: 12px 10px;
       margin-top: 5px;
       font-size: 16px;
-       border: 1px solid #d7e3ff;
+       border: 1px solid var(--second-background-trecer-color);
        border-radius: 6px;
-       color: #407bff;
-       background-color: #ffff;
+       color:var(--prim-color-blue);
+       background-color:var(--prim-color-white);
        outline: none;
        width: 100%;
        transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,35 +47,35 @@
     position: relative;
     display: inline-block;
    width: 100% ; 
-     border: #d7e3ff ;
+     border: var(--second-background-trecer-color) ;
     
      }
     
     
      .iconButton{
-       border: #fff;
+       border:var(--prim-color-white);
        position: absolute;
        right: 10px;
        top: 52%;
        transform: translateY(-50%);
        background: none;
        border: none;
-       cursor: pointer;
+       cursor: var(--cursor-url), pointer;
     }
     .iconButton:focus{
-color: #407bff; ;
+color:var(--prim-color-blue) ;
     }
     
      .input:focus {
-       border: 1px solid var(--prim-color-black)66;
-       color: #407bff;
+       border: 1px solid var(--prim-color-black);
+       color:var(--prim-color-blue);
      }
     
      .input::placeholder {
        font-weight: 400;
        font-size: 16px;
        line-height: 1.25;
-       color:#9ebbff;
+       color:var(--second-blue-color);
      }
     
      inputError{
@@ -95,9 +95,9 @@ color: #407bff; ;
        font-weight: 500;
        font-size: 16px;
        line-height: 1.25;
-     color: #fff;
+     color: var(--prim-color-white);
        border: none;
-       cursor: pointer;
+       cursor: var(--cursor-url), pointer;
        background-color: var(--prim-color-blue);
        border-radius: 10px;
        box-shadow: var(--box-shadow-btn);
@@ -107,7 +107,7 @@ color: #407bff; ;
     
      .button:hover,
      .button:focus {
-       background: #5082F2;
+       background: var(--prim-color-blue);
      }
     
      .navLink {
@@ -119,7 +119,7 @@ color: #407bff; ;
          display: flex;
         text-align: left;
          gap: 4px;
-         cursor: pointer;
+         cursor: var(--cursor-url), pointer;
          text-decoration: none;
     
      }

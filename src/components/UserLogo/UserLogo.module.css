@@ -13,14 +13,14 @@
   height: 28px;
   border: none;
   border-radius: 50%;
-  background-color: #9ebbff;
+  background-color: var(--second-blue-color);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 36px;
   font-weight: 500;
-  color: #fff;
+  color:var(--prim-color-white);
 }
 .avatar {
   max-width: 28px;
@@ -35,7 +35,7 @@
   font-size: 16px;
   line-height: 1.25;
   text-align: right;
-  color: #2f2f2f;
+  color:var(--prim-color-black);
   cursor: auto;
 }
 
@@ -61,7 +61,7 @@
   margin-left: 4px;
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   padding: 0;
   align-items: center;
 }
@@ -72,18 +72,18 @@
   height: 16px;
   stroke-width: 0;
   stroke-width: 1px;
-  fill: #407bff;
+  fill: var(--prim-color-blue);
   margin-left: 4px;
 }
 
 .icon:hover {
-  fill: #ff9d43;
-  stroke: #ff9d43;
+  fill: var(--second-warning-color);
+  stroke: var(--second-warning-color);
 }
 
 .icon:focus {
-  fill: #ff9d43;
-  stroke: #ff9d43;
+  fill: var(--second-warning-color);
+  stroke: var(--second-warning-color);
 }
 
 .wrapper {

@@ -60,7 +60,7 @@
   border: none;
   padding: 6px;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   width: 24px;
   height: 24px;
 }

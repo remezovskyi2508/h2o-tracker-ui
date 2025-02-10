@@ -24,7 +24,7 @@
   padding: 6px 10px;
   min-width: 100px;
   height: 36px;
-  background-color: #d7e3ff;
+  background-color: var(--second-background-trecer-color);
   font-weight: 700;
   font-size: 18px;
   line-height: 1.33;
@@ -33,9 +33,9 @@
 }
 
 .modalAmountBoxBtn {
-  cursor: url('/images/pointer.svg'), pointer;
+  cursor: var(--cursor-url), pointer;
   font-family: inherit;
-  border: 1px solid #9ebbff;
+  border: 1px solid var(--second-blue-color);
   border-radius: 30px;
   padding: 10px;
   width: 44px;
@@ -46,7 +46,7 @@
 
 .modalAmountBoxBtn:hover,
 .modalAmountBoxBtn:focus {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
 }
 
 .modalTitleCorrect {
@@ -58,8 +58,8 @@
 }
 
 .modalInput {
-  border: 1px solid #d7e3ff;
-  background-color: #ffffff;
+  border: 1px solid var(--second-background-trecer-color);
+  background-color:var(--prim-color-white);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -73,7 +73,7 @@
 
 .modalInput:hover,
 .modalInput:focus {
-  border: 2px solid #407bff;
+  border: 2px solid var(--prim-color-blue);
   outline: none;
 }
 
@@ -84,10 +84,10 @@
 .modalTimeInput {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--prim-color-white);
   text-align: left;
-  border: 1px solid #d7e3ff;
-  background-color: #ffffff;
+  border: 1px solid var(--second-background-trecer-color);
+  background-color: var(--prim-color-white);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -97,12 +97,12 @@
   line-height: 1.25;
   color: var(--prim-color-blue);
   margin-bottom: 24px;
-  cursor: url('/images/pointer.svg'), pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .modalTimeInput:hover,
 .modalTimeInput:focus {
-  border: 2px solid #407bff;
+  border: 2px solid var(--prim-color-blue);
   outline: none;
 }
 
@@ -116,25 +116,25 @@
   margin-top: 6px;
   padding: 0;
   list-style: none;
-  border: 1px solid #407bff;
-  background-color: #ffffff;
-  color: #407bff;
+  border: 1px solid var(--prim-color-blue);
+  background-color: var(--prim-color-white);
+  color: var(--prim-color-blue);
   border-radius: 6px;
   text-align: left;
 }
 
 .modalTimeInputItem {
   padding: 2px 10px;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .modalTimeInputItem:hover {
-  background-color: #ecf2ff;
+  background-color: var(--second-background-color);
 }
 
 .modalInput:hover,
 .modalInput:focus {
-  border: 2px solid #407bff;
+  border: 2px solid var(--prim-color-blue);
   outline: none;
 }
 
@@ -145,9 +145,9 @@
 .modalTimeInput {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
+  background-color:var(--prim-color-white);
   text-align: left;
-  border: 1px solid #d7e3ff;
+  border: 1px solid var(--second-background-trecer-color);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -155,14 +155,14 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #407bff;
+  color: var(--prim-color-blue);
   margin-bottom: 24px;
-  cursor: url('/images/pointer.svg'), pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .modalTimeInput:hover,
 .modalTimeInput:focus {
-  border: 2px solid #407bff;
+  border: 2px solid var(--prim-color-blue);
   outline: none;
 }
 
@@ -176,20 +176,20 @@
   margin-top: 6px;
   padding: 0;
   list-style: none;
-  border: 1px solid #407bff;
-  background-color: #ffffff;
-  color: #407bff;
+  border: 1px solid var(--prim-color-blue);
+  background-color: var(--prim-color-white);
+  color: var(--prim-color-blue);
   border-radius: 6px;
   text-align: left;
 }
 
 .modalTimeInputItem {
   padding: 2px 10px;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
 }
 
 .modalTimeInputItem:hover {
-  background-color: #ecf2ff;
+  background-color: var(--second-background-color);
 }
 
 .error {
@@ -225,7 +225,7 @@
 .modalSaveBtn {
   border: none;
   outline: none;
-  cursor: url('/images/pointer.svg'), pointer;
+  cursor: var(--cursor-url), pointer;
   font-family: inherit;
   border-radius: 10px;
   padding: 10px 30px;
@@ -242,7 +242,7 @@
 
 .modalSaveBtn:hover,
 .modalSaveBtn:focus {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
 }
 
 @media screen and (min-width: 768px) {
