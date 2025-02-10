@@ -65,7 +65,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
     if (event.target.classList.contains(css.modalWrapper)) onClose();
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = async values => {
     if (values.waterVolume <= 0) {
       return;
     }
@@ -85,33 +85,39 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
       date: timeToSend,
     };
 
-    switch (operationType) {
-      case 'add': {
-        const result = dispatch(addWater(waterData));
-        if (!result.error) {
-          dispatch(fetchWaterToday());
-          dispatch(fetchWaterMonth({ year, month }));
-          onClose();
+    try {
+      let result;
+
+      switch (operationType) {
+        case 'add': {
+          result = await dispatch(addWater(waterData));
+          if (!result.error) {
+            dispatch(fetchWaterToday());
+            dispatch(fetchWaterMonth({ year, month }));
+            onClose();
+          }
+          break;
         }
-        break;
-      }
-      case 'edit': {
-        const result = dispatch(
-          updateWater({
-            id: data._id,
-            waterVolume: waterData.waterVolume,
-            date: waterData.date,
-          })
-        );
-        if (!result.error) {
-          dispatch(fetchWaterToday());
-          dispatch(fetchWaterMonth({ year, month }));
-          onClose();
+        case 'edit': {
+          result = await dispatch(
+            updateWater({
+              id: data._id,
+              waterVolume: waterData.waterVolume,
+              date: waterData.date,
+            })
+          );
+          if (!result.error) {
+            dispatch(fetchWaterToday());
+            dispatch(fetchWaterMonth({ year, month }));
+            onClose();
+          }
+          break;
         }
-        break;
+        default:
+          break;
       }
-      default:
-        break;
+    } catch (error) {
+      console.error('Error handling water data:', error);
     }
   };
 
