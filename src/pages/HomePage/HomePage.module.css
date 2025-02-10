@@ -6,16 +6,24 @@
   margin: 20px 0 40px;
   gap: 40px;
 }
+.background{
+  width: 100vw;
+  height: 100vh;
+    background-image: url('/public/images/Background\ element\ Phone\ Home\ Screen.svg');
+     background-size: auto; 
+    background-repeat: no-repeat;
+     background-position: center; 
+}
 .rightSide {
   display: flex;
   flex-direction: column;
   padding: 24px 8px;
   width: 280px;
-  background-color: #ecf2ff;
+  background-color: var(--second-background-color);
   justify-content: center;
   gap: 24px;
   border-radius: 10px;
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  box-shadow: var(--box-shadow-card);
 }
 .leftSide {
   display: flex;
@@ -45,6 +53,9 @@
     width: 704px;
     height: 404px;
   }
+  .background{
+    background-image: url('/public/images/Background\ element\ Home\ Screen.svg');
+  }
 }
 @media screen and (min-width: 1440px) {
   .wrapper {
@@ -65,5 +76,8 @@
     justify-content: space-between;
     width: 592px;
     height: 680px;
+  }
+  .background{
+    background-image: url('/public/images/bobbleDesk.svg');
   }
 }

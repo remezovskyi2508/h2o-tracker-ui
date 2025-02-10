@@ -5,34 +5,35 @@ import { IoIosRemove } from 'react-icons/io';
 import css from './WaterRatioPanel.module.css';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import { useSelector } from 'react-redux';
-import { selectWater } from '../../redux/water/selectors';
+import { selectWaterToday } from '../../redux/water/selectors';
 
 const WaterRatioPanel = () => {
-  /*  const water = useSelector(selectWater); */
-
-  const [waterData, setWaterData] = useState({
-    percentage: '70%',
-  });
+  const waterData = useSelector(selectWaterToday); 
+  
+  // const [waterData, setWaterData] = useState({
+  //   percentage: '70%',
+  // });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const percentage = Number(parseFloat(waterData.percentage).toFixed(1)) || 0;
+  const percentage = Number(parseFloat(waterData.percentage).toFixed(0)) || 0;
+  const limitedPercentage = Math.min(percentage, 100);
 
   return (
     <div className={css.section}>
       <div className={css.radio}>
         <h3 className={css.title}>Today</h3>
         <div className={css.dial}>
-          <p className={css.percentage} style={{ left: `${percentage}%` }}>
+          <p className={css.percentage} style={{ left: `${limitedPercentage}%` }}>
             {percentage}%
           </p>
           <div
             className={css.factpercent}
-            style={{ width: `${percentage}%` }}
+            style={{ width: `${limitedPercentage}%` }}
           />
 
           <div
             className={css.point}
-            style={{ left: `calc(${percentage}% - 7px)` }} // Центруємо точку
+            style={{ left: `calc(${limitedPercentage}% - 7px)` }} // Центруємо точку
           />
         </div>
 

@@ -7,7 +7,7 @@
     justify-content: space-between;
     background: white;
     margin: 0 auto;
-    padding-top: 8px;
+    margin-top: 8px;
 }
 
 .waterTracker {
@@ -15,7 +15,7 @@
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
-    color: #407bff;
+    color: var(--prim-color-blue);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -30,85 +30,26 @@
     height: 28px;
 }
 
-.svgBtn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.singIn {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #407bff;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.arrayBtn {
-    width: 48px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    border-radius: 100%;
-}
-
-.icon {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: #2f2f2f;
-}
-
 .logo {
     width: 40px;
     height: 100%;
 }
 
-.iconUser {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: #2f2f2f;
-    width: 28px;
-    height: 28px;
-}
-
-.userName {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    text-align: right;
-    color: #2f2f2f;
-}
-
 .userProfile {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: end;
     cursor: pointer;
     width: 122px;
     height: 28px;
+    position: relative;
 }
-
 
 
 @media screen and (min-width: 768px) {
     .header {
         max-width: 704px;
+        margin-top: 16px;
     }
 }
 
@@ -117,5 +58,6 @@
     .header {
 
         max-width: 1216px;
+        margin-top: 12px;
     }
 }

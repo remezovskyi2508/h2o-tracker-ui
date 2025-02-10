@@ -46,15 +46,15 @@
   width: 280px;
   height: 36px;
   border: none;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #407bff;
-  color: #ffffff;
+  box-shadow: var(--box-shadow-btn);
+  background: var(--prim-color-blue);
+  color: var(--prim-color-white);
   cursor: pointer;
   transition: 0.3s;
 }
 
 .signup_btn_tracker:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: var(--box-shadow-btn)-activ;
 }
 
 .signup_btn_tracker:active {

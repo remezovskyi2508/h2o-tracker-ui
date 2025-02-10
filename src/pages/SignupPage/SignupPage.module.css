@@ -1,27 +1,20 @@
-   
 .signupPageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
- width: 100%;
-
-  position: relative; 
-
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
+  width: 320px;
+  margin: 24px auto;
+  padding: 0 20px;
+  height: 100vh;
 }
 
 .formSection {
   margin-top: 20px;
-  margin-bottom: 74px;
   text-align: center;
-  z-index: 2; 
+  z-index: 2;
 }
 
 .background {
-  position: absolute;
   width: 280px;
   height: 210px;
   background-image: url('/images/mobilebottle.svg');
@@ -29,24 +22,21 @@
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
-  left: 20px;
-  top: 450px;
   pointer-events: none;
 }
 
-
-
- /* ================= TABLET VERSION ================== */ 
- @media screen and (min-width: 768px) {
+/* ================= TABLET VERSION ================== */
+@media screen and (min-width: 768px) {
   .signupPageContainer {
-    max-width: 768px;
+    position: relative;
+    width: 768px;
+    padding: 0 32px;
     display: flex;
-  flex-direction: row;
-  align-items: baseline;
+    flex-direction: row;
+    align-items: baseline;
   }
 
   .formSection {
-    position: relative;
     flex: 1;
     width: 336px;
     z-index: 2;
@@ -58,25 +48,23 @@
     height: 548px;
     background-image: url('/images/tabletbottle.svg');
     background-position: right;
-    left: 112px;
-    top: 116px;
+    left: 120px;
+    top: 54px;
     z-index: 1;
   }
 }
 
 /* ================= DESKTOP VERSION ================== */
- @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .signupPageContainer {
-    max-width: 1200px;
-    margin-left: 18px;
-    margin-right: 18px;
+    width: 1440px;
+    padding: 0 112px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
-     position: relative;
-    align-items: center; 
+    position: relative;
+    align-items: center;
   }
-
-  
 
   .background {
     order: -1;
@@ -85,17 +73,15 @@
     background-image: url('/images/desctopbottle.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: left center;
     left: -8%;
-    top: -5%;
+    top: 2%;
     pointer-events: none;
   }
 
   .formSection {
     flex: auto;
     width: 384px;
-    height: 303px;
     order: 0;
   }
-}  
-
+}

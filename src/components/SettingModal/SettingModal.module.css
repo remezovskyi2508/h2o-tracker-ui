@@ -1,6 +1,3 @@
-.no-scroll {
-  overflow: hidden;
-}
 /* Styles for Mobile devices */
 .modalContent {
   background: white;
@@ -11,6 +8,10 @@
   overflow: auto;
   min-width: 280px;
   min-height: 852px;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 .modalBackdrop {
   background: rgba(0, 0, 0, 0.8);
@@ -24,6 +25,7 @@
   align-items: center;
   padding: 20px;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .closeBtn {
@@ -38,9 +40,10 @@
 }
 .closeBtnIcon {
   fill: none;
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
   stroke-width: 1.5px;
 }
+
 .title {
   font-size: 26px;
   font-weight: 500;
@@ -64,7 +67,7 @@
   line-height: 18px;
   border: none;
   background-color: transparent;
-  color: #407bff;
+  color: var(--prim-color-blue);
   min-width: 134px;
   height: 18px;
   gap: 8px;
@@ -73,17 +76,10 @@
   cursor: pointer;
 }
 .uploadButtonIcon {
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
   fill: none;
 }
 
-.photoPreview {
-  width: 80px;
-  height: 80px;
-  border: none;
-  border-radius: 50%;
-  object-fit: cover;
-}
 .initials {
   width: 80px;
   height: 80px;
@@ -98,7 +94,14 @@
   font-weight: 500;
   color: #fff;
 }
-
+.photoPreview {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: transparent;
+}
 .label {
   font-size: 18px;
   font-weight: 500;
@@ -132,7 +135,7 @@
   font-weight: 400;
   line-height: 20px;
   text-align: left;
-  color: #407bff;
+  color: var(--prim-color-blue);
   min-width: 256px;
   height: 44px;
   padding: 12px 10px;
@@ -175,7 +178,7 @@
 }
 .iconEye {
   fill: none;
-  stroke: #407bff;
+  stroke: var(--prim-color-blue);
 }
 .radioWrapper {
   font-size: 16px;
@@ -185,19 +188,23 @@
   display: flex;
   gap: 24px;
 }
+.radio {
+  display: flex;
+  gap: 8px;
+}
 .input:invalid,
 .inputPassword.invalid,
-.input.invalid {
-  border: 1px solid #ef5050;
-  color: #ef5050;
+.input.invalid, 
+.inputPassword:invalid .invalid{
+  border: 1px solid var(--second-del-error-color);
+  color: var(--second-del-error-color);
 }
 
 .errorMessage {
-  color: #ef5050;
+  color: var(--second-del-error-color);
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
-  margin-top: 4px;
 }
 
 .btnSave {
@@ -206,9 +213,9 @@
   padding: 8px 30px;
   gap: 10px;
   border-radius: 10px;
-  background-color: #407bff;
+  background-color: var(--prim-color-blue);
   border: none;
-  color: #ffffff;
+  color: var(--prim-color-white);
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
@@ -216,6 +223,7 @@
   text-align: center;
   cursor: pointer;
   margin-top: 12px;
+  display: block;
 }
 
 /* Styles for Tablet devices */
@@ -232,9 +240,7 @@
     width: 160px;
     height: 44px;
     margin-left: auto;
-    position: absolute;
-    right: 24px;
-    bottom: 32px;
+    margin-right: 24px;
   }
   .input,
   .inputPassword {

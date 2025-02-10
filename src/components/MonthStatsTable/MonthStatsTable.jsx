@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
 
@@ -9,24 +8,28 @@ import clsx from 'clsx';
 import { useMemo } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 
-import { fetchWaterData } from '../../redux/water/operations.js';
-import { selectWater } from '../../redux/water/selectors.js';
+import { fetchWaterMonth } from '../../redux/water/operations.js';
+import { selectWaterMonth } from '../../redux/water/selectors.js';
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const days = useSelector(selectWater) || [];
+  const days = useSelector(selectWaterMonth);
   const currentDate = new Date();
 
   const [month, setMonth] = useState(currentDate.getMonth()); // Отримаємо стейт місяць поточний
   const [year, setYear] = useState(currentDate.getFullYear()); // Отримаємо стейт рік поточний
+
+  // Отримуємо кількість днів маючи місяць і рік
   const daysInMonth = useMemo(
     () => calendar.getDaysInMonth(month, year),
     [month, year]
-  ); // Отримуємо кількість днів маючи місяць і рік
+  );
+
+  // Трансформуємо число в назву місяця
   const monthName = useMemo(
     () => calendar.getMonthName(year, month),
     [year, month]
-  ); // Трансформуємо число в назву місяця
+  );
 
   // Формуємо правило для кнопок для реалізації зміни місяця і року.
   const handleMonthChange = direction => {
@@ -40,12 +43,13 @@ const MonthStatsTable = () => {
     }
   };
 
+  // Константа для отримування сьогоднішного місяця і року і використання його для кнопки далі.
   const isNextHidden =
-    month === currentDate.getMonth() && year === currentDate.getFullYear(); // Константа для отримування сьогоднішного місяця і року і використання його для кнопки далі.
+    month === currentDate.getMonth() && year === currentDate.getFullYear();
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchWaterData());
+      await dispatch(fetchWaterMonth({ year, month: month + 1 }));
     };
     fetchData();
   }, [dispatch, month, year]);
@@ -108,7 +112,7 @@ const MonthStatsTable = () => {
               <div
                 className={clsx(css.calendarCircle, {
                   [css.calendarCircleEmpty]: percent === 0,
-                  [css.calendarCircleFull]: percent === 100,
+                  [css.calendarCircleFull]: percent >= 100,
                 })}
               >
                 {dayInCalendar}
@@ -118,7 +122,7 @@ const MonthStatsTable = () => {
                 id={tooltipId}
                 place="top-end"
                 style={{
-                  backgroundColor: '#FFFFFF',
+                  backgroundColor: 'var(--prim-color-white)',
                   padding: 0,
                 }}
                 className={clsx(css.tooltip)}

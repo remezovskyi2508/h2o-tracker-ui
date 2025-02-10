@@ -16,12 +16,27 @@
   font-weight: 700;
 }
 
-body {
+:root{
+--prim-color-white: #FFFFFF;
+--prim-color-black:#2F2F2F;
+--prim-color-blue:#407BFF;
+--second-background-color: #ECF2FF;
+--second-del-error-color:#EF5050;
+--second-warning-color:#FF9D43;
+--box-shadow-btn-activ: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+--box-shadow-btn: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+--box-shadow-modal: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
+--box-shadow-card: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+}
+
+
+html, body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color:var(--prim-color-black);
+  overflow: hidden;
 }
 
 h1,
