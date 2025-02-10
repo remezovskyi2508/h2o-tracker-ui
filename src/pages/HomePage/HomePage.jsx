@@ -6,7 +6,8 @@ import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div className={css.wrapper}>
+    <div className={css.background}>
+      <div className={css.wrapper}>
       <div className={css.leftSide}>
         <DailyNorma />
         <WaterRatioPanel />
@@ -15,6 +16,7 @@ const HomePage = () => {
         <TodayWaterList />
         <MonthStatsTable />
       </div>
+    </div>
     </div>
   );
 };

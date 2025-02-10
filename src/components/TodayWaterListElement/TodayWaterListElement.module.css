@@ -24,7 +24,7 @@
 }
 
 .waterElementMl{
-    color: #407BFF;
+    color: var(--prim-color-blue);
     font-weight: 400;
     font-size: 18px;
     line-height: 133%;  
@@ -32,7 +32,7 @@
 }
 
 .waterElementTime{
-    color: #2F2F2F;
+    color: var(--prim-color-black);
     font-weight: 400;
     font-size: 12px;
     line-height: 200%;

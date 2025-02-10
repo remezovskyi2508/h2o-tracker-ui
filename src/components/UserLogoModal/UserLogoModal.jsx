@@ -31,16 +31,10 @@ const UserLogoModal = ({ isOpen, onClose }) => {
     };
   }, [onClose]);
 
-  const onBackdropClick = event => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
-    <div className={css.modal} onClick={onBackdropClick}>
+    <div className={css.modal}>
       <div className={css.modal_content}>
         <button className={css.btn} onClick={() => setIsSettingModalOpen(true)}>
           <HiOutlineCog6Tooth className={css.icon} />

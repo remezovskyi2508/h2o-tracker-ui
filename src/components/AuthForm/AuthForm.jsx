@@ -37,7 +37,7 @@ const AuthForm = () => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      const {repeatPassword, ...formData} = values;
+      const { repeatPassword, ...formData } = values;
       void repeatPassword;
       if (isSignup) {
         await dispatch(register(formData)).unwrap();
@@ -45,7 +45,6 @@ const AuthForm = () => {
       } else {
         await dispatch(login(formData)).unwrap();
       }
-      console.log(values);
 
       actions.resetForm();
     } catch (error) {
@@ -72,7 +71,7 @@ const AuthForm = () => {
                 className={`${css.input} ${
                   errors.email && touched.email ? css.inputError : ''
                 }`}
-                type="email"
+                type="text"
                 name="email"
                 placeholder="E-mail"
               />
@@ -100,9 +99,9 @@ const AuthForm = () => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <FiEyeOff size={16} color="#407BFF" />
+                    <FiEyeOff size={16} color="var(--prim-color-blue)" />
                   ) : (
-                    <FiEye size={16} color="#407BFF" />
+                    <FiEye size={16} color="var(--prim-color-blue)" />
                   )}
                 </button>
               </div>
@@ -114,7 +113,7 @@ const AuthForm = () => {
             </label>
 
             {isSignup && (
-                     <label className={css.label}>
+              <label className={css.label}>
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
                   <Field
@@ -131,9 +130,9 @@ const AuthForm = () => {
                     onClick={() => setShowRepeatPassword(!showRepeatPassword)}
                   >
                     {showRepeatPassword ? (
-                      <FiEyeOff size={16} color="#407BFF" />
+                      <FiEyeOff size={16} color="var(--prim-color-blue)" />
                     ) : (
-                      <FiEye size={16} color="#407BFF" />
+                      <FiEye size={16} color="var(--prim-color-blue)" />
                     )}
                   </button>
                 </div>

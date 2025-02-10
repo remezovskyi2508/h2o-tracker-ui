@@ -1,8 +1,6 @@
-// import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import style from './Header.module.css';
 import { Logo } from '../Logo/Logo.jsx';
-// import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { UserLogo } from '../UserLogo/UserLogo.jsx';
 import UserAuth from '../UserAuth/UserAuth.jsx';
 import { Link } from 'react-router-dom';

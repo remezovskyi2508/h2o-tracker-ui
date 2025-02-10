@@ -19,6 +19,21 @@
   width: 24px;
   height: 24px;
   padding: 0;
+  background: transparent;
+}
+
+.svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.svg:hover,
+.svg:focus {
+  stroke: #0451f5;
 }
 
 .modalText {
@@ -45,7 +60,12 @@
   width: 232px;
   border-radius: 10px;
   padding: 8px 30px;
-  color: #407bff;
+  color: var(--prim-color-blue);
+}
+
+.modalCancelBtn:hover,
+.modalCancelBtn:focus {
+  background-color: #9bb6f5;
 }
 
 .modalOutBtn {
@@ -53,13 +73,22 @@
   font-size: 16px;
   line-height: 125%;
   text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background-color: #ef5050;
+  box-shadow: var(--box-shadow-btn);
+  background-color: var(--second-del-error-color);
   border: none;
   width: 232px;
   border-radius: 10px;
   padding: 8px 30px;
-  color: #fff;
+  color:var(--prim-color-white);
+}
+
+.modalOutBtn:hover,
+.modalOutBtn:focus {
+  background-color: #ee0909;
+}
+
+.button:hover {
+  cursor: url('/public/images/cursor.svg'), auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -67,6 +96,7 @@
     flex-direction: row;
     justify-content: end;
   }
+
   .modalCancelBtn {
     font-size: 18px;
     line-height: 133%;
@@ -74,6 +104,7 @@
     height: 44px;
     padding: 10px 30px;
   }
+
   .modalOutBtn {
     font-size: 18px;
     line-height: 133%;

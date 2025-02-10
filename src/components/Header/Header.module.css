@@ -15,7 +15,7 @@
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
-    color: #407bff;
+    color: var(--prim-color-blue);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -30,40 +30,10 @@
     height: 28px;
 }
 
-.svgBtn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.arrayBtn {
-    width: 48px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    border-radius: 100%;
-}
-
-.icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: #2f2f2f;
-}
-
 .logo {
     width: 40px;
     height: 100%;
 }
-
-
-
 
 .userProfile {
     display: flex;
@@ -74,23 +44,6 @@
     height: 28px;
     position: relative;
 }
-
-.wrapper {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-
-    align-items: flex-start;
-    padding: 0;
-    position: absolute;
-    top: 48px;
-    right: 20px;
-    z-index: 10;
-}
-
 
 
 @media screen and (min-width: 768px) {

@@ -52,16 +52,17 @@
   width: 232px;
   height: 36px;
   border: none;
+  cursor: pointer;
 }
 
 .redBtn {
-  background-color: #ef5050;
-  color: #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background-color: var(--second-del-error-color);
+  color: var(--prim-color-white);
+  box-shadow: var(--box-shadow-btn);
 }
 
 .blueBtn {
-  color: #407bff;
+  color: var(--prim-color-blue);
   background-color: #d7e3ff;
 }
 

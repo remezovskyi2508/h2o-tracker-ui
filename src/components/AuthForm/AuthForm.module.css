@@ -13,7 +13,7 @@
 }
 
 .label {
-  /* display: block; */
+  display: block; 
   margin-bottom: 8px;
   width: 100%;
   font-weight: 400;
@@ -30,15 +30,16 @@
       font-size: 16px;
        border: 1px solid #d7e3ff;
        border-radius: 6px;
-      color: #407bff;
+       color: #407bff;
+       background-color: #ffff;
        outline: none;
        width: 100%;
        transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
      }
     
      .inputError{
-     border-color: #ef5050;
-       color: #ef5050;
+     border-color: var(--second-del-error-color);
+       color: var(--second-del-error-color);
      }
     
     
@@ -61,44 +62,46 @@
        border: none;
        cursor: pointer;
     }
-    
+    .iconButton:focus{
+color: #407bff; ;
+    }
     
      .input:focus {
-       border: 1px solid #2f2f2f66;
-       color: inherit;
+       border: 1px solid var(--prim-color-black)66;
+       color: #407bff;
      }
     
      .input::placeholder {
        font-weight: 400;
        font-size: 16px;
        line-height: 1.25;
-       color:#debbff;
+       color:#9ebbff;
      }
     
      inputError{
-       border-color: #ef5050;
-       color:#ef5050
+       border-color: var(--second-del-error-color);
+       color:var(--second-del-error-color)
      }
     
      .errorMessage {
-       color: #ef5050;
+       color: var(--second-del-error-color);
        font-size: 14px;
        margin-top: 5px;
      }
     
      .button {
-      width: 100%;
-      padding: 8px 30px;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 1.25;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      background-color: #407bff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-      transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+       width: 100%;
+       padding: 8px 30px;
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 1.25;
+     color: #fff;
+       border: none;
+       cursor: pointer;
+       background-color: var(--prim-color-blue);
+       border-radius: 10px;
+       box-shadow: var(--box-shadow-btn);
+       transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     
      }
     
@@ -112,7 +115,7 @@
          font-weight: 400;
          font-size: 16px;
          line-height: 1.25;
-         color: #407bff;
+         color: var(--prim-color-blue);
          display: flex;
         text-align: left;
          gap: 4px;
