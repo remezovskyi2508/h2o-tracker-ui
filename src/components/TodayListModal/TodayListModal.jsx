@@ -20,8 +20,8 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
   });
 
   const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
+  const year = today.getUTCFullYear();
+  const month = today.getUTCMonth() + 1;
 
   const oldDate = data
     ? `${new Date(data.date)
@@ -36,8 +36,8 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
   useEffect(() => {
     if (isOpen) {
       const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
       const currentDate = `${hours}:${minutes}`;
 
       setInitialState(prevState => ({
