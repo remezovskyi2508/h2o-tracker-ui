@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { login, logout, register } from '../auth/operations';
-import { persistor } from '../store';
 
 const initialState = {
   data: {},
@@ -47,7 +46,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logout.fulfilled, () => {
-        persistor.purge(); // очищення Persist store
         return initialState;
       })
       .addCase(logout.rejected, (state, action) => {

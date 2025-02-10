@@ -51,7 +51,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const { data } = await authInstance.post('/users/logout');
+    const { data } = await authInstance.post('/auth/logout');
     clearToken();
     return data;
   } catch (error) {
@@ -59,21 +59,21 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const refreshUser = createAsyncThunk(
-  'auth/refreshUser',
-  async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
+// export const refreshUser = createAsyncThunk(
+//   'auth/refreshUser',
+//   async (_, thunkAPI) => {
+//     const persistedToken = thunkAPI.getState().auth.token;
 
-    if (!persistedToken) {
-      return thunkAPI.rejectWithValue('Failed to refresh user');
-    }
+//     if (!persistedToken) {
+//       return thunkAPI.rejectWithValue('Failed to refresh user');
+//     }
 
-    try {
-      const { data } = await authInstance.get('/user/current');
+//     try {
+//       const { data } = await authInstance.get('/user/current');
 
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
-    }
-  }
-);
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.response.data.message);
+//     }
+//   }
+// );

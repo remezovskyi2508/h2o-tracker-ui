@@ -3,6 +3,7 @@ import css from './UserLogoutModal.module.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations.js';
+import { persistor } from '../../redux/store.js';
 
 Modal.setAppElement('#root');
 
@@ -42,6 +43,7 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
   const onLogout = async () => {
     try {
       await dispatch(logout());
+      persistor.purge(); // очищення Persist store
       onClose();
     } catch (error) {
       console.error('Logout failed:', error);

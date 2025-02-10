@@ -13,7 +13,7 @@
 }
 
 .label {
-  /* display: block; */
+  display: block; 
   margin-bottom: 8px;
   width: 100%;
   font-weight: 400;
@@ -30,7 +30,8 @@
       font-size: 16px;
        border: 1px solid #d7e3ff;
        border-radius: 6px;
-      color: #407bff;
+       color: #407bff;
+       background-color: #ffff;
        outline: none;
        width: 100%;
        transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -61,18 +62,20 @@
        border: none;
        cursor: pointer;
     }
-    
+    .iconButton:focus{
+color: #407bff; ;
+    }
     
      .input:focus {
        border: 1px solid var(--prim-color-black)66;
-       color: inherit;
+       color: #407bff;
      }
     
      .input::placeholder {
        font-weight: 400;
        font-size: 16px;
        line-height: 1.25;
-       color:#debbff;
+       color:#9ebbff;
      }
     
      inputError{
