@@ -1,15 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './DailyNorma.module.css';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal.jsx';
 import Button from './button/Button.jsx';
+import { selectUserInfo } from '../../redux/user/selectors.js';
+import { selectUserId } from '../../redux/auth/selectors.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserInfo } from '../../redux/user/operations.js';
 
 const DailyNorma = () => {
   // const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUserInfo);
+  const userId = useSelector(selectUserId);
+  console.log(userData);
 
-  const user = { dailyNorm: 2000 };
+  // const user = { dailyNorm: 2000 };
 
-  const [dailyNorm, setDailyNorm] = useState(user?.dailyNorm / 1000 || 0);
+  useEffect(() => {
+    if (userData) {
+      dispatch(fetchUserInfo(userId));
+    }
+  }, [dispatch, userId]);
+
+  const [dailyNorm, setDailyNorm] = useState(userData?.dailyNorm / 1000 || 0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (userData?.dailyNorm) {
+      setDailyNorm(userData.dailyNorm / 1000);
+    }
+  }, [userData]);
 
   const handleEditClick = () => {
     setIsModalOpen(true);
