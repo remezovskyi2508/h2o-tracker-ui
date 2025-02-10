@@ -12,9 +12,6 @@ const DailyNorma = () => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserInfo);
   const userId = useSelector(selectUserId);
-  console.log(userData);
-
-  // const user = { dailyNorm: 2000 };
 
   useEffect(() => {
     if (userData) {

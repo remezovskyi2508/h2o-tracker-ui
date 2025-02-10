@@ -20,7 +20,7 @@ export const UserLogo = () => {
         dispatch(fetchUserInfo(userId));
       }
     }
-  },[]);
+  }, []);
 
   return (
     <>
