@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth/operations.js';
@@ -12,33 +12,30 @@ const SignupPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/home');
+    }
+  }, [isLoggedIn, navigate]);
+
   const handleSignup = async userData => {
     try {
-      const response = await dispatch(register(userData)).unwrap();
-      console.log(response);
-      if (response.user) {
-        navigate('/signin');
-      }
+      await dispatch(register(userData)).unwrap();
+      navigate('/signin');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Signup failed. Please try again.');
     }
   };
 
-  if (isLoggedIn) {
-    navigate('/home');
-    return null;
-  }
-
   return (
-     <div className={css.mainBackground}>
-    <div className={css.signupPageContainer}>
-      <div className={css.formSection}>
-        {error && <p className={css.error}>{error}</p>}
-
-        <AuthForm onSubmit={handleSignup} buttonText="Sign Up" />
+    <div className={css.mainBackground}>
+      <div className={css.signupPageContainer}>
+        <div className={css.formSection}>
+          {error && <p className={css.error}>{error}</p>}
+          <AuthForm onSubmit={handleSignup} buttonText="Sign Up" />
+        </div>
+        <div className={css.background}></div>
       </div>
-      <div className={css.background}></div>
-    </div>
     </div>
   );
 };

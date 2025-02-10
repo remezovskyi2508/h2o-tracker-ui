@@ -19,6 +19,26 @@ const DailyNorma = () => {
     setIsModalOpen(false);
   };
 
+  const updateDailyNorm = async newNorm => {
+    try {
+      const response = await fetch('/api/update-daily-norm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ dailyNorm: newNorm * 1000 }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update daily norm');
+      }
+
+      console.log('Daily norm updated successfully');
+    } catch (error) {
+      console.error('Error updating daily norm:', error);
+    }
+  };
+
   return (
     <div className={css.container}>
       <h2 className={css.title}>My daily norma</h2>
@@ -36,7 +56,10 @@ const DailyNorma = () => {
       </div>
       {isModalOpen && (
         <DailyNormaModal
-          setDailyNorm={setDailyNorm}
+          setDailyNorm={newNorm => {
+            setDailyNorm(newNorm);
+            updateDailyNorm(newNorm);
+          }}
           onClose={handleModalClose}
         />
       )}
