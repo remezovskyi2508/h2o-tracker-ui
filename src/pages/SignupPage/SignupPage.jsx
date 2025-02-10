@@ -30,6 +30,7 @@ const SignupPage = () => {
   }
 
   return (
+     <div className={css.mainBackground}>
     <div className={css.signupPageContainer}>
       <div className={css.formSection}>
         {error && <p className={css.error}>{error}</p>}
@@ -37,6 +38,7 @@ const SignupPage = () => {
         <AuthForm onSubmit={handleSignup} buttonText="Sign Up" />
       </div>
       <div className={css.background}></div>
+    </div>
     </div>
   );
 };
