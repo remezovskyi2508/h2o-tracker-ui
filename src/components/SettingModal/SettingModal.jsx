@@ -9,7 +9,6 @@ import {
   fetchUserInfo,
   updateUserAvatar,
   updateUserInfo,
-  resetPassword,
 } from '../../redux/user/operations.js';
 import { selectUserInfo } from '../../redux/user/selectors.js';
 import { selectUserId } from '../../redux/auth/selectors.js';
@@ -22,10 +21,10 @@ const SettingModal = ({ isOpen, onClose }) => {
   const userId = useSelector(selectUserId);
 
   useEffect(() => {
-    if (userId) {
+    if (userData) {
       dispatch(fetchUserInfo(userId));
     }
-  }, [dispatch, userId]);
+  }, [dispatch, userData, userId]);
 
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
@@ -61,7 +60,7 @@ const SettingModal = ({ isOpen, onClose }) => {
 
       if (response?.data.avatarUrl) {
         setFieldValue('avatar', response.data.avatarUrl);
-        dispatch(fetchUserInfo(userId));
+        // dispatch(fetchUserInfo(userId));
       } else {
         throw new Error('Invalid avatar response');
       }
@@ -72,32 +71,18 @@ const SettingModal = ({ isOpen, onClose }) => {
       );
     }
   };
-
   const handleSubmit = async values => {
-    const fieldsToCheck = ['gender', 'email', 'name'];
-    const changedValues = {};
-
-    fieldsToCheck.forEach(key => {
-      if (values[key] !== userData[key]) {
-        changedValues[key] = values[key];
-      }
-    });
+    const data = {};
+    if (values.gender) data.gender = values.gender;
+    if (values.email) data.email = values.email;
+    if (values.name) data.name = values.name;
+    if (values.oldPassword) data.oldPassword = values.oldPassword;
+    if (values.newPassword) data.newPassword = values.newPassword;
 
     try {
-      if (Object.keys(changedValues).length > 0) {
-        await dispatch(updateUserInfo({ id: userId, changedValues })).unwrap();
-      }
-
-      if (values.oldPassword && values.newPassword) {
-        await dispatch(
-          resetPassword({
-            id: userId,
-            oldPassword: values.oldPassword,
-            newPassword: values.newPassword,
-          })
-        ).unwrap();
-      }
-      dispatch(fetchUserInfo(userId));
+      await dispatch(updateUserInfo({ id: userId, data }));
+      // dispatch(fetchUserInfo(userId));
+      console.log('data', data);
       toast.success('Profile updated successfully!');
     } catch (error) {
       console.log(error);
@@ -111,11 +96,11 @@ const SettingModal = ({ isOpen, onClose }) => {
     <button className={css.btnShowPassword} type="button" onClick={onClick}>
       {isVisible ? (
         <svg className={css.iconEye} width="16" height="16">
-          <use href="../../../public/images/symbol-defs.svg#icon-eye"></use>
+          <use href="/images/symbol-defs.svg#icon-eye"></use>
         </svg>
       ) : (
         <svg className={css.iconEye} width="16" height="16">
-          <use href="../../../public/images/symbol-defs.svg#icon-eye-slash"></use>
+          <use href="/images/symbol-defs.svg#icon-eye-slash"></use>
         </svg>
       )}
     </button>
@@ -134,7 +119,7 @@ const SettingModal = ({ isOpen, onClose }) => {
       <div className={css.closeBtnWrapper}>
         <button className={css.closeBtn} onClick={onClose}>
           <svg className={css.closeBtnIcon} width="24" height="24">
-            <use href="../../../public/images/symbol-defs.svg#icon-close"></use>
+            <use href="/images/symbol-defs.svg#icon-close"></use>
           </svg>
         </button>
       </div>
@@ -142,7 +127,6 @@ const SettingModal = ({ isOpen, onClose }) => {
       <h2 className={css.title}>Setting</h2>
       <Formik
         initialValues={{
-          id: userId,
           avatar: userData?.avatar?.url || null,
           gender: userData?.gender || 'female',
           name: userData?.name || '',
@@ -153,6 +137,7 @@ const SettingModal = ({ isOpen, onClose }) => {
         }}
         onSubmit={handleSubmit}
         validationSchema={SettingSchema}
+        enableReinitialize
       >
         {({ setFieldValue, values, errors }) => (
           <Form className={css.form}>
@@ -165,7 +150,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                   onClick={() => document.getElementById('avatar').click()}
                 >
                   <svg className={css.uploadButtonIcon} width="16" height="16">
-                    <use href="../../../public/images/symbol-defs.svg#icon-arrow-up-tray"></use>
+                    <use href="/images/symbol-defs.svg#icon-arrow-up-tray"></use>
                   </svg>
                   Upload a photo
                 </button>
@@ -286,6 +271,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                       }`}
                       placeholder="Password"
                       disabled={!values.oldPassword}
+                      required={values.oldPassword}
                     />
                     <PasswordToggleButton
                       isVisible={showPassword.newPassword}
@@ -314,6 +300,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                       }`}
                       placeholder="Password"
                       disabled={!values.oldPassword}
+                      required={values.oldPassword}
                     />
 
                     <PasswordToggleButton

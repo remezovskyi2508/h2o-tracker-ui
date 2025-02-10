@@ -4,7 +4,7 @@
   height: 416px;
 
   border-radius: 10px;
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  box-shadow: var(--box-shadow-card);
   background: #d7e3ff;
 }
 

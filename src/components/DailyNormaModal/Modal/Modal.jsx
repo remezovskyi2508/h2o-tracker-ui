@@ -56,7 +56,7 @@ const Modal = ({
             >
               <path
                 d="M1 13L13 1M1 1L13 13"
-                stroke="#407BFF"
+                stroke="var(--prim-color-blue)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

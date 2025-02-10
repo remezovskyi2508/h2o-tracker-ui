@@ -16,11 +16,11 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
 
   const [initialState, setInitialState] = useState({
     date: '',
-    waterVolume: data ? data.waterVolume : 50,
+    waterVolume: data ? data.waterVolume : 0,
   });
 
   const today = new Date();
-  const year = today.getFullYear(); 
+  const year = today.getFullYear();
   const month = today.getMonth() + 1;
 
   const oldDate = data
@@ -65,7 +65,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
     if (event.target.classList.contains(css.modalWrapper)) onClose();
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = async values => {
     if (values.waterVolume <= 0) {
       return;
     }
@@ -85,33 +85,39 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
       date: timeToSend,
     };
 
-    switch (operationType) {
-      case 'add': {
-        const result = dispatch(addWater(waterData));
-        if (!result.error) {
-          dispatch(fetchWaterToday());
-          dispatch(fetchWaterMonth({year, month}));
-          onClose();
+    try {
+      let result;
+
+      switch (operationType) {
+        case 'add': {
+          result = await dispatch(addWater(waterData));
+          if (!result.error) {
+            dispatch(fetchWaterToday());
+            dispatch(fetchWaterMonth({ year, month }));
+            onClose();
+          }
+          break;
         }
-        break;
-      }
-      case 'edit': {
-        const result = dispatch(
-          updateWater({
-            id: data._id,
-            waterVolume: waterData.waterVolume,
-            date: waterData.date,
-          })
-        );
-        if (!result.error) {
-          dispatch(fetchWaterToday());
-          dispatch(fetchWaterMonth({year, month}));
-          onClose();
+        case 'edit': {
+          result = await dispatch(
+            updateWater({
+              id: data._id,
+              waterVolume: waterData.waterVolume,
+              date: waterData.date,
+            })
+          );
+          if (!result.error) {
+            dispatch(fetchWaterToday());
+            dispatch(fetchWaterMonth({ year, month }));
+            onClose();
+          }
+          break;
         }
-        break;
+        default:
+          break;
       }
-      default:
-        break;
+    } catch (error) {
+      console.error('Error handling water data:', error);
     }
   };
 
@@ -138,8 +144,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
                       <img src={glassIcon} alt="Glass of water icon" />
                     </p>
                     <p className={css.modalOldAmountVolume}>
-                      {/* {data.waterVolume} ml */}
-                      {data && data.waterVolume ? data.waterVolume : 50} ml
+                      {data.waterVolume} ml
                     </p>
                     <p className={css.modalOldAmountTime}>{oldDate}</p>
                   </div>
