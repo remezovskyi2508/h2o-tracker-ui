@@ -18,6 +18,7 @@ const SigninPage = () => {
   };
 
   return (
+    <div className={css.mainBackground}>
     <div className={css.signinPageContainer}>
       <div className={css.formSection}>
         {!isLoggedIn && (
@@ -28,6 +29,7 @@ const SigninPage = () => {
         )}
       </div>
       <div className={css.background}></div>
+    </div>
     </div>
   );
 };

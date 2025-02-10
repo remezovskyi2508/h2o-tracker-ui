@@ -1,9 +1,21 @@
+.mainBackground{
+  margin: 24px auto;
+  background-image: url('/public/images/BackgroundElementSignIn.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  align-items: center;
+}
+
+
 .signinPageContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 320px;
-  margin: 24px auto;
+  margin: auto;
   padding: 0 20px;
   height: 100vh;
 }
@@ -15,22 +27,35 @@
 }
 
 .background {
+  position: relative;
   width: 280px;
   height: 210px;
   background-image: url('/images/mobilebottle.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center bottom;
   overflow: hidden;
   pointer-events: none;
+  z-index: 1;
+ 
+  
 }
 
 /* ================= TABLET VERSION ================== */
 @media screen and (min-width: 768px) {
+
+  .mainBackground{
+    background-image: url('/public/images/Background\ element\ Home\ Screen.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  
+
   .signinPageContainer {
     position: relative;
     width: 768px;
-    padding: 0 32px;
+    padding: 0 32p;
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -51,11 +76,19 @@
     left: 120px;
     top: 54px;
     z-index: 1;
+    pointer-events: none;
   }
 }
 
 /* ================= DESKTOP VERSION ================== */
 @media screen and (min-width: 1440px) {
+  .mainBackground{
+    background-image: url('/public/images/backgroundElementMainPage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+  }
+  
   .signinPageContainer {
     width: 1440px;
     padding: 0 112px;
@@ -66,22 +99,25 @@
     align-items: center;
   }
 
-  .background {
-    order: -1;
-    width: 916px;
-    height: 680px;
-    background-image: url('/images/desctopbottle.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left center;
-    left: -8%;
-    top: 2%;
-    pointer-events: none;
-  }
-
   .formSection {
     flex: auto;
+    padding-top: 20px;
     width: 384px;
-    order: 0;
+    z-index: 2;
   }
+  .background {
+   
+    z-index: 1;
+     width: 916px;
+     height: 680px;
+     background-image: url('/images/desctopbottle.svg');
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: left center;
+     left: -4%;
+     top: 3%;
+     pointer-events: none;
+   
+   }
+ 
 }
