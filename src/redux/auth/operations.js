@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const authInstance = axios.create({
   baseURL: 'https://h2o-tracker-api.onrender.com/',
   headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
 });
 
 export const setToken = token => {
