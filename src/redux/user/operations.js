@@ -35,15 +35,16 @@ export const fetchUserInfo = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   'userInfo/updateUserData',
-  async ({ id, changedValues }, thunkAPI) => {
+  async ({ id, data }, thunkAPI) => {
     try {
       const persistToken = localStorage.getItem('persist:auth');
       const token = parseToken(persistToken);
-      const response = await authInstance.patch(`/users/${id}`, changedValues, {
+      const response = await authInstance.patch(`/users/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('update', response.data);
       return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,30 +68,6 @@ export const updateUserAvatar = createAsyncThunk(
         }
       );
       console.log('avatar', response.data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-export const resetPassword = createAsyncThunk(
-  'userInfo/reset-pwd',
-  async ({ id, oldpasswor, newPassword }, thunkAPI) => {
-    // {
-    //   "oldPassword": "password123",
-    //   "newPassword": "password098"
-    // }
-    try {
-      const token = localStorage.getItem('accessToken');
-      const response = await authInstance.put(
-        `/users/${id}/reset-pwd`,
-        { oldpasswor, newPassword },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
