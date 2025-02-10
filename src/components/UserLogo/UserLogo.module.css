@@ -1,85 +1,103 @@
-.iconUser {
-    display: inline-block;
-    stroke-width: 0;
-    fill: transparent;
-    stroke-width: 1px;
-    stroke: #2f2f2f;
-    width: 28px;
-    height: 28px;
-    margin-right: 4px;
+/* .iconUser {
+  display: inline-block;
+  stroke-width: 0;
+  fill: transparent;
+  stroke-width: 1px;
+  stroke: #2f2f2f;
+  width: 28px;
+  height: 28px;
+  margin-right: 4px;
+} */
+.initials {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background-color: #9ebbff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
 }
-
+.avatar {
+  max-width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: transparent;
+}
 .userName {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    text-align: right;
-    color: #2f2f2f;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: right;
+  color: #2f2f2f;
+  cursor: auto;
 }
 
 .placeholder {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #407bff;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
+.user {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: right;
+  cursor: auto;
 }
 
 .svgBtn {
-    display: flex;
-    margin-left: 4px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    align-items: center;
+  display: flex;
+  margin-left: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
 }
 
 .icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    stroke-width: 0;
-    stroke-width: 1px;
-    fill: #407bff;
-    margin-left: 4px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  stroke-width: 0;
+  stroke-width: 1px;
+  fill: #407bff;
+  margin-left: 4px;
 }
 
 .icon:hover {
-    fill: #ff9d43;
-    stroke: #ff9d43;
+  fill: #ff9d43;
+  stroke: #ff9d43;
 }
 
 .icon:focus {
-    fill: #ff9d43;
-    stroke: #ff9d43;
+  fill: #ff9d43;
+  stroke: #ff9d43;
 }
 
 .wrapper {
-    position: absolute;
-    top: 28px;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    z-index: 10;
-
+  position: absolute;
+  top: 28px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 10;
 }
 
 .wrapper.show {
-    display: block;
+  display: block;
 }
