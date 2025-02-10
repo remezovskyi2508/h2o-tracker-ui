@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import AuthForm from '../../components/AuthForm/AuthForm.jsx';
-import css from './SigninPage.module.css';
+import css from '../SignupPage/SignupPage.module.css';
 
 const SigninPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -18,8 +18,7 @@ const SigninPage = () => {
   };
 
   return (
-    <div className={css.mainBackground}>
-    <div className={css.signinPageContainer}>
+    <div className={css.sPageContainer}>
       <div className={css.formSection}>
         {!isLoggedIn && (
           <>
@@ -28,8 +27,6 @@ const SigninPage = () => {
           </>
         )}
       </div>
-      <div className={css.background}></div>
-    </div>
     </div>
   );
 };
