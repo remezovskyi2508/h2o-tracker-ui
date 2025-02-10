@@ -24,7 +24,7 @@ const SettingModal = ({ isOpen, onClose }) => {
     if (userData) {
       dispatch(fetchUserInfo(userId));
     }
-  }, [dispatch, userData, userId]);
+  }, []);
 
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),

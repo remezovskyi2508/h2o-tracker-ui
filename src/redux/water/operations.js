@@ -90,7 +90,7 @@ export const updateWater = createAsyncThunk(
   'water/updateWater',
   async ({ id, waterVolume, date }, thunkAPI) => {
     try {
-      const persistToken = localStorage.getItem('persist:auth');
+      const persistToken = localStorage.patch('persist:auth');
       const token = parseToken(persistToken);
       const response = await waterInstance.patch(
         `/water/${id}`,
@@ -101,6 +101,29 @@ export const updateWater = createAsyncThunk(
           },
         }
       );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const dailyNormUpd = createAsyncThunk(
+  'water/water-rate',
+  async ({ dailyNorm }, thunkAPI) => {
+    try {
+      const persistToken = localStorage.getItem('persist:auth');
+      const token = parseToken(persistToken);
+      const response = await waterInstance.patch(
+        `/water/water-rate`,
+        { dailyNorm },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

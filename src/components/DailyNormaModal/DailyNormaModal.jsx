@@ -5,11 +5,14 @@ import toast from 'react-hot-toast';
 import Modal from './Modal/Modal.jsx';
 import RadioButton from './radio-button/RadioButton.jsx';
 import Button from '../DailyNorma/button/Button.jsx';
+import { dailyNormUpd } from '../../redux/water/operations.js';
+import { useDispatch } from 'react-redux';
 
 const DAILY_NORMA = 15000;
 
 const DailyNormaModal = ({ onClose }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const [gender, setGender] = useState('woman');
 
   const [m, setM] = useState(0);
@@ -19,15 +22,16 @@ const DailyNormaModal = ({ onClose }) => {
     gender === 'woman' ? m * 0.03 + t * 0.4 : m * 0.04 + t * 0.6;
   const [customNorm, setCustomNorm] = useState('');
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const normToSave = Number(customNorm)
       ? Number(customNorm) / 1000
       : amountWaterPerDay;
 
     if (normToSave > 0 && normToSave <= DAILY_NORMA) {
       // Замість виклику dispatch, просто виводимо результат
+      await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
       toast.success('New daily norma added');
-      alert('New daily water norma: ${normToSave.toFixed(2)} liters');
+      alert(`New daily water norma: ${normToSave.toFixed(2)} liters`);
       onClose(); // Закриваємо модальне вікно
     } else {
       toast.error('Wrong data');
