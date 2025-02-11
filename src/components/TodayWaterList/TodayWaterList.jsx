@@ -5,6 +5,7 @@ import TodayWaterListElement from '../TodayWaterListElement/TodayWaterListElemen
 import TodayListModal from '../TodayListModal/TodayListModal.jsx'
 import { selectWaterToday, selectWaterLoading } from '../../redux/water/selectors.js';
 import { fetchWaterToday, fetchWaterMonth, deleteWater } from '../../redux/water/operations.js';
+import Loader from '../Loader/Loader.jsx';
 
 const TodayWaterList =() => {
   const [isOpenAddWaterModal, setIsOpenAddWaterModal] = useState(false);
@@ -37,7 +38,7 @@ const TodayWaterList =() => {
       <h3 className={styles.waterListToday}>Today</h3>
       
         {loading ? (
-          <p>Loading...</p>
+         <Loader/>
         ) : (
           isArray && water.length > 0 ? (
             <ul className={styles.waterListBox}>
