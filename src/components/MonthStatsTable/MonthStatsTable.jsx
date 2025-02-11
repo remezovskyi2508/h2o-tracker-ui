@@ -10,8 +10,11 @@ import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 
 import { fetchWaterMonth } from '../../redux/water/operations.js';
 import { selectWaterMonth } from '../../redux/water/selectors.js';
+import { selectUserInfo } from '../../redux/user/selectors.js';
 
 const MonthStatsTable = () => {
+
+  const userData = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const days = useSelector(selectWaterMonth);
   const currentDate = new Date();
@@ -52,7 +55,7 @@ const MonthStatsTable = () => {
       await dispatch(fetchWaterMonth({ year, month: month + 1 }));
     };
     fetchData();
-  }, [dispatch, month, year]);
+  }, [dispatch, month, year, userData]);
 
   const daysMap = useMemo(() => {
     return days.reduce((acc, day) => {
