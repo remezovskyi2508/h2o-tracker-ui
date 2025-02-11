@@ -23,7 +23,9 @@ const DailyNormaModal = ({ onClose }) => {
   const [t, setT] = useState(0);
 
   const amountWaterPerDay =
-    gender === 'woman' ? m * 0.03 + t * 0.4 : m * 0.04 + t * 0.6;
+  gender === 'woman' 
+  ? parseFloat((m * 0.03 + t * 0.4).toFixed(1)) 
+  : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
   const [customNorm, setCustomNorm] = useState('');
 
   const handleSave = async () => {
