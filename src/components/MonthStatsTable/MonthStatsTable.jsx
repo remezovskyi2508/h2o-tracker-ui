@@ -75,7 +75,7 @@ const MonthStatsTable = () => {
             onClick={() => handleMonthChange('prev')}
           >
             <svg className={css.icon} width="20" height="20">
-              <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
+              <use href="/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
           </button>
           <div className={css.dateTitle}>
@@ -87,7 +87,7 @@ const MonthStatsTable = () => {
             onClick={() => handleMonthChange('next')}
           >
             <svg className={css.icon} width="20" height="20">
-              <use href="/public/images/icons.svg#arrow-calendar-icon"></use>
+              <use href="/images/icons.svg#arrow-calendar-icon"></use>
             </svg>
           </button>
         </li>

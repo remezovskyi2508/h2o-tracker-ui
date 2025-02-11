@@ -20,19 +20,16 @@ const SigninPage = () => {
 
   return (
     <div className={css.sPageContainer}>
-      <Toaster /> 
+      <Toaster />
       <div className={css.formSection}>
         {!isLoggedIn && (
           <>
-            
-           
             <AuthForm onSubmit={handleSignin} buttonText="Sign in" />
           </>
         )}
-       
       </div>
     </div>
   );
 };
 
-export default SigninPage;gi
+export default SigninPage;

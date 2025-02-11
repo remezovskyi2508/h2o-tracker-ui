@@ -6,7 +6,7 @@ const UserAuth = () => {
       <Link to="/signin" className={style.singIn}>
         Sign in
         <svg className={style.iconUser} width="28" height="28">
-          <use href="/public/images/icons.svg#icon-outline"></use>
+          <use href="/images/icons.svg#icon-outline"></use>
         </svg>
       </Link>
     </div>

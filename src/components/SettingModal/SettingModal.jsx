@@ -81,8 +81,6 @@ const SettingModal = ({ isOpen, onClose }) => {
 
     try {
       await dispatch(updateUserInfo({ id: userId, data }));
-      // dispatch(fetchUserInfo(userId));
-      console.log('data', data);
       toast.success('Profile updated successfully!');
       await dispatch(fetchUserInfo(userId));
     } catch (error) {
