@@ -19,15 +19,27 @@ export const fetchUserInfo = createAsyncThunk(
   'userInfo/fetchUserInfo',
   async (id, thunkAPI) => {
     try {
-      const persistToken = localStorage.getItem('persist:auth');
-      const token = parseToken(persistToken);
+      const state = thunkAPI.getState();
+      let token = state.auth.token;
+
+      if (!token) {
+        const persistToken = localStorage.getItem('persist:auth');
+        token = persistToken ? JSON.parse(persistToken).token : null;
+      }
+
+      if (!token) {
+        throw new Error('No token found');
+      }
+
       const response = await authInstance.get(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+
       return response.data;
     } catch (error) {
+      console.error('Fetch user error:', error.response?.data || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

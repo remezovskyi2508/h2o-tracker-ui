@@ -18,9 +18,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 36px;
+  font-size: 18px;
   font-weight: 500;
-  color:var(--prim-color-white);
+  color: var(--prim-color-white);
 }
 .avatar {
   max-width: 28px;
@@ -35,7 +35,7 @@
   font-size: 16px;
   line-height: 1.25;
   text-align: right;
-  color:var(--prim-color-black);
+  color: var(--prim-color-black);
   cursor: auto;
 }
 
