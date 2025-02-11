@@ -16,16 +16,15 @@ const DailyNormaModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
 
-
   const [gender, setGender] = useState('woman');
 
   const [m, setM] = useState(0);
   const [t, setT] = useState(0);
 
   const amountWaterPerDay =
-  gender === 'woman' 
-  ? parseFloat((m * 0.03 + t * 0.4).toFixed(1)) 
-  : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
+    gender === 'woman'
+      ? parseFloat((m * 0.03 + t * 0.4).toFixed(1))
+      : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
   const [customNorm, setCustomNorm] = useState('');
 
   const handleSave = async () => {

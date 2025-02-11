@@ -5,12 +5,8 @@
   position: relative;
 }
 
-/* input[type="radio"] {
-  display: none;
-} */
-
 .customRadio {
-  width: 14px;
+  /* width: 4px; */
   height: 14px;
   border: 1px solid var(--primary-color-blue);
   border-radius: 50%;
@@ -33,7 +29,3 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
-
-/* input[type='radio']:checked + .customRadio::after {
-  opacity: 1;
-} */
