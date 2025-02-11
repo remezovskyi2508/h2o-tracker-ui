@@ -3,7 +3,7 @@
 
 //import components
 // import { useDispatch, useSelector } from 'react-redux';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 // import { refreshUser } from '../redux/auth/operations';
@@ -12,9 +12,10 @@ import { lazy } from 'react';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
-import { selectIsLoggedIn } from '../redux/auth/selectors';
-import { useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectToken } from '../redux/auth/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
+import { userRefresh } from '../redux/auth/operations';
 // Ліниве завантаження компонентів
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -23,14 +24,14 @@ const SignupPage = lazy(() => import('../pages/SignupPage/SignupPage'));
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const dispatch = useDispatch();
-  // const token = useSelector(selectToken);
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
-  // useEffect(() => {
-  //   if(token){
-  //     isLoggedIn = true;
-  //   }
-  // });
+  useEffect(() => {
+    if (token) {
+      dispatch(userRefresh());
+    }
+  }, [dispatch, token]); // Додаємо залежності
 
   // if (isRefreshing) {
   //   return <div className={css.loader}>Loading...</div>;
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
