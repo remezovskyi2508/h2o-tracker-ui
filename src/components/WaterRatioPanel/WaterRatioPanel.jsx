@@ -29,7 +29,7 @@ const WaterRatioPanel = () => {
         <h3 className={css.title}>Today</h3>
         <div className={css.dial}>
           <p className={css.percentage} style={{ left: `${limitedPercentage}%` }}>
-           {percentage} %
+           {percentage}%
           </p>
           <div
             className={css.factpercent}
