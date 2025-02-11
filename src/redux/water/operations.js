@@ -18,6 +18,8 @@ export const fetchWaterToday = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -90,7 +92,7 @@ export const updateWater = createAsyncThunk(
   'water/updateWater',
   async ({ id, waterVolume, date }, thunkAPI) => {
     try {
-      const persistToken = localStorage.patch('persist:auth');
+      const persistToken = localStorage.getItem('persist:auth');
       const token = parseToken(persistToken);
       const response = await waterInstance.patch(
         `/water/${id}`,
@@ -101,6 +103,8 @@ export const updateWater = createAsyncThunk(
           },
         }
       );
+      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

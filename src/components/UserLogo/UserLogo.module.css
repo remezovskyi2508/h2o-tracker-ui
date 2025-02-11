@@ -95,7 +95,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  z-index: 10;
 }
 
 .wrapper.show {

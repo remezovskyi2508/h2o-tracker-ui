@@ -58,7 +58,6 @@
 
 .percentage {
   position: absolute;
-  z-index: 10;
   white-space: nowrap;
   bottom: 12px;
   left: 50%;
