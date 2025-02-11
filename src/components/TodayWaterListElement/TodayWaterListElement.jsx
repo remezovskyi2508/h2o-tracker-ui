@@ -15,7 +15,9 @@ const TodayWaterListElement = ({item, handleDelete}) => {
 
     const formatTime = (time) => {
         const date = new Date(time);
-        return date.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+        const hours = date.getUTCHours().toString().padStart(2, '0'); 
+        const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
       };
 
     return(
