@@ -6,16 +6,21 @@ import css from './WaterRatioPanel.module.css';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import { useSelector } from 'react-redux';
 import { selectWaterToday } from '../../redux/water/selectors';
+import { selectUserInfo } from '../../redux/user/selectors.js';
 
 const WaterRatioPanel = () => {
+
   const waterData = useSelector(selectWaterToday); 
+  const userData = useSelector(selectUserInfo);
+  const dailyNorm = userData.dailyNorm;
   
   // const [waterData, setWaterData] = useState({
   //   percentage: '70%',
   // });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const percentage = Number(parseFloat(waterData.percentage).toFixed(0)) || 0;
+  const totalWater = waterData.records?.reduce((total, record) => total + record.waterVolume, 0) || 0;
+  const percentage = Math.min((totalWater / dailyNorm) * 100);
   const limitedPercentage = Math.min(percentage, 100);
 
   return (
@@ -24,7 +29,7 @@ const WaterRatioPanel = () => {
         <h3 className={css.title}>Today</h3>
         <div className={css.dial}>
           <p className={css.percentage} style={{ left: `${limitedPercentage}%` }}>
-            {percentage}%
+           {percentage.toFixed(1)}%
           </p>
           <div
             className={css.factpercent}
@@ -64,6 +69,7 @@ const WaterRatioPanel = () => {
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
             operationType="add"
+            data={waterData.records?.[waterData.records.length - 1]}
           />
         )}
       </div>
