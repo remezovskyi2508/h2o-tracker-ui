@@ -1,0 +1,66 @@
+.sPageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100vh;
+  background-image: url('/images/mobilebottle.svg'),
+    url('/images/background-element-phone-home-screen.svg');
+  background-size: 280px 210px, cover;
+  background-repeat: no-repeat;
+  background-position: top 450px left 20px, center;
+  overflow: hidden;
+}
+
+.formSection {
+  margin-top: 24px;
+  text-align: center;
+  z-index: 2;
+  padding: 0;
+}
+
+/* ================= TABLET VERSION ================== */
+@media screen and (min-width: 768px) {
+  .sPageContainer {
+    position: relative;
+    width: 768px;
+    padding: 0 32px;
+
+    align-items: baseline;
+    background-image: url('/images/tabletbottle.svg'),
+      url('/images/backgroundElementMainPage.svg');
+    background-size: 738px 548px, cover;
+    background-position: top 52px left 112px, center;
+  }
+
+  .formSection {
+    flex: 1;
+    width: 336px;
+    margin-top: 40px;
+  }
+}
+
+/* ================= DESKTOP VERSION ================== */
+@media screen and (min-width: 1440px) {
+  .sPageContainer {
+    width: 1440px;
+    padding: 0 112px;
+    margin: 0 auto;
+    background-image: url('/images/desctopbottle.svg'),
+      url('/images/background-element-home-screen.svg');
+    background-size: 916px 680px, cover;
+    background-repeat: no-repeat;
+    background-position: top 80px right 557px, center;
+  }
+
+  .formSection {
+    padding-top: 20px;
+    flex: auto;
+    margin-top: 113px;
+    margin-left: 840px;
+    width: 384px;
+    z-index: 2;
+    
+  }
+}
