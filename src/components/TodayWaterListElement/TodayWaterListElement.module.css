@@ -55,26 +55,36 @@
 .redactOpenBtn{
     background-color: transparent;
     border: none;
+    border-bottom: 1px solid transparent;
     cursor: var(--cursor-url), pointer;
     padding: 0;
+    height: 19px;
+    transition: border-bottom 0.2s ease-in-out;
+}
+
+.redactOpenBtn:hover{
+    border-bottom: #9EBBFF 1px solid;
 }
 
 .redactSvg{
     width: 16px;
     height: 16px;
-    stroke: var(--second-background-trecer-color);
+    stroke: #9EBBFF;
     transition: stroke 0.2s ease-in-out;
-}
-
-.redactOpenBtn:hover .redactSvg{
-    stroke: var(--second-blue-color);
 }
 
 .deleteOpenBtn{
     background-color: transparent;
     border: none;
+    border-bottom: 1px solid transparent;
     cursor: var(--cursor-url), pointer;
     padding: 0;
+    height: 19px;
+    transition: border-bottom 0.2s ease-in-out;
+}
+
+.deleteOpenBtn:hover{
+    border-bottom: #EF5050 1px solid;
 }
 
 @media screen and (min-width: 768px) {
