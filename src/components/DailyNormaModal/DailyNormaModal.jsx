@@ -16,16 +16,15 @@ const DailyNormaModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
 
-
   const [gender, setGender] = useState('woman');
 
   const [m, setM] = useState(0);
   const [t, setT] = useState(0);
 
   const amountWaterPerDay =
-  gender === 'woman' 
-  ? parseFloat((m * 0.03 + t * 0.4).toFixed(1)) 
-  : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
+    gender === 'woman'
+      ? parseFloat((m * 0.03 + t * 0.4).toFixed(1))
+      : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
   const [customNorm, setCustomNorm] = useState('');
 
   const handleSave = async () => {
@@ -36,8 +35,7 @@ const DailyNormaModal = ({ onClose }) => {
     if (normToSave > 0 && normToSave <= DAILY_NORMA) {
       // Замість виклику dispatch, просто виводимо результат
       await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
-      toast.success('New daily norma added');
-      alert(`New daily water norma: ${normToSave.toFixed(2)} liters`);
+      toast.success(`New daily water norma: ${normToSave.toFixed(2)} liters`);
       await dispatch(fetchUserInfo(userId));
       onClose(); // Закриваємо модальне вікно
     } else {
