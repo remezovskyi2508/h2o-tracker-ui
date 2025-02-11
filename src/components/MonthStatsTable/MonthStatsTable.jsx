@@ -100,8 +100,9 @@ const MonthStatsTable = () => {
           const tooltipId = `stats-tooltip-${dayInCalendar}`;
 
           const percent = dayData
-            ? parseInt(dayData.percentage.replace('%', ''))
-            : 0;
+            ? Math.round(parseFloat(dayData.percentage.replace('%', '')))
+          : 0;
+
 
           return (
             <li
@@ -136,7 +137,7 @@ const MonthStatsTable = () => {
                   <DaysGeneralStats
                     date={dayData.date}
                     dailyNorm={dayData.dailyGoal}
-                    percentage={dayData.percentage}
+                    percentage={percent}
                     consumptionCount={dayData.entries}
                   />
                 )}
