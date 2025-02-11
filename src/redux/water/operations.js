@@ -18,7 +18,6 @@ export const fetchWaterToday = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
 
       return data;
     } catch (error) {
@@ -103,7 +102,6 @@ export const updateWater = createAsyncThunk(
           },
         }
       );
-      console.log(response.data);
 
       return response.data;
     } catch (error) {
@@ -127,7 +125,6 @@ export const dailyNormUpd = createAsyncThunk(
           },
         }
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

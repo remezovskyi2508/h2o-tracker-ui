@@ -79,7 +79,7 @@
   width: 232px;
   border-radius: 10px;
   padding: 8px 30px;
-  color:var(--prim-color-white);
+  color: var(--prim-color-white);
 }
 
 .modalOutBtn:hover,
@@ -88,7 +88,7 @@
 }
 
 .button:hover {
-  cursor: url('/public/images/cursor.svg'), auto;
+  cursor: url('/images/cursor.svg'), auto;
 }
 
 @media screen and (min-width: 768px) {

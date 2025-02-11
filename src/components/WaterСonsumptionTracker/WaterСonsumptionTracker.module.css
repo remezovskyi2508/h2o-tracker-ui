@@ -73,7 +73,7 @@
   }
 
   .background {
-    background-image: url('/public/images/bottleTab.svg');
+    background-image: url('/images/bottleTab.svg');
   }
 
   .wrapper {
@@ -132,8 +132,8 @@
   }
 
   .background {
-    background-image: url('/public/images/bobbleDesk.svg'),
-      url('/public/images/bottleDesk.svg');
+    background-image: url('/images/bobbleDesk.svg'),
+      url('/images/bottleDesk.svg');
     background-size: contain, contain; /* Масштабування без спотворень */
     background-repeat: no-repeat, no-repeat; /* Без повторення */
     background-position: center, center bottom; /* Вирівнюємо по центру і вниз */

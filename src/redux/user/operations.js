@@ -44,7 +44,6 @@ export const updateUserInfo = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('update', response.data);
       return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,7 +66,6 @@ export const updateUserAvatar = createAsyncThunk(
           },
         }
       );
-      console.log('avatar', response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
