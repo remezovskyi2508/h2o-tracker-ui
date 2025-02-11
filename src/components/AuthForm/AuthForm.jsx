@@ -35,23 +35,31 @@ const AuthForm = () => {
     ? { email: '', password: '', repeatPassword: '' }
     : { email: '', password: '' };
 
-  const handleSubmit = async (values, actions) => {
-    try {
-      const { repeatPassword, ...formData } = values;
-      void repeatPassword;
-      if (isSignup) {
-        await dispatch(register(formData)).unwrap();
-        navigate('/signin');
-      } else {
-        await dispatch(login(formData)).unwrap();
+    const handleSubmit = async (values, actions) => {
+      try {
+        const { repeatPassword, ...formData } = values;
+        if (isSignup) {
+          await dispatch(register(formData)).unwrap();
+          navigate('/signin');
+        } else {
+          await dispatch(login(formData)).unwrap();
+        }
+        actions.resetForm();
+      } catch (error) {
+       
+        if (error.response && error.response.data && error.response.data.message) {
+         
+          actions.setStatus({ serverError: error.response.data.message });
+        } else {
+       
+        
+          actions.setFieldError('password',  'Password is wrong');
+        }
+        actions.setSubmitting(false);
       }
+    };
 
-      actions.resetForm();
-    } catch (error) {
-      console.error('Authentication error:', error);
-    }
-  };
-
+ 
   return (
     <div className={css.wrapper}>
       <Formik

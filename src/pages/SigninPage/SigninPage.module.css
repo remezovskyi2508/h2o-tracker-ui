@@ -16,8 +16,18 @@
 .formSection {
   margin-top: 24px;
   text-align: center;
-  z-index: 2;
+   z-index: 2; 
   padding: 0;
+}
+
+.error{
+  color:var(--second-del-error-color);
+  background-color:var(--second-del-error-color);
+  border: 1px solid var(--second-del-error-color);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 /* ================= TABLET VERSION ================== */
@@ -60,7 +70,7 @@
     margin-top: 113px;
     margin-left: 840px;
     width: 384px;
-    z-index: 2;
+    z-index: 2; 
     
   }
 }
