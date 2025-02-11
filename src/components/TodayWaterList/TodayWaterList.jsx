@@ -56,7 +56,7 @@ const TodayWaterList =() => {
           </svg>
           <h5 className={styles.AddWaterBtnText}>Add water</h5>
         </button>
-        {isOpenAddWaterModal && <TodayListModal onClose={() => closeModal()} operationType={operationType} isOpen={isOpenAddWaterModal} data={water?.[water.length - 1]}/>}
+        {isOpenAddWaterModal && <TodayListModal onClose={() => closeModal()} operationType={operationType} isOpen={isOpenAddWaterModal} />}
       </div>
     </div>
   )

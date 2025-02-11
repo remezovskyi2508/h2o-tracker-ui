@@ -69,8 +69,7 @@ const WaterRatioPanel = () => {
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
             operationType="add"
-            data={waterData.records?.[waterData.records.length - 1]}
-          />
+            />
         )}
       </div>
     </div>
