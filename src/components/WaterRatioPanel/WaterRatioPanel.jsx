@@ -20,7 +20,7 @@ const WaterRatioPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalWater = waterData.records?.reduce((total, record) => total + record.waterVolume, 0) || 0;
-  const percentage = Math.min((totalWater / dailyNorm) * 100);
+  const percentage = Math.min((totalWater / dailyNorm) * 100).toFixed(0);
   const limitedPercentage = Math.min(percentage, 100);
 
   return (
@@ -29,7 +29,7 @@ const WaterRatioPanel = () => {
         <h3 className={css.title}>Today</h3>
         <div className={css.dial}>
           <p className={css.percentage} style={{ left: `${limitedPercentage}%` }}>
-           {percentage.toFixed(1)}%
+           {percentage} %
           </p>
           <div
             className={css.factpercent}
