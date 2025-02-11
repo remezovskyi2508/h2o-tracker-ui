@@ -7,6 +7,7 @@ import {
   updateWater,
 } from '../../redux/water/operations.js';
 import TodayListModalForm from '../TodayListModalForm/TodayListModalForm.jsx';
+import toast from 'react-hot-toast';
 import closeIcon from '/images/icon-close.svg?url';
 import glassIcon from '/images/icon-glass.svg?url';
 import css from './TodayListModal.module.css';
@@ -16,9 +17,9 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
 
   const [initialState, setInitialState] = useState({
     date: '',
-    waterVolume: data ? data.waterVolume : 0,
+    waterVolume: 50,
   });
-  
+
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
@@ -67,6 +68,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
 
   const handleSubmit = async values => {
     if (values.waterVolume <= 0) {
+      toast.error('Water volume must be greater than 0!');
       return;
     }
 
@@ -95,6 +97,8 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
             dispatch(fetchWaterToday());
             dispatch(fetchWaterMonth({ year, month }));
             onClose();
+          } else {
+            toast.error('Failed to add water!');
           }
           break;
         }
@@ -110,14 +114,16 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
             dispatch(fetchWaterToday());
             dispatch(fetchWaterMonth({ year, month }));
             onClose();
+          } else {
+            toast.error('Failed to update water record!');
           }
           break;
         }
         default:
           break;
       }
-    } catch (error) {
-      null
+    } catch {
+      toast.error('An unexpected error occurred!');
     }
   };
 
