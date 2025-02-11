@@ -96,11 +96,11 @@ const SettingModal = ({ isOpen, onClose }) => {
     <button className={css.btnShowPassword} type="button" onClick={onClick}>
       {isVisible ? (
         <svg className={css.iconEye} width="16" height="16">
-          <use href="/images/symbol-defs.svg#icon-eye"></use>
+          <use href="/images/icons.svg#icon-eye"></use>
         </svg>
       ) : (
         <svg className={css.iconEye} width="16" height="16">
-          <use href="/images/symbol-defs.svg#icon-eye-slash"></use>
+          <use href="/images/icons.svg#icon-eye-slash"></use>
         </svg>
       )}
     </button>
@@ -118,7 +118,7 @@ const SettingModal = ({ isOpen, onClose }) => {
       <div className={css.closeBtnWrapper}>
         <button className={css.closeBtn} onClick={onClose}>
           <svg className={css.closeBtnIcon} width="24" height="24">
-            <use href="/images/symbol-defs.svg#icon-close"></use>
+            <use href="/images/icons.svg#icon-close"></use>
           </svg>
         </button>
       </div>
@@ -149,7 +149,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                   onClick={() => document.getElementById('avatar').click()}
                 >
                   <svg className={css.uploadButtonIcon} width="16" height="16">
-                    <use href="/images/symbol-defs.svg#icon-arrow-up-tray"></use>
+                    <use href="/images/icons.svg#icon-arrow-up-tray"></use>
                   </svg>
                   Upload a photo
                 </button>
