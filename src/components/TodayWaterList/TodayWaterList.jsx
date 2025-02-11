@@ -35,21 +35,20 @@ const TodayWaterList =() => {
   return (
     <div className={styles.todayWaterListBox}>
       <h3 className={styles.waterListToday}>Today</h3>
-      <ul className={styles.waterListBox}>
+      
         {loading ? (
           <p>Loading...</p>
         ) : (
           isArray && water.length > 0 ? (
-            water.map((item) => (
-              <li key={item._id} className={styles.todayWaterElement}>
-                <TodayWaterListElement item={item} handleDelete={handleDelete}/>
-              </li>
-            ))
-          ) : (
-            <p>No notes yet</p> 
-          )
+            <ul className={styles.waterListBox}>
+              {water.map((item) => (
+                <li key={item._id} className={styles.todayWaterElement}>
+                    <TodayWaterListElement item={item} handleDelete={handleDelete}/>
+                </li>
+                ))}
+            </ul>
+          ) : null
         )}
-      </ul>
       <div>
         <button onClick={() => setIsOpenAddWaterModal(true)} className={styles.AddWaterModalBtn}>
           <svg className={styles.plusSvg} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +56,7 @@ const TodayWaterList =() => {
           </svg>
           <h5 className={styles.AddWaterBtnText}>Add water</h5>
         </button>
-        {isOpenAddWaterModal && <TodayListModal onClose={() => closeModal()} operationType={operationType} isOpen={isOpenAddWaterModal}/>}
+        {isOpenAddWaterModal && <TodayListModal onClose={() => closeModal()} operationType={operationType} isOpen={isOpenAddWaterModal} data={water?.[water.length - 1]}/>}
       </div>
     </div>
   )
