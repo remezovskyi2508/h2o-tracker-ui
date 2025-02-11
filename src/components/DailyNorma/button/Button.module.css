@@ -4,20 +4,20 @@
   border-radius: 10px;
   font-size: 16px;
   cursor: var(--cursor-url), pointer;
-  transition: box-shadow 0.3s ease, color 0.3s ease;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
   min-width: 160px;
   line-height: 1.25;
   font-weight: 500;
   text-align: center;
   box-shadow: var(--button-shadow);
-
-  @media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) {
+  .button{
     font-size: 18px;
-    line-height: 1.33;
-    padding: 10px 30px;
+  line-height: 1.33;
+  padding: 10px 30px;
   }
 }
-
 .button:hover {
   box-shadow: var(--button-shadow-hover);
 }

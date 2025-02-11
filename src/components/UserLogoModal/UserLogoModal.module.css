@@ -38,7 +38,7 @@
   background: transparent;
   outline: none;
   cursor: var(--cursor-url), pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .btn:focus,
