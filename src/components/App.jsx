@@ -16,6 +16,7 @@ import { selectIsLoggedIn, selectToken } from '../redux/auth/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { userRefresh } from '../redux/auth/operations';
+import Loader from './Loader/Loader';
 // Ліниве завантаження компонентів
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -40,7 +41,7 @@ function App() {
   return (
     <>
       <Toaster />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={ <Loader/> }>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             {!isLoggedIn ? (
