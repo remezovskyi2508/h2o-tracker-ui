@@ -42,6 +42,7 @@
   line-height: 1.25 !important;
   color: #8baeff !important;
   min-width: auto !important;
+  transition: all 0.2s ease-in-out;
 }
 .editButton:hover {
   color: var(--second-warning-color) !important;
