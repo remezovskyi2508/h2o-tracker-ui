@@ -27,7 +27,7 @@ const userInfoSlice = createSlice({
       })
       .addCase(fetchUserInfo.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload.message;
+        state.error = action.payload;
       })
       .addCase(updateUserAvatar.pending, state => {
         state.loading = true;

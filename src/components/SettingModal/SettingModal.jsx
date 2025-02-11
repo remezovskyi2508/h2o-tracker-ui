@@ -21,8 +21,10 @@ const SettingModal = ({ isOpen, onClose }) => {
   const userId = useSelector(selectUserId);
 
   useEffect(() => {
-    if (userData) {
-      dispatch(fetchUserInfo(userId));
+    if (userId) {
+      if (userData) {
+        dispatch(fetchUserInfo(userId));
+      }
     }
   }, []);
 
@@ -60,12 +62,12 @@ const SettingModal = ({ isOpen, onClose }) => {
 
       if (response?.data.avatarUrl) {
         setFieldValue('avatar', response.data.avatarUrl);
-        // dispatch(fetchUserInfo(userId));
+        toast.success('Avatar updated successfully!');
+        await dispatch(fetchUserInfo(userId));
       } else {
         throw new Error('Invalid avatar response');
       }
     } catch (error) {
-      console.error('Avatar update failed:', error);
       toast.error(
         error.message || 'An error occurred while updating the avatar.'
       );
@@ -84,7 +86,6 @@ const SettingModal = ({ isOpen, onClose }) => {
       toast.success('Profile updated successfully!');
       await dispatch(fetchUserInfo(userId));
     } catch (error) {
-      console.log(error);
       toast.error(
         error.message || 'An error occurred while updating the data.'
       );
