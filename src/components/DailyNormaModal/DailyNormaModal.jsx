@@ -35,7 +35,8 @@ const DailyNormaModal = ({ onClose }) => {
     if (normToSave > 0 && normToSave <= DAILY_NORMA) {
       // Замість виклику dispatch, просто виводимо результат
       await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
-      toast.success(`New daily water norma: ${normToSave.toFixed(2)} liters`);
+      toast.success('New daily norma added');
+      alert(`New daily water norma: ${normToSave.toFixed(2)} liters`);
       await dispatch(fetchUserInfo(userId));
       onClose(); // Закриваємо модальне вікно
     } else {
