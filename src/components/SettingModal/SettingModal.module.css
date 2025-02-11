@@ -1,7 +1,7 @@
 /* Styles for Mobile devices */
 .modalContent {
-  background:var(--prim-color-white);
-  padding: 32px 16px;
+  background: var(--prim-color-white);
+  padding: 32px 12px;
   border-radius: 10px;
   text-align: center;
   position: relative;
@@ -194,8 +194,8 @@
 }
 .input:invalid,
 .inputPassword.invalid,
-.input.invalid, 
-.inputPassword:invalid .invalid{
+.input.invalid,
+.inputPassword:invalid .invalid {
   border: 1px solid var(--second-del-error-color);
   color: var(--second-del-error-color);
 }

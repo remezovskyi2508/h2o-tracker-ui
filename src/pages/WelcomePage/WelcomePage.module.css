@@ -13,7 +13,7 @@ li {
 .background {
   width: 100vw;
   height: 100vh;
-  background-image: url('/public/images/bottleMob.svg');
+  background-image: url('/images/bottleMob.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -134,7 +134,7 @@ li {
   }
 
   .background {
-    background-image: url('/public/images/bottleTab.svg');
+    background-image: url('/images/bottleTab.svg');
   }
 
   .wrapper {
@@ -190,8 +190,8 @@ li {
   }
 
   .background {
-    background-image: url('/public/images/bobbleDesk.svg'),
-      url('/public/images/bottleDesk.svg');
+    background-image: url('/images/bobbleDesk.svg'),
+      url('/images/bottleDesk.svg');
     background-size: contain, contain; /* Масштабування без спотворень */
     background-repeat: no-repeat, no-repeat; /* Без повторення */
     background-position: center, bottom - 50; /* Вирівнюємо по центру і вниз */

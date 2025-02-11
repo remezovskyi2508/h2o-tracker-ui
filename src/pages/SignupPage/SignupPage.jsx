@@ -15,7 +15,6 @@ const SignupPage = () => {
   const handleSignup = async userData => {
     try {
       const response = await dispatch(register(userData)).unwrap();
-      console.log(response);
       if (response.user) {
         navigate('/signin');
       }
