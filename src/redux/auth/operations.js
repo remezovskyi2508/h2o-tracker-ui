@@ -26,7 +26,6 @@ export const register = createAsyncThunk(
       const { data } = await authInstance.post('/auth/register', formData);
       return data;
     } catch (error) {
-      console.error('Error response: ', error.response);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

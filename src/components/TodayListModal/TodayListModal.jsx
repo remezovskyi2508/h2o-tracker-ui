@@ -18,7 +18,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
     date: '',
     waterVolume: data ? data.waterVolume : 0,
   });
-
+  
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
@@ -117,7 +117,7 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
           break;
       }
     } catch (error) {
-      console.error('Error handling water data:', error);
+      null
     }
   };
 

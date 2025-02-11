@@ -14,7 +14,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import { selectIsLoggedIn } from '../redux/auth/selectors';
 import { useSelector } from 'react-redux';
-
+import { Toaster } from 'react-hot-toast';
 // Ліниве завантаження компонентів
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -38,6 +38,7 @@ function App() {
 
   return (
     <>
+    <Toaster/>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
