@@ -22,7 +22,7 @@ const DaysGeneralStats = ({
 
       <div className={clsx(css.stats)}>
         <p>Fulfillment of the daily norm:</p>
-        <p className={clsx(css.statsData)}>{percentage}</p>
+        <p className={clsx(css.statsData)}>{percentage} %</p>
       </div>
 
       <div className={clsx(css.stats)}>
