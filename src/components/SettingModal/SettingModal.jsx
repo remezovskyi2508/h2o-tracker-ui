@@ -19,12 +19,15 @@ const SettingModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserInfo);
   const userId = useSelector(selectUserId);
-
+  const [imagePreview, setImagePreview] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
-    if (userData) {
+    if (userId && !userData) {
       dispatch(fetchUserInfo(userId));
+    } else if (userData?.avatar?.url) {
+      setImagePreview(userData.avatar.url);
     }
-  }, []);
+  }, [dispatch, userId, userData]);
 
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
@@ -47,29 +50,13 @@ const SettingModal = ({ isOpen, onClose }) => {
     confirmPassword: false,
   });
 
-  const handleUpdateAvatar = async (event, setFieldValue) => {
+  const handleImageChange = event => {
     const file = event.target.files[0];
-    if (!file) return;
-
-    try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      const response = await dispatch(
-        updateUserAvatar({ id: userId, formData })
-      ).unwrap();
-
-      if (response?.data.avatarUrl) {
-        setFieldValue('avatar', response.data.avatarUrl);
-        // dispatch(fetchUserInfo(userId));
-      } else {
-        throw new Error('Invalid avatar response');
-      }
-    } catch (error) {
-      console.error('Avatar update failed:', error);
-      toast.error(
-        error.message || 'An error occurred while updating the avatar.'
-      );
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+      setSelectedImage(file);
     }
+    return;
   };
   const handleSubmit = async values => {
     const data = {};
@@ -80,14 +67,16 @@ const SettingModal = ({ isOpen, onClose }) => {
     if (values.newPassword) data.newPassword = values.newPassword;
 
     try {
+      if (selectedImage) {
+        const formData = new FormData();
+        formData.append('avatar', selectedImage);
+        await dispatch(updateUserAvatar({ id: userId, formData })).unwrap();
+      }
       await dispatch(updateUserInfo({ id: userId, data }));
       toast.success('Profile updated successfully!');
       await dispatch(fetchUserInfo(userId));
     } catch (error) {
-      console.log(error);
-      toast.error(
-        error.message || 'An error occurred while updating the data.'
-      );
+      toast.error(error.message || 'Error updating profile.');
     }
   };
 
@@ -104,7 +93,18 @@ const SettingModal = ({ isOpen, onClose }) => {
       )}
     </button>
   );
-
+  const getPasswordFieldType = fieldName => {
+    switch (fieldName) {
+      case 'oldPassword':
+        return showPassword.oldPassword ? 'text' : 'password';
+      case 'newPassword':
+        return showPassword.newPassword ? 'text' : 'password';
+      case 'confirmPassword':
+        return showPassword.confirmPassword ? 'text' : 'password';
+      default:
+        return 'password';
+    }
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -138,7 +138,7 @@ const SettingModal = ({ isOpen, onClose }) => {
         validationSchema={SettingSchema}
         enableReinitialize
       >
-        {({ setFieldValue, values, errors }) => (
+        {({ values, errors }) => (
           <Form className={css.form}>
             <div className={css.formGroupPhoto}>
               <label className={css.label}>Your photo</label>
@@ -159,13 +159,13 @@ const SettingModal = ({ isOpen, onClose }) => {
                   name="avatar"
                   className={css.photo}
                   accept="image/*"
-                  onChange={e => handleUpdateAvatar(e, setFieldValue)}
+                  onChange={handleImageChange}
                   style={{ display: 'none' }}
                 />
                 <div>
-                  {values?.avatar ? (
+                  {imagePreview || values?.avatar?.url ? (
                     <img
-                      src={values.avatar}
+                      src={imagePreview || values?.avatar?.url}
                       alt="User"
                       className={css.photoPreview}
                     />
@@ -236,7 +236,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                   Outdated password:
                   <div className={css.inputWrapper}>
                     <Field
-                      type={showPassword.oldPassword ? 'text' : 'password'}
+                      type={getPasswordFieldType('oldPassword')}
                       name="oldPassword"
                       className={`${css.input} ${
                         errors.oldPassword ? css.invalid : ''
@@ -263,7 +263,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                   New Password:
                   <div className={css.inputWrapper}>
                     <Field
-                      type={showPassword.newPassword ? 'text' : 'password'}
+                      type={getPasswordFieldType('newPassword')}
                       name="newPassword"
                       className={`${css.input} ${
                         errors.newPassword ? css.invalid : ''
@@ -292,7 +292,7 @@ const SettingModal = ({ isOpen, onClose }) => {
                   Repeat new password:
                   <div className={css.inputWrapper}>
                     <Field
-                      type={showPassword.confirmPassword ? 'text' : 'password'}
+                      type={getPasswordFieldType('confirmPassword')}
                       name="confirmPassword"
                       className={`${css.input} ${
                         errors.confirmPassword ? css.invalid : ''
