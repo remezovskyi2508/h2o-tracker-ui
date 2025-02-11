@@ -2,7 +2,7 @@ import Modal from 'react-modal';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './SettingModal.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -115,7 +115,6 @@ const SettingModal = ({ isOpen, onClose }) => {
       bodyOpenClassName="no-scroll"
       overlayClassName={css.modalBackdrop}
     >
-      <Toaster />
       <div className={css.closeBtnWrapper}>
         <button className={css.closeBtn} onClick={onClose}>
           <svg className={css.closeBtnIcon} width="24" height="24">

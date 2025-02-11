@@ -46,7 +46,7 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
       persistor.purge(); // очищення Persist store
       onClose();
     } catch (error) {
-      console.error('Logout failed:', error);
+      null
     }
   };
 

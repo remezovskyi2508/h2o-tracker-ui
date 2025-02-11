@@ -39,7 +39,8 @@ html, body {
   font-size: 16px;
   line-height: 1.25;
   color:var(--prim-color-black);
-  overflow: hidden;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 h1,

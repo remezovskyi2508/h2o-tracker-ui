@@ -9,9 +9,9 @@ const SigninPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [error, setError] = useState(null);
 
-  const handleSignin = async userData => {
+  const handleSignin = () => {
     try {
-      console.log('Signing in with:', userData);
+      null
     } catch (err) {
       setError(err.message);
     }
