@@ -41,7 +41,7 @@
   height: 24px;
   padding: 0;
   background-color: transparent;
-  cursor: url('/images/pointer.svg'), pointer;
+  cursor: var(--cursor-url), pointer;
   font-family: inherit;
 }
 
@@ -131,7 +131,7 @@
   padding: 6px 10px;
   min-width: 92px;
   height: 36px;
-  background-color: #d7e3ff;
+  background-color: var(--second-background-trecer-color);
   font-weight: 700;
   font-size: 18px;
   line-height: 1.33;
@@ -140,9 +140,9 @@
 }
 
 .modalAmountBoxBtn {
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   font-family: inherit;
-  border: 1px solid #9ebbff;
+  border: 1px solid var(--second-blue-color);
   border-radius: 30px;
   padding: 10px;
   width: 44px;
@@ -153,7 +153,7 @@
 
 .modalAmountBoxBtn:hover,
 .modalAmountBoxBtn:focus {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
 }
 
 .modalTitleCorrect {
@@ -164,7 +164,7 @@
 }
 
 .modalInput {
-  border: 1px solid #d7e3ff;
+  border: 1px solid var(--second-background-trecer-color);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -209,7 +209,7 @@
 .modalSaveBtn {
   border: none;
   outline: none;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   font-family: inherit;
   border-radius: 10px;
   padding: 10px 30px;
@@ -226,7 +226,7 @@
 
 .modalSaveBtn:hover,
 .modalSaveBtn:focus {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
 }
 
 @media screen and (min-width: 768px) {

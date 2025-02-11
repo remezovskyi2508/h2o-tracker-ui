@@ -49,12 +49,12 @@
   box-shadow: var(--box-shadow-btn);
   background: var(--prim-color-blue);
   color: var(--prim-color-white);
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   transition: 0.3s;
 }
 
 .signup_btn_tracker:hover {
-  box-shadow: var(--box-shadow-btn)-activ;
+  box-shadow: var(--box-shadow-btn-activ);
 }
 
 .signup_btn_tracker:active {

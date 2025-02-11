@@ -5,7 +5,7 @@
 
   border-radius: 10px;
   box-shadow: var(--box-shadow-card);
-  background: #d7e3ff;
+  background: var(--second-background-trecer-color);
 }
 
 .titel_benefits_card {

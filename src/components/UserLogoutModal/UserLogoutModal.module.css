@@ -55,7 +55,7 @@
   font-size: 16px;
   line-height: 125%;
   text-align: center;
-  background-color: #d7e3ff;
+  background-color: var(--second-background-trecer-color);
   border: none;
   width: 232px;
   border-radius: 10px;

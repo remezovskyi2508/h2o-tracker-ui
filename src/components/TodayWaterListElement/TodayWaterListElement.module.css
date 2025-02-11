@@ -5,7 +5,7 @@
     justify-content: space-between;
     padding-bottom: 12px;
     margin-top: 12px;
-    border-bottom: #D7E3FF solid 1px;
+    border-bottom: var(--second-background-trecer-color) solid 1px;
     height: 38px;
 }
 
@@ -55,25 +55,25 @@
 .redactOpenBtn{
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: var(--cursor-url), pointer;
     padding: 0;
 }
 
 .redactSvg{
     width: 16px;
     height: 16px;
-    stroke: #D7E3FF;
+    stroke: var(--second-background-trecer-color);
     transition: stroke 0.2s ease-in-out;
 }
 
 .redactOpenBtn:hover .redactSvg{
-    stroke: #9EBBFF;
+    stroke: var(--second-blue-color);
 }
 
 .deleteOpenBtn{
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: var(--cursor-url), pointer;
     padding: 0;
 }
 

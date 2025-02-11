@@ -21,12 +21,12 @@
 }
 
 .statsData {
-  color: #407bff;
+  color:var(--prim-color-blue);
   font-weight: 500;
 }
 
 .date {
-  color: #407bff;
+  color:var(--prim-color-blue);
   font-weight: 400;
 }
 
