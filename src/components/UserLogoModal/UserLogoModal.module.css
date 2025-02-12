@@ -1,51 +1,34 @@
 .modal {
-  position: fixed;
-  pointer-events: none;
-}
-
-.modal_content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--prim-color-white);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+  position: absolute;
   top: 40px;
-  right: 20px;
+  right: 0;
+  width: 150px;
+  background: var(--prim-color-white);
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 10;
   width: 118px;
   height: 88px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: var(--prim-color-blue);
-  pointer-events: auto;
 }
 
 .btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 50%;
   gap: 8px;
-  border: none;
-  margin: 0;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
   color: var(--prim-color-blue);
   background: transparent;
-  outline: none;
-  cursor: var(--cursor-url), pointer;
-  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s ease;
 }
 
-.btn:focus,
-.btn:active {
-  outline: none;
-  border: none;
+.btn:hover {
   color: var(--second-warning-color);
+  cursor: var(--cursor-url), pointer;
 }
 
 .icon {
@@ -53,19 +36,13 @@
   height: 16px;
 }
 
-.btn:hover {
-  color: var(--second-warning-color);
-}
-
-@media screen and (min-width: 768px) {
-  .modal_content {
-    right: 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .modal_content {
-    top: 56px;
-    right: 112px;
-  }
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--prim-color-blue);
 }
