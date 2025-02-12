@@ -65,7 +65,7 @@
 
 .modalCancelBtn:hover,
 .modalCancelBtn:focus {
- cursor: pointer;
+ cursor: var(--cursor-url),pointer;
 }
 
 .modalOutBtn {
@@ -80,17 +80,14 @@
   border-radius: 10px;
   padding: 8px 30px;
   color: var(--prim-color-white);
-  cursor:var(--cursor-url), pointer;
+
 }
 
 .modalOutBtn:hover,
 .modalOutBtn:focus {
- cursor: pointer;
+ cursor: var(--cursor-url), pointer;
 }
 
-.button:hover {
- cursor: pointer;
-}
 
 @media screen and (min-width: 768px) {
   .optionBtns {
