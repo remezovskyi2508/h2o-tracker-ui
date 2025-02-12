@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { parseToken } from '../../js/calendar';
 
 export const authInstance = axios.create({
   baseURL: 'https://h2o-tracker-api.onrender.com/',
@@ -65,8 +64,18 @@ export const userRefresh = createAsyncThunk(
   'users/current',
   async (_, thunkAPI) => {
     try {
-      const persistToken = localStorage.getItem('persist:auth');
-      const token = parseToken(persistToken);
+      const state = thunkAPI.getState();
+      let token = state.auth.token;
+
+      if (!token) {
+        const persistToken = localStorage.getItem('persist:auth');
+        token = persistToken ? JSON.parse(persistToken).token : null;
+      }
+
+      if (!token) {
+        throw new Error('No token found');
+      }
+
       const { data } = await authInstance.get('/users/current', {
         headers: {
           Authorization: `Bearer ${token}`,
