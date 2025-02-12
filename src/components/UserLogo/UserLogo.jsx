@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from '../../redux/user/selectors.js';
 import { selectUserId } from '../../redux/auth/selectors.js';
@@ -17,11 +17,33 @@ export const UserLogo = () => {
   const userData = useSelector(selectUserInfo);
   const userId = useSelector(selectUserId);
 
+  const userModalRef = useRef(null);
+  const containerRef = useRef(null);
+
   useEffect(() => {
     if (userId && !userData) {
       dispatch(fetchUserInfo(userId));
     }
   }, [userId, userData, dispatch]);
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        userModalRef.current &&
+        !userModalRef.current.contains(event.target) &&
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        closeAllModals();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleButtonClick = () => {
     setUserModalOpen(!isUserModalOpen);
@@ -44,7 +66,11 @@ export const UserLogo = () => {
   };
 
   return (
-    <div className={style.container} style={{ position: 'relative' }}>
+    <div
+      ref={containerRef}
+      className={style.container}
+      style={{ position: 'relative' }}
+    >
       <button
         type="button"
         className={style.svgBtn}
@@ -79,7 +105,7 @@ export const UserLogo = () => {
       </button>
 
       {isUserModalOpen && (
-        <div style={{ position: 'relative' }}>
+        <div ref={userModalRef} style={{ position: 'relative' }}>
           <UserLogoModal
             isOpen={isUserModalOpen}
             onClose={closeAllModals}
