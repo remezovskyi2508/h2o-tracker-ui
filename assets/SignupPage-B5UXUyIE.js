@@ -1,2 +1,0 @@
-import{a as g,z as l,u as p,y as m,r as d,j as s,A as h}from"./index-lwoT48Em.js";import{c as e,A as x}from"./SignupPage.module-BfpSpZ7F.js";const j=()=>{const n=g(),r=l(),o=p(m),[t,i]=d.useState(null),c=async u=>{try{(await n(h(u)).unwrap()).user&&r("/signin")}catch(a){i(a.message)}};return o?(r("/home"),null):s.jsx("div",{className:e.sPageContainer,children:s.jsxs("div",{className:e.formSection,children:[t&&s.jsx("p",{className:e.error,children:t}),s.jsx(x,{onSubmit:c,buttonText:"Sign Up"})]})})};export{j as default};
-//# sourceMappingURL=SignupPage-B5UXUyIE.js.map
