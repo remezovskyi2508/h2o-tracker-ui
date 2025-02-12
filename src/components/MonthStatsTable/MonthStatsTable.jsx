@@ -130,11 +130,9 @@ const MonthStatsTable = () => {
                   padding: 0,
                 }}
                 className={clsx(css.tooltip)}
-                // openOnClick="true"
+                openOnClick="true"
                 noArrow="true"
-                delayHide={0}
-                float="true"
-                offset={10}
+                offset={0}
               >
                 {dayData && (
                   <DaysGeneralStats
