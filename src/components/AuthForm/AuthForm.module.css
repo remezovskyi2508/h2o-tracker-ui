@@ -58,8 +58,8 @@
   border: var(--prim-color-white);
   position: absolute;
   right: 10px;
-  top: 52%;
-  transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-30%);
   background: none;
   border: none;
   cursor: pointer;
