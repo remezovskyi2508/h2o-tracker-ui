@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations.js';
 import { persistor } from '../../redux/store.js';
+import toast from 'react-hot-toast';
 
 Modal.setAppElement('#root');
 
@@ -32,11 +33,13 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
   const [modalStyles, setModalStyles] = useState(
     customStyles(window.innerWidth)
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => setModalStyles(customStyles(window.innerWidth));
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -46,22 +49,15 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
       persistor.purge(); // очищення Persist store
       onClose();
     } catch (error) {
-      null
+      toast.error(`Something went wrong: ${error.message}`);
+      await dispatch(logout());
+      persistor.purge(); // очищення Persist store
+      onClose();
     }
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      style={modalStyles}
-      onRequestClose={onClose}
-      onAfterOpen={() => {
-        document.addEventListener('keydown', handleKeyDown);
-      }}
-      onAfterClose={() => {
-        document.removeEventListener('keydown', handleKeyDown);
-      }}
-    >
+    <Modal isOpen={isOpen} style={modalStyles} onRequestClose={onClose}>
       <div className={css.titleWrapper}>
         <h2 className={css.modalTitle}>Log out</h2>
         <div>
@@ -83,12 +79,6 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
       </div>
     </Modal>
   );
-
-  function handleKeyDown(event) {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  }
 };
 
 export default UserLogoutModal;
