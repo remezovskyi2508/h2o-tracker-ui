@@ -174,7 +174,6 @@ const AuthForm = () => {
             )}
 
             <button className={css.button} type="submit" disabled={isSubmitting}>
-            <button className={css.button} type="submit" disabled={isSubmitting}>
               {isSignup ? 'Sign Up' : 'Sign In'}
             </button>
 
