@@ -33,7 +33,7 @@
 
 .svg:hover,
 .svg:focus {
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .modalText {
@@ -65,7 +65,7 @@
 
 .modalCancelBtn:hover,
 .modalCancelBtn:focus {
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .modalOutBtn {
@@ -80,15 +80,16 @@
   border-radius: 10px;
   padding: 8px 30px;
   color: var(--prim-color-white);
+  cursor:var(--cursor-url), pointer;
 }
 
 .modalOutBtn:hover,
 .modalOutBtn:focus {
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .button:hover {
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

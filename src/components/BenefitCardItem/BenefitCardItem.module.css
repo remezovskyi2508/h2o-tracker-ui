@@ -82,7 +82,7 @@ li {
   box-shadow: var(--box-shadow-btn);
   background: var(--prim-color-blue);
   color: var(--prim-color-white);
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
   transition: 0.3s;
 }
 

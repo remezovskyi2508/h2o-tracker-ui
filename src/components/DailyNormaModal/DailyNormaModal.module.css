@@ -49,7 +49,7 @@
 }
 
 .desc span {
-  color: #407bff;
+  color: var(--prim-color-blue);
 }
 
 .subtitle {
@@ -132,6 +132,7 @@
 }
 
 .btnSave {
+  cursor: var(--cursor-url), pointer;
   color: var(--prim-color-white) !important;
   margin-left: auto;
   display: block;
@@ -143,6 +144,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.34) !important;
   background-color: var(--prim-color-blue) !important;
   transition: all 0.3s ease;
+  
 
   @media screen and (max-width: 767px) {
     width: 100%;

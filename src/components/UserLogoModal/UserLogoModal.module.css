@@ -21,14 +21,14 @@
   color: var(--prim-color-blue);
   background: transparent;
   border: none;
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
   width: 100%;
   transition: all 0.2s ease;
 }
 
 .btn:hover {
   color: var(--second-warning-color);
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .icon {

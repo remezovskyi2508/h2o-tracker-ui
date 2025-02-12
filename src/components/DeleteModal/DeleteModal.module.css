@@ -37,7 +37,7 @@
 .closeBtn {
   border: none;
   background-color: transparent;
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .btnWrapper {
@@ -52,13 +52,14 @@
   width: 232px;
   height: 36px;
   border: none;
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
 }
 
 .redBtn {
   background-color: var(--second-del-error-color);
   color: var(--prim-color-white);
   box-shadow: var(--box-shadow-btn);
+  cursor: var(--cursor-url), pointer;
 }
 
 .blueBtn {

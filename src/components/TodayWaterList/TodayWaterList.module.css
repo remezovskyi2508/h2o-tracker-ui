@@ -44,7 +44,7 @@
     border: none;
     display: flex;
     gap: 8px;
-    cursor: var(--cursor-url), pointer;
+   cursor: pointer;
     margin-top: 12px;
     padding: 0;
 }

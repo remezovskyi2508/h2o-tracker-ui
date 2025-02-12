@@ -63,8 +63,8 @@
     min-height: 100vh; 
     overflow-y: auto; 
     overflow-x: hidden; 
-    background-image: url('/public/images/desctopbottle.svg'),
-      url('/public/images/background-element-home-screen.svg');
+    background-image: url('/images/desctopbottle.svg'),
+      url('/images/background-element-home-screen.svg');
     background-size: 916px 680px, cover;
     background-repeat: no-repeat;
     background-position: top 30px right 557px, center;

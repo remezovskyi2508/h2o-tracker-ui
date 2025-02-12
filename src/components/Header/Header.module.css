@@ -39,7 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    cursor: var(--cursor-url), pointer;
+   cursor:var(--cursor-url), pointer;
     width: 122px;
     height: 28px;
     position: relative;
