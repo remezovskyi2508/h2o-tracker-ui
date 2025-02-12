@@ -46,7 +46,7 @@ export const UserLogo = () => {
       </button>
 
       {isUserModalOpen && (
-        <UserLogoModal isOpen={isUserModalOpen} onClick={toggleModal} />
+        <UserLogoModal isOpen={isUserModalOpen} onClose={toggleModal} />
       )}
     </div>
   );
