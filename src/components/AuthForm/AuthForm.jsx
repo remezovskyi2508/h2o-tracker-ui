@@ -1,13 +1,16 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { login, register } from '../../redux/auth/operations.js';
 import * as Yup from 'yup';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import css from './AuthForm.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
-const AuthSchema = isSignup =>
+
+const AuthSchema = (isSignup) =>
   Yup.object().shape({
     email: Yup.string()
       .email('Invalid email address')
@@ -23,6 +26,22 @@ const AuthSchema = isSignup =>
     }),
   });
 
+
+const ToastErrors = () => {
+  const { errors, submitCount } = useFormikContext();
+
+  useEffect(() => {
+   
+    if (submitCount > 0 && Object.keys(errors).length > 0) {
+      Object.values(errors).forEach((message) => {
+        toast.error(message);
+      });
+    }
+  }, [errors, submitCount]);
+
+  return null;
+};
+
 const AuthForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,72 +50,62 @@ const AuthForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
+
   const initialValues = isSignup
     ? { email: '', password: '', repeatPassword: '' }
     : { email: '', password: '' };
 
-    const handleSubmit = async (values, actions) => {
-      try {
-        const { repeatPassword, ...formData } = values;
-        if (isSignup) {
-          await dispatch(register(formData)).unwrap();
-          navigate('/signin');
-        } else {
-          await dispatch(login(formData)).unwrap();
-        }
-        actions.resetForm();
-      } catch (error) {
-       
-        if (error.response && error.response.data && error.response.data.message) {
-         
-          actions.setStatus({ serverError: error.response.data.message });
-        } else {
-       
-        
-          actions.setFieldError('password',  'Password is wrong');
-        }
-        actions.setSubmitting(false);
+  // Обробка сабміту форми
+  const handleSubmit = async (values, actions) => {
+    try {
+      const { repeatPassword, ...formData } = values;
+      if (isSignup) {
+        await dispatch(register(formData)).unwrap();
+        navigate('/signin');
+      } else {
+        await dispatch(login(formData)).unwrap();
       }
-    };
+      actions.resetForm(); 
+    } catch (error) {
+  
+      actions.setFieldError('password', 'Password is wrong');
+      actions.setSubmitting(false);
+    }
+  };
 
- 
   return (
     <div className={css.wrapper}>
       <Formik
         initialValues={initialValues}
         validationSchema={AuthSchema(isSignup)}
         onSubmit={handleSubmit}
+        enableReinitialize
       >
-        {({ isSubmitting, errors, touched }) => (
-          <Form className={css.form}>
-            <h2 className={css.formTitle}>
-              {isSignup ? 'Sign Up' : 'Sign In'}
-            </h2>
+        {({ isSubmitting }) => (
+       
+          <Form autoComplete="off" className={css.form}>
+       
+            <ToastErrors />
+            <h2 className={css.formTitle}>{isSignup ? 'Sign Up' : 'Sign In'}</h2>
 
             <label className={css.label}>
-              <span> Enter your email:</span>
+              <span>Enter your email:</span>
               <Field
-                className={`${css.input} ${
-                  errors.email && touched.email ? css.inputError : ''
-                }`}
+                autoComplete="off"
+                className={css.input}
                 type="text"
                 name="email"
                 placeholder="E-mail"
               />
-              <ErrorMessage
-                className={css.errorMessage}
-                name="email"
-                component="span"
-              />
+              <ErrorMessage className={css.errorMessage} name="email" component="span" />
             </label>
 
             <label className={css.label}>
               <span>Enter your password:</span>
               <div className={css.passwordContainer}>
                 <Field
-                  className={`${css.input} ${
-                    errors.password && touched.password ? css.inputError : ''
-                  }`}
+                  autoComplete="off"
+                  className={css.input}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
@@ -106,18 +115,10 @@ const AuthForm = () => {
                   className={css.iconButton}
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <FiEye size={16} color="var(--prim-color-blue)" />
-                  ) : (
-                    <FiEyeOff size={16} color="var(--prim-color-blue)" />
-                  )}
+                  {showPassword ? <FiEye size={16} /> : <FiEyeOff size={16} />}
                 </button>
               </div>
-              <ErrorMessage
-                className={css.errorMessage}
-                name="password"
-                component="span"
-              />
+              <ErrorMessage className={css.errorMessage} name="password" component="span" />
             </label>
 
             {isSignup && (
@@ -125,9 +126,8 @@ const AuthForm = () => {
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
                   <Field
-                    className={`${css.input} ${
-                      errors.password && touched.password ? css.inputError : ''
-                    }`}
+                    autoComplete="off"
+                    className={css.input}
                     type={showRepeatPassword ? 'text' : 'password'}
                     name="repeatPassword"
                     placeholder="Repeat Password"
@@ -137,34 +137,19 @@ const AuthForm = () => {
                     className={css.iconButton}
                     onClick={() => setShowRepeatPassword(!showRepeatPassword)}
                   >
-                    {showRepeatPassword ? (
-                      <FiEye size={16} color="var(--prim-color-blue)" />
-                    ) : (
-                      <FiEyeOff  size={16} color="var(--prim-color-blue)" />
-                    )}
+                    {showRepeatPassword ? <FiEye size={16} /> : <FiEyeOff size={16} />}
                   </button>
                 </div>
-                <ErrorMessage
-                  className={css.errorMessage}
-                  name="repeatPassword"
-                  component="span"
-                />
+                <ErrorMessage className={css.errorMessage} name="repeatPassword" component="span" />
               </label>
             )}
 
-            <button
-              className={css.button}
-              type="submit"
-              disabled={isSubmitting}
-            >
+            <button className={css.button} type="submit" disabled={isSubmitting}>
               {isSignup ? 'Sign Up' : 'Sign In'}
             </button>
 
             <p className={css.signupText}>
-              <NavLink
-                to={isSignup ? '/signin' : '/signup'}
-                className={css.navLink}
-              >
+              <NavLink to={isSignup ? '/signin' : '/signup'} className={css.navLink}>
                 {isSignup ? 'Sign In' : 'Sign Up'}
               </NavLink>
             </p>
