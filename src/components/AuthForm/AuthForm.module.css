@@ -61,7 +61,10 @@
        background: none;
        border: none;
        cursor: pointer;
+      color: var(--prim-color-blue);
     }
+
+
     .iconButton:focus{
      color: var(--prim-color-blue); ;
     }
