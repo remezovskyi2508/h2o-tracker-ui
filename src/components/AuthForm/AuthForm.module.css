@@ -61,15 +61,20 @@
        background: none;
        border: none;
        cursor: pointer;
+      color: var(--prim-color-blue);
     }
+
+
     .iconButton:focus{
-color: #407bff; ;
+color: var(--prim-color-blue) ;
     }
     
-     .input:focus {
-       border: 1px solid var(--prim-color-black)66;
-       color: #407bff;
-     }
+    .input:focus {
+      border: 1px solid var(--prim-color-black)66;
+      color:var(--prim-color-blue);
+      border-color:var(--prim-color-blue) ;
+    }
+   
     
      .input::placeholder {
        font-weight: 400;
@@ -77,6 +82,13 @@ color: #407bff; ;
        line-height: 1.25;
        color:#9ebbff;
      }
+
+     .input:focus::placeholder {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.25;
+      color: #407bff;
+    }
     
      inputError{
        border-color: var(--second-del-error-color);
