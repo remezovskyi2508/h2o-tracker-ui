@@ -54,7 +54,7 @@
 
 .subtitle {
   font-weight: 500;
-  color: var(--primery-color-black);
+  color: var(--prim-color-black);
   margin-bottom: 16px;
   font-size: 18px;
   line-height: 1.11;
@@ -75,24 +75,33 @@
 }
 
 .inputLabel {
-  color: var(--primary-color-black);
+  color: var(--prim-color-black);
   margin-bottom: 8px;
   line-height: 1.25;
 }
 
 .inputField {
-  padding: 12px 10px;
-  border: 1px solid #d7e3ff;
+  border: 1px solid var(--second-background-trecer-color);
+  background-color:var(--prim-color-white);
   border-radius: 6px;
+  padding: 12px 10px;
+  width: 100%;
+  height: 44px;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: var(--primary-color-blue);
-  height: 44px;
+  color: var(--prim-color-blue);
+}
+
+.inputField:hover,
+.inputField:focus {
+  border: 2px solid var(--prim-color-blue);
+  outline: none;
 }
 
 .textAmount {
   margin-bottom: 24px;
-  color: var(--primary-color-black);
+  color: var(--prim-color-black);
   display: flex;
   align-items: center;
 }
@@ -111,7 +120,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 1.33;
-  color: var(--primary-color-blue);
+  color: var(--prim-color-blue);
 }
 
 .labelAmount {
@@ -119,7 +128,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;
-  color: var(--primery-color-black);
+  color: var(--prim-color-black);
 }
 
 .btnSave {
