@@ -2,7 +2,6 @@ import { Puff } from 'react-loader-spinner';
 const Loader = () => {
   return (
     <div>
-      (
       <Puff
         visible={true}
         height="80"
@@ -16,7 +15,6 @@ const Loader = () => {
           transform: 'translate(-50%, -50%)',
         }}
       />
-      )
     </div>
   );
 };
