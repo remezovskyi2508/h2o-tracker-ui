@@ -85,7 +85,7 @@ const AuthForm = () => {
         onSubmit={handleSubmit}
         enableReinitialize
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, errors }) => (
           <Form autoComplete="off" className={css.form}>
             <ToastErrors />
             <h2 className={css.formTitle}>
@@ -95,7 +95,7 @@ const AuthForm = () => {
             <label className={css.label}>
               <span>Enter your email:</span>
               <Field
-                className={css.input}
+                className={`${css.input} ${errors.email ? css.invalid : ''}`}
                 autoComplete="off"
                 type="text"
                 name="email"
@@ -113,7 +113,9 @@ const AuthForm = () => {
               <div className={css.passwordContainer}>
                 <Field
                   autoComplete="off"
-                  className={css.input}
+                  className={`${css.input} ${
+                    errors.password ? css.invalid : ''
+                  }`}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
@@ -138,7 +140,9 @@ const AuthForm = () => {
                 <span>Repeat Password:</span>
                 <div className={css.passwordContainer}>
                   <Field
-                    className={css.input}
+                    className={`${css.input} ${
+                      errors.pasrepeatPassword ? css.invalid : ''
+                    }`}
                     autoComplete="off"
                     type={showRepeatPassword ? 'text' : 'password'}
                     name="repeatPassword"
