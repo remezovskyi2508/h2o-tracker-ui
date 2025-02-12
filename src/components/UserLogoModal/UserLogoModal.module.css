@@ -7,9 +7,10 @@
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
   border-radius: 10px;
   overflow: hidden;
-  z-index: 10;
+  z-index: 100;
   width: 118px;
   height: 88px;
+  overflow: hidden;
 }
 
 .btn {
