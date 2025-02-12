@@ -59,7 +59,7 @@
   border: none;
   padding: 6px;
   background: none;
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
   width: 24px;
   height: 24px;
 }

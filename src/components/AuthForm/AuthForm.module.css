@@ -79,6 +79,7 @@
        font-size: 16px;
        line-height: 1.25;
        color:var(--second-blue-color);
+       color:var(--second-blue-color);
      }
     
     
@@ -107,9 +108,9 @@
        font-weight: 500;
        font-size: 16px;
        line-height: 1.25;
-     color: #fff;
+     color: var(--prim-color-white);
        border: none;
-       cursor: var(--cursor-url), pointer;
+      cursor:var(--cursor-url), pointer;
        background-color: var(--prim-color-blue);
        border-radius: 10px;
        box-shadow: var(--box-shadow-btn);

@@ -1,7 +1,7 @@
 .radioLabel {
   display: flex;
   align-items: center;
-  cursor: var(--cursor-url), pointer;
+ cursor: pointer;
   position: relative;
 }
 

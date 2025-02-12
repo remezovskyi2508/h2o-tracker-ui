@@ -56,20 +56,20 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid transparent;
-    cursor: var(--cursor-url), pointer;
+   cursor: pointer;
     padding: 0;
     height: 19px;
     transition: border-bottom 0.2s ease-in-out;
 }
 
 .redactOpenBtn:hover{
-    border-bottom: #9EBBFF 1px solid;
+    border-bottom: var(--second-blue-color) 1px solid;
 }
 
 .redactSvg{
     width: 16px;
     height: 16px;
-    stroke: #9EBBFF;
+    stroke: var(--second-blue-color);
     transition: stroke 0.2s ease-in-out;
 }
 
@@ -77,7 +77,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid transparent;
-    cursor: var(--cursor-url), pointer;
+   cursor: pointer;
     padding: 0;
     height: 19px;
     transition: border-bottom 0.2s ease-in-out;
