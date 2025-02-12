@@ -59,7 +59,7 @@
 
 .modalInput {
   border: 1px solid var(--second-background-trecer-color);
-  background-color:var(--prim-color-white);
+  background-color: var(--prim-color-white);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -145,7 +145,7 @@
 .modalTimeInput {
   display: flex;
   align-items: center;
-  background-color:var(--prim-color-white);
+  background-color: var(--prim-color-white);
   text-align: left;
   border: 1px solid var(--second-background-trecer-color);
   border-radius: 6px;

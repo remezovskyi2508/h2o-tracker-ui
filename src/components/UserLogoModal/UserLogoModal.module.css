@@ -20,10 +20,9 @@
   color: var(--prim-color-blue);
   background: transparent;
   border: none;
-  cursor: pointer;
+  cursor: var(--cursor-url), pointer;
   width: 100%;
-  text-align: left;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn:hover {

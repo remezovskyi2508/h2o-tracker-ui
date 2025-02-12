@@ -55,6 +55,7 @@ const DailyNorma = () => {
         <DailyNormaModal
           setDailyNorm={setDailyNorm}
           onClose={handleModalClose}
+          dailyNorm={dailyNorm}
         />
       )}
     </div>

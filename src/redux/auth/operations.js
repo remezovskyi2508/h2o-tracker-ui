@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { parseToken } from '../../js/calendar';
 
 export const authInstance = axios.create({
   baseURL: 'https://h2o-tracker-api.onrender.com/',
@@ -42,6 +43,8 @@ export const login = createAsyncThunk(
       const { data } = await authInstance.post('/auth/login', formData);
       const accessToken = data.data.accessToken;
       setToken(accessToken);
+      console.log();
+      
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -59,21 +62,23 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-// export const refreshUser = createAsyncThunk(
-//   'auth/refreshUser',
-//   async (_, thunkAPI) => {
-//     const persistedToken = thunkAPI.getState().auth.token;
-
-//     if (!persistedToken) {
-//       return thunkAPI.rejectWithValue('Failed to refresh user');
-//     }
-
-//     try {
-//       const { data } = await authInstance.get('/user/current');
-
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.response.data.message);
-//     }
-//   }
-// );
+export const userRefresh = createAsyncThunk(
+  'users/current',
+  async (_, thunkAPI) => {
+    try {
+      const persistToken = localStorage.getItem('persist:auth');
+      const token = parseToken(persistToken);
+      const { data } = await authInstance.get('/users/current', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const accessToken = data.data.accessToken;
+      console.log('Operation Token: ', data);
+      setToken(accessToken);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
