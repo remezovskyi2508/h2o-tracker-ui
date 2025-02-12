@@ -4,10 +4,15 @@ import { selectUserInfo } from '../../redux/user/selectors.js';
 import { selectUserId } from '../../redux/auth/selectors.js';
 import { fetchUserInfo } from '../../redux/user/operations.js';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
+import SettingModal from '../SettingModal/SettingModal';
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
 import style from './UserLogo.module.css';
 
 export const UserLogo = () => {
   const [isUserModalOpen, setUserModalOpen] = useState(false);
+  const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
   const dispatch = useDispatch();
   const userData = useSelector(selectUserInfo);
   const userId = useSelector(selectUserId);
@@ -18,11 +23,33 @@ export const UserLogo = () => {
     }
   }, [userId, userData, dispatch]);
 
-  const toggleModal = () => setUserModalOpen(prev => !prev);
+  const handleButtonClick = () => {
+    setUserModalOpen(!isUserModalOpen);
+  };
+
+  const openSettingModal = () => {
+    setIsSettingModalOpen(true);
+    setUserModalOpen(false);
+  };
+
+  const openLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+    setUserModalOpen(false);
+  };
+
+  const closeAllModals = () => {
+    setUserModalOpen(false);
+    setIsSettingModalOpen(false);
+    setIsLogoutModalOpen(false);
+  };
 
   return (
-    <div className={style.container}>
-      <button onClick={toggleModal} className={style.svgBtn}>
+    <div className={style.container} style={{ position: 'relative' }}>
+      <button
+        type="button"
+        className={style.svgBtn}
+        onClick={handleButtonClick}
+      >
         <div className={style.user}>
           <span className={style.userName}>
             {userData?.name || userData?.email?.split('@')[0] || 'User'}
@@ -39,14 +66,41 @@ export const UserLogo = () => {
                 userData?.email?.[0]?.toUpperCase()}
             </div>
           )}
-          <svg className={style.icon} width="11" height="6">
+          <svg
+            className={`${style.icon} ${
+              isUserModalOpen ? style.iconRotated : ''
+            }`}
+            width="11"
+            height="6"
+          >
             <use href="/images/icons.svg#icon-vector"></use>
           </svg>
         </div>
       </button>
 
       {isUserModalOpen && (
-        <UserLogoModal isOpen={isUserModalOpen} onClose={toggleModal} />
+        <div style={{ position: 'relative' }}>
+          <UserLogoModal
+            isOpen={isUserModalOpen}
+            onClose={closeAllModals}
+            onOpenSetting={openSettingModal}
+            onOpenLogout={openLogoutModal}
+          />
+        </div>
+      )}
+
+      {isSettingModalOpen && (
+        <SettingModal
+          isOpen={isSettingModalOpen}
+          onClose={() => setIsSettingModalOpen(false)}
+        />
+      )}
+
+      {isLogoutModalOpen && (
+        <UserLogoutModal
+          isOpen={isLogoutModalOpen}
+          onClose={() => setIsLogoutModalOpen(false)}
+        />
       )}
     </div>
   );

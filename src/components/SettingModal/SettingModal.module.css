@@ -238,11 +238,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.btnSave:hover{
+.btnSave:hover {
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
 }
 
-.btnSave:active{
+.btnSave:active {
   box-shadow: none;
 }
 

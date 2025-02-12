@@ -39,7 +39,6 @@ export const fetchUserInfo = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.error('Fetch user error:', error.response?.data || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

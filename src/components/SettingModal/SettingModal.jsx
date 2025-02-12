@@ -73,7 +73,6 @@ const SettingModal = ({ isOpen, onClose }) => {
         throw new Error('Invalid avatar response');
       }
     } catch (error) {
-      console.error('Avatar update failed:', error);
       toast.error(
         error.message || 'An error occurred while updating the avatar.'
       );
