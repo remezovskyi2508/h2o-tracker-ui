@@ -27,23 +27,32 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
       : parseFloat((m * 0.04 + t * 0.6).toFixed(1));
   const [customNorm, setCustomNorm] = useState('');
 
+  const [isSaving, setIsSaving] = useState(false); // Стейт для контролю процесу збереження
   const handleSave = async () => {
+    if (isSaving) return; // Якщо запит вже йде, не дозволяємо натискати ще раз
+    setIsSaving(true); // Встановлюємо статус "збереження", щоб заблокувати кнопку
+
     const normToSave = Number(customNorm)
       ? Number(customNorm) / 1000
       : amountWaterPerDay;
-  
+
     try {
       if (normToSave > 0 && normToSave <= DAILY_NORMA) {
-        // Замість виклику dispatch, просто виводимо результат
+        if (normToSave * 1000 > 15000) {
+          toast.error('Daily norma cannot exceed 15 liters (15000 ml)');
+          return;
+        }
         await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
         toast.success('New daily norma added');
         await dispatch(fetchUserInfo(userId));
-        onClose(); // Закриваємо модальне вікно
+        onClose();
       } else {
         toast.error('Wrong data');
       }
     } catch {
       toast.error('Failed to add daily norma');
+    } finally {
+      setIsSaving(false); // Відновлюємо кнопку після завершення запиту
     }
   };
   return (
@@ -109,7 +118,9 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
         </div>
         <div className={css.textAmount}>
           <p> The required amount of water in liters per day:</p>
-          <span className={css.recomendAmount}>{m ? amountWaterPerDay.toFixed(1) : dailyNorm} L</span>
+          <span className={css.recomendAmount}>
+            {m ? amountWaterPerDay.toFixed(1) : dailyNorm} L
+          </span>
         </div>
       </div>
       <div className={css.inputWithLabel}>
@@ -124,7 +135,11 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
           onChange={e => setCustomNorm(e.target.value)}
         />
       </div>
-      <Button className={css.btnSave} onClick={handleSave}>
+      <Button
+        className={css.btnSave}
+        onClick={handleSave}
+        disabled={isSaving} // Вимикаємо кнопку, поки йде запит
+      >
         Save
       </Button>
     </Modal>
