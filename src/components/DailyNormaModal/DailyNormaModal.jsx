@@ -12,7 +12,7 @@ import { selectUserId } from '../../redux/auth/selectors.js';
 
 const DAILY_NORMA = 15000;
 
-const DailyNormaModal = ({ onClose }) => {
+const DailyNormaModal = ({ onClose, dailyNorm }) => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
 
@@ -31,19 +31,21 @@ const DailyNormaModal = ({ onClose }) => {
     const normToSave = Number(customNorm)
       ? Number(customNorm) / 1000
       : amountWaterPerDay;
-
-    if (normToSave > 0 && normToSave <= DAILY_NORMA) {
-      // Замість виклику dispatch, просто виводимо результат
-      await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
-      toast.success('New daily norma added');
-      await dispatch(fetchUserInfo(userId));
-      onClose(); // Закриваємо модальне вікно
-    } else {
-      toast.error('Wrong data');
-      return;
+  
+    try {
+      if (normToSave > 0 && normToSave <= DAILY_NORMA) {
+        // Замість виклику dispatch, просто виводимо результат
+        await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
+        toast.success('New daily norma added');
+        await dispatch(fetchUserInfo(userId));
+        onClose(); // Закриваємо модальне вікно
+      } else {
+        toast.error('Wrong data');
+      }
+    } catch {
+      toast.error('Failed to add daily norma');
     }
   };
-
   return (
     <Modal title="My daily norma" classNameModal={css.modal} onClose={onClose}>
       <ul className={css.formulas}>
@@ -87,7 +89,7 @@ const DailyNormaModal = ({ onClose }) => {
           <input
             id="weight"
             type="text"
-            placeholder="Enter weight"
+            placeholder="0"
             className={css.inputField}
             onChange={e => setM(Number(e.target.value))}
           />
@@ -100,14 +102,14 @@ const DailyNormaModal = ({ onClose }) => {
           <input
             id="hours"
             type="text"
-            placeholder="Enter hours"
+            placeholder="0"
             className={css.inputField}
             onChange={e => setT(Number(e.target.value))}
           />
         </div>
         <div className={css.textAmount}>
           <p> The required amount of water in liters per day:</p>
-          <span>{m ? amountWaterPerDay.toFixed(1) : 0} L</span>
+          <span className={css.recomendAmount}>{m ? amountWaterPerDay.toFixed(1) : dailyNorm} L</span>
         </div>
       </div>
       <div className={css.inputWithLabel}>
@@ -117,7 +119,7 @@ const DailyNormaModal = ({ onClose }) => {
         <input
           id="waterAmount"
           type="text"
-          placeholder="Enter amount (ml)"
+          placeholder={`${dailyNorm * 1000} ml`}
           className={css.inputField}
           onChange={e => setCustomNorm(e.target.value)}
         />
