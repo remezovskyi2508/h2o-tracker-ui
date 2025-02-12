@@ -68,11 +68,13 @@ const SettingModal = ({ isOpen, onClose }) => {
         throw new Error('Invalid avatar response');
       }
     } catch (error) {
+      console.error('Avatar update failed:', error);
       toast.error(
         error.message || 'An error occurred while updating the avatar.'
       );
     }
   };
+
   const handleSubmit = async values => {
     const data = {};
     if (values.gender) data.gender = values.gender;
@@ -81,13 +83,13 @@ const SettingModal = ({ isOpen, onClose }) => {
     if (values.oldPassword) data.oldPassword = values.oldPassword;
     if (values.newPassword) data.newPassword = values.newPassword;
 
-    try {
-      await dispatch(updateUserInfo({ id: userId, data }));
+    const result = await dispatch(updateUserInfo({ id: userId, data }));
+    if (updateUserInfo.fulfilled.match(result)) {
       toast.success('Profile updated successfully!');
       await dispatch(fetchUserInfo(userId));
-    } catch (error) {
+    } else {
       toast.error(
-        error.message || 'An error occurred while updating the data.'
+        result.payload || 'An error occurred while updating the data.'
       );
     }
   };
