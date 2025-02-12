@@ -132,7 +132,6 @@
 }
 
 .btnSave {
-  cursor: var(--cursor-url), pointer;
   color: var(--prim-color-white) !important;
   margin-left: auto;
   display: block;
@@ -169,4 +168,5 @@
 
 .btnSave:hover {
   box-shadow: 0 4px 14px 0 #407bff8a !important;
+  cursor: var(--cursor-url),pointer;
 }

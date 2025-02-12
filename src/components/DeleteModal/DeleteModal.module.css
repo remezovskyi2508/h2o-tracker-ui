@@ -52,7 +52,7 @@
   width: 232px;
   height: 36px;
   border: none;
- cursor: pointer;
+ 
 }
 
 .redBtn {
@@ -65,6 +65,7 @@
 .blueBtn {
   color: var(--prim-color-blue);
   background-color: var(--second-background-trecer-color);
+  cursor:var(--cursor-url), pointer;
 }
 
 @media screen and (min-width: 768px) {

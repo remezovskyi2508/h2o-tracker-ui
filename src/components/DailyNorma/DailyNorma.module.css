@@ -43,6 +43,7 @@
   color: #8baeff !important;
   min-width: auto !important;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 .editButton:hover {
   color: var(--second-warning-color) !important;
