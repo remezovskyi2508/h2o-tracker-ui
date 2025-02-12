@@ -1,41 +1,43 @@
-import { useState } from 'react';
-import { HiOutlineCog6Tooth } from 'react-icons/hi2';
-import { HiArrowRightOnRectangle } from 'react-icons/hi2';
-
+import { useState, useEffect, useRef } from 'react';
+import { HiOutlineCog6Tooth, HiArrowRightOnRectangle } from 'react-icons/hi2';
 import css from './UserLogoModal.module.css';
 import SettingModal from '../SettingModal/SettingModal';
 import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
-import { useEffect } from 'react';
 
 const UserLogoModal = ({ isOpen, onClose }) => {
   const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
-
-  // const closeAllModals = () => {
-  //   setIsSettingModalOpen(false);
-  //   setIsLogoutModalOpen(false);
-  //   onClose();
-  // };
+  const modalRef = useRef(null);
 
   useEffect(() => {
-    const onKeyDown = event => {
+    const handleClickOutside = event => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    const handleEscape = event => {
       if (event.code === 'Escape') {
         onClose();
       }
     };
 
-    window.addEventListener('keydown', onKeyDown);
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+    }
 
     return () => {
-      window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
     };
-  }, [onClose]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div className={css.modal}>
-      <div className={css.modal_content}>
+    <div className={css.modal} ref={modalRef} onClick={onClose}>
+      <div className={css.modalContent} onClick={e => e.stopPropagation()}>
         <button className={css.btn} onClick={() => setIsSettingModalOpen(true)}>
           <HiOutlineCog6Tooth className={css.icon} />
           Settings

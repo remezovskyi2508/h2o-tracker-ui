@@ -1,31 +1,40 @@
 /* Styles for Mobile devices */
-.modalContent {
-  background: var(--prim-color-white);
-  padding: 32px 12px;
-  border-radius: 10px;
-  text-align: center;
-  position: relative;
-  overflow: auto;
-  min-width: 280px;
-  min-height: 852px;
-}
-.no-scroll {
-  overflow: hidden;
-  height: 100%;
-}
 .modalBackdrop {
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
   z-index: 1000;
+  overflow: scroll;
+  overscroll-behavior: none;
+  @media screen and (min-width: 1440px) {
+    overflow: hidden;
+  }
+}
+
+.modalContent {
+  border-radius: 10px;
+  position: absolute;
+  padding: 32px 12px;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: var(--prim-color-white);
+  min-width: 280px;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 24px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 104px;
+  }
+}
+.no-scroll {
   overflow: hidden;
+  height: 100%;
 }
 
 .closeBtn {
