@@ -1,12 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { HiOutlineCog6Tooth, HiArrowRightOnRectangle } from 'react-icons/hi2';
 import css from './UserLogoModal.module.css';
-import SettingModal from '../SettingModal/SettingModal';
-import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
 
-const UserLogoModal = ({ isOpen, onClose }) => {
-  const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
-  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+const UserLogoModal = ({ isOpen, onClose, onOpenSetting, onOpenLogout }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -36,29 +32,26 @@ const UserLogoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className={css.modal} ref={modalRef} onClick={onClose}>
-      <div className={css.modalContent} onClick={e => e.stopPropagation()}>
-        <button className={css.btn} onClick={() => setIsSettingModalOpen(true)}>
+    <div className={css.modal}>
+      <div className={css.modalContent} ref={modalRef}>
+        <button
+          className={css.btn}
+          onClick={() => {
+            onOpenSetting();
+          }}
+        >
           <HiOutlineCog6Tooth className={css.icon} />
           Settings
         </button>
-        <button className={css.btn} onClick={() => setIsLogoutModalOpen(true)}>
+        <button
+          className={css.btn}
+          onClick={() => {
+            onOpenLogout();
+          }}
+        >
           <HiArrowRightOnRectangle className={css.icon} />
           Log out
         </button>
-
-        {isSettingModalOpen && (
-          <SettingModal
-            isOpen={isSettingModalOpen}
-            onClose={() => setIsSettingModalOpen(false)}
-          />
-        )}
-        {isLogoutModalOpen && (
-          <UserLogoutModal
-            isOpen={isLogoutModalOpen}
-            onClose={() => setIsLogoutModalOpen(false)}
-          />
-        )}
       </div>
     </div>
   );
