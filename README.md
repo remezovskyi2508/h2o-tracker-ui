@@ -14,7 +14,10 @@ The application is fully responsive, adapting to desktop, tablet, and mobile dev
 - Responsive design for various screen sizes.</br>
 
 # Server:
-https://h2o-tracker-api.onrender.com
+https://h2o-tracker-api.onrender.com/api-docs/
+
+# GitHub Repository API
+https://github.com/remezovskyi2508/h2o-tracker-api
 
 # VERCEL Deployment
 https://h2o-tracker-ui.vercel.app/
