@@ -27,8 +27,6 @@ const SettingModal = ({ isOpen, onClose }) => {
   const isUserLoading = useSelector(selectUserLoading);
   const [isAvatarUpdating, setIsAvatarUpdating] = useState(false);
 
-  console.log(userData);
-
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
     email: Yup.string().email('Invalid email address'),
