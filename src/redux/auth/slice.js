@@ -48,9 +48,8 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-      .addCase(logout.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
+      .addCase(logout.rejected, action => {
+        return { ...initialState, error: action.payload };
       })
       .addCase(userRefresh.pending, state => {
         state.loading = true;
