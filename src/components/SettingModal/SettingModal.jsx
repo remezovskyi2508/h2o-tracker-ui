@@ -3,14 +3,17 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './SettingModal.module.css';
 import toast from 'react-hot-toast';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchUserInfo,
   updateUserAvatar,
   updateUserInfo,
 } from '../../redux/user/operations.js';
-import { selectUserInfo, selectUserLoading } from '../../redux/user/selectors.js';
+import {
+  selectUserInfo,
+  selectUserLoading,
+} from '../../redux/user/selectors.js';
 import { selectUserId, selectLoading } from '../../redux/auth/selectors.js';
 import Loader from '../Loader/Loader';
 
@@ -24,13 +27,7 @@ const SettingModal = ({ isOpen, onClose }) => {
   const isUserLoading = useSelector(selectUserLoading);
   const [isAvatarUpdating, setIsAvatarUpdating] = useState(false);
 
-  useEffect(() => {
-    if (userId) {
-      if (userData) {
-        dispatch(fetchUserInfo(userId));
-      }
-    }
-  }, []);
+  console.log(userData);
 
   const SettingSchema = Yup.object().shape({
     name: Yup.string().max(32, 'Name must be no more than 32 characters'),
@@ -160,7 +157,11 @@ const SettingModal = ({ isOpen, onClose }) => {
                       className={css.uploadButton}
                       onClick={() => document.getElementById('avatar').click()}
                     >
-                      <svg className={css.uploadButtonIcon} width="16" height="16">
+                      <svg
+                        className={css.uploadButtonIcon}
+                        width="16"
+                        height="16"
+                      >
                         <use href="/images/icons.svg#icon-arrow-up-tray"></use>
                       </svg>
                       Upload a photo
@@ -203,7 +204,8 @@ const SettingModal = ({ isOpen, onClose }) => {
                             Woman
                           </label>
                           <label className={css.radio}>
-                            <Field type="radio" name="gender" value="male" /> Man
+                            <Field type="radio" name="gender" value="male" />{' '}
+                            Man
                           </label>
                         </div>
                       </label>
@@ -302,11 +304,16 @@ const SettingModal = ({ isOpen, onClose }) => {
                         className={css.errorMessage}
                       />
                     </label>
-                    <label htmlFor="confirmPassword" className={css.labelPassword}>
+                    <label
+                      htmlFor="confirmPassword"
+                      className={css.labelPassword}
+                    >
                       Repeat new password:
                       <div className={css.inputWrapper}>
                         <Field
-                          type={showPassword.confirmPassword ? 'text' : 'password'}
+                          type={
+                            showPassword.confirmPassword ? 'text' : 'password'
+                          }
                           name="confirmPassword"
                           className={`${css.input} ${
                             errors.confirmPassword ? css.invalid : ''
