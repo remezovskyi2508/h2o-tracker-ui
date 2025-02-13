@@ -1,2 +1,0 @@
-import{u as c,y as i,r as l,j as s}from"./index-DSw7YTPR.js";import{c as e,A as m}from"./SignupPage.module-Cap7xj2U.js";const d=()=>{const t=c(i),[r,n]=l.useState(null),a=()=>{try{}catch(o){n(o.message)}};return s.jsx("div",{className:e.sPageContainer,children:s.jsx("div",{className:e.formSection,children:!t&&s.jsxs(s.Fragment,{children:[r&&s.jsx("p",{className:e.error,children:r}),s.jsx(m,{onSubmit:a,buttonText:"Sign in"})]})})})};export{d as default};
-//# sourceMappingURL=SigninPage-DkzBDU8c.js.map
