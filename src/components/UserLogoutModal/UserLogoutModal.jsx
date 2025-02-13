@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations.js';
 import { persistor } from '../../redux/store.js';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
@@ -33,7 +34,7 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
   const [modalStyles, setModalStyles] = useState(
     customStyles(window.innerWidth)
   );
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,14 +46,14 @@ const UserLogoutModal = ({ isOpen, onClose }) => {
 
   const onLogout = async () => {
     try {
-      await dispatch(logout());
-      persistor.purge(); // очищення Persist store
-      onClose();
+      await dispatch(logout()).unwrap();
+      toast.success('See you next time!');
     } catch (error) {
       toast.error(`Something went wrong: ${error.message}`);
-      await dispatch(logout());
+    } finally {
       persistor.purge(); // очищення Persist store
       onClose();
+      navigate('/');
     }
   };
 
