@@ -6,7 +6,12 @@ import plusIcon from '/images/icon-plus.svg?url';
 
 import css from './TodayListModalForm.module.css';
 
-const TodayListModalForm = ({ initialState, handleSubmit }) => {
+const TodayListModalForm = ({
+  initialState,
+  handleSubmit,
+  operationType,
+  oldDataDate,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
   const dropdownRef = useRef(null);
@@ -47,8 +52,20 @@ const TodayListModalForm = ({ initialState, handleSubmit }) => {
     return `${hours}:${minutes}`;
   };
 
+  const formatOldDataDate = oldDataDate => {
+    const date = new Date(oldDataDate);
+    // Извлекаем часы и минуты из строки ISO без изменения часового пояса
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   useEffect(() => {
-    setSelectedTime(getCurrentTime());
+    if (operationType === 'edit' && oldDataDate) {
+      setSelectedTime(formatOldDataDate(oldDataDate)); // Преобразуем старое время в нужный формат без сдвига по времени
+    } else {
+      setSelectedTime(getCurrentTime()); // В другом случае устанавливаем текущее время
+    }
 
     const handleClickOutside = event => {
       if (
@@ -65,7 +82,7 @@ const TodayListModalForm = ({ initialState, handleSubmit }) => {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [operationType, oldDataDate]);
 
   const scrollToTime = useCallback(() => {
     if (dropdownRef.current && selectedTime) {

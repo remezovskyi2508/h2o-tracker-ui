@@ -15,9 +15,19 @@ import css from './TodayListModal.module.css';
 const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
   const dispatch = useDispatch();
 
-  const [initialState, setInitialState] = useState({
-    date: '',
-    waterVolume: 50,
+  const oldDataDate = data?.date;
+
+  const [initialState, setInitialState] = useState(() => {
+    if (operationType === 'edit') {
+      return {
+        date: ' ',
+        waterVolume: data.waterVolume,
+      };
+    }
+    return {
+      date: '',
+      waterVolume: 50,
+    };
   });
 
   const today = new Date();
@@ -167,6 +177,8 @@ const TodayListModal = ({ isOpen, onClose, data, operationType }) => {
               <TodayListModalForm
                 initialState={initialState}
                 handleSubmit={handleSubmit}
+                operationType={operationType}
+                oldDataDate={oldDataDate}
               />
             </div>
           </div>

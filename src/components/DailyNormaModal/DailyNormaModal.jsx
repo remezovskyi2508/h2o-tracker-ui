@@ -119,7 +119,7 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
         <div className={css.textAmount}>
           <p> The required amount of water in liters per day:</p>
           <span className={css.recomendAmount}>
-            {m ? amountWaterPerDay.toFixed(1) : dailyNorm} L
+            {m ? amountWaterPerDay.toFixed(1) : 0} L
           </span>
         </div>
       </div>
@@ -130,7 +130,7 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
         <input
           id="waterAmount"
           type="text"
-          placeholder={`${dailyNorm * 1000} ml`}
+          placeholder={`${dailyNorm} L`}
           className={css.inputField}
           onChange={e => setCustomNorm(e.target.value)}
         />
