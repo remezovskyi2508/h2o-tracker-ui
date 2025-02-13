@@ -1,11 +1,10 @@
 import Modal from 'react-modal';
 import css from './UserLogoutModal.module.css';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations.js';
 import { persistor } from '../../redux/store.js';
 import toast from 'react-hot-toast';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
