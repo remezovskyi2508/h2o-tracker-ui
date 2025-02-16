@@ -33,16 +33,17 @@ const DailyNormaModal = ({ onClose, dailyNorm }) => {
     setIsSaving(true); // Встановлюємо статус "збереження", щоб заблокувати кнопку
 
     const normToSave = Number(customNorm)
-      ? Number(customNorm) / 1000
+      ? Number(customNorm) * 1000
       : amountWaterPerDay;
+    console.log(normToSave);
 
     try {
       if (normToSave > 0 && normToSave <= DAILY_NORMA) {
-        if (normToSave * 1000 > 15000) {
+        if (normToSave > 15000) {
           toast.error('Daily norma cannot exceed 15 liters (15000 ml)');
           return;
         }
-        await dispatch(dailyNormUpd({ dailyNorm: normToSave * 1000 }));
+        await dispatch(dailyNormUpd({ dailyNorm: normToSave }));
         toast.success('New daily norma added');
         await dispatch(fetchUserInfo(userId));
         onClose();
